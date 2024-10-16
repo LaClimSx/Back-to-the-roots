@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://rlhk8qhsj3ua"]
+[gd_scene load_steps=17 format=3 uid="uid://rlhk8qhsj3ua"]
 
 [ext_resource type="Texture2D" uid="uid://dkv5kj8w510of" path="res://Assets/Tiles/misc.png" id="1_7604j"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_rjk8m"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://btquhh5o6ewuu" path="res://Scenes/inventory_gui.tscn" id="5_0ywr5"]
 [ext_resource type="Script" path="res://Scripts/canvas_layer.gd" id="5_b8gca"]
 [ext_resource type="PackedScene" uid="uid://dcouvu2n0fdiq" path="res://Scenes/house.tscn" id="8_66nr8"]
+[ext_resource type="PackedScene" uid="uid://d0ob0p02raj3k" path="res://Scenes/puit.tscn" id="9_tkrlr"]
+[ext_resource type="PackedScene" uid="uid://uyvn4jld2gp6" path="res://Scenes/etabli.tscn" id="10_ip7p4"]
+[ext_resource type="PackedScene" uid="uid://dd6eibaeqjan1" path="res://Scenes/moulin.tscn" id="11_d6woa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq4rf"]
 texture = ExtResource("1_7604j")
@@ -149,3 +152,12 @@ size_flags_vertical = 0
 position = Vector2(304.213, 287.241)
 scale = Vector2(1, 1)
 script = SubResource("GDScript_3ano8")
+
+[node name="Puit" parent="." instance=ExtResource("9_tkrlr")]
+position = Vector2(268.188, 432.362)
+
+[node name="Etabli" parent="." instance=ExtResource("10_ip7p4")]
+position = Vector2(403.282, 357.299)
+
+[node name="Moulin" parent="." instance=ExtResource("11_d6woa")]
+position = Vector2(614.43, 278.233)
