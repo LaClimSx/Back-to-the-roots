@@ -10,7 +10,6 @@ var oldIndex: int = -1
 var locked: bool = false
 
 var isHotBar: bool = true
-const HOT_BAR_POS: Vector2 = Vector2(292,555)
 
 func _ready():
 	connectSlots()
@@ -126,7 +125,7 @@ func putItemBack():
 	
 	var tween = create_tween()
 	var targetPosition = targetSlot.global_position + targetSlot.size/2
-	tween.tween_property(itemInHand,"global_position", targetPosition, 1)
+	tween.tween_property(itemInHand,"global_position", targetPosition, 0.1)
 	
 	await tween.finished
 	insertItemInSlot(targetSlot)
