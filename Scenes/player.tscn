@@ -391,6 +391,7 @@ script = ExtResource("1_mwc1x")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_e7l31")
 animation = &"idle_dos"
 frame_progress = 0.593393
@@ -400,3 +401,8 @@ position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_ges2k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 648
