@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcouvu2n0fdiq"]
+
+[ext_resource type="Texture2D" uid="uid://bkkxo4vhw8h2g" path="res://Assets/Tiny Wonder Farm Free/objects&items/farm objects free.png" id="1_8tj5l"]
+[ext_resource type="PackedScene" uid="uid://v4ai3tyrasyh" path="res://Scenes/door.tscn" id="2_0qhl0"]
+
+[node name="House" type="StaticBody2D"]
+
+[node name="toit" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(49, 25)
+texture = ExtResource("1_8tj5l")
+region_enabled = true
+region_rect = Rect2(5.90802, 96.5088, 85.6974, 62.1224)
+
+[node name="house" type="Sprite2D" parent="."]
+position = Vector2(49, 41)
+texture = ExtResource("1_8tj5l")
+region_enabled = true
+region_rect = Rect2(5.90802, 96.5088, 85.6974, 94.4912)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(44, 26, 24, 47, 18, 57, 20, 85, 38, 85, 38, 57, 59, 57, 59, 85, 78, 85, 80, 55, 52, 26)
+
+[node name="Door" parent="." instance=ExtResource("2_0qhl0")]
+position = Vector2(49, 72)

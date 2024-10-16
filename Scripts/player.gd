@@ -26,10 +26,10 @@ func _process(delta: float) -> void:
 		velocity = velocity.normalized() * speed
 		last_dir = velocity
 		$AnimatedSprite2D.play()
-	#else:
-	#	$AnimatedSprite2D.animation = "idle_face"
 		
-	position += velocity * delta
+	#position += velocity * delta
+	#position = position.clamp(Vector2.ZERO, screen_size)
+	move_and_collide(velocity * delta)
 	position = position.clamp(Vector2.ZERO, screen_size)
 		
 	if velocity.x != 0:
