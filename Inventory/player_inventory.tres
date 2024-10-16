@@ -6,4 +6,4 @@
 
 [resource]
 script = ExtResource("3_7py5c")
-items = Array[ExtResource("1_1sogu")]([ExtResource("2_vim4j"), null, ExtResource("2_vim4j")])
+items = Array[ExtResource("1_1sogu")]([ExtResource("2_vim4j"), null, ExtResource("2_vim4j"), null, null, null, null, null, null])
