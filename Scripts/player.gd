@@ -1,6 +1,6 @@
-extends Area2D
+extends CharacterBody2D
 
-@export var speed = 400
+@export var speed = 100
 var screen_size
 var last_dir = Vector2(0,0)
 
