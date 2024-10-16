@@ -27,10 +27,10 @@ func checkActions():
 		if tile_map.get_cell_atlas_coords(1,tile_map_pos) == Vector2i(4,1) :
 			$Player.inventory.insert(carrot_item)		
 	'''
+	
 	if Input.is_action_just_pressed("Interact"):
 		var player = $Player
 		var player_tile_pos : Vector2i = tile_map.local_to_map(player.position)
-		print(player_tile_pos)
 		var viewing_tile : Vector2i
 		match player.direction:
 			0:
@@ -42,7 +42,9 @@ func checkActions():
 			3:
 				viewing_tile = player_tile_pos + Vector2i(0,1)
 		viewing_tile.clamp(Vector2i.ZERO, tile_map.get_used_rect().size)
+		print(viewing_tile)
 		
 		#If clicked tile has grown carrot, add carrot to inventory
 		if tile_map.get_cell_atlas_coords(1,viewing_tile) == Vector2i(4,1) :
 			$Player.inventory.insert(carrot_item)
+			print("Inserted")
