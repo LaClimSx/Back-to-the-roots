@@ -1,22 +1,20 @@
-extends Panel
+extends Button
 
 @onready var backgroundSprite: Sprite2D = $Background
-@onready var itemSprite: Sprite2D = $CenterContainer/Panel/Item
+@onready var container: CenterContainer = $CenterContainer
 
-func update(item: Item):
-	if !item:
-		backgroundSprite.frame = 0
-		itemSprite.visible = false
-	else:
-		backgroundSprite.frame = 1
-		itemSprite.visible = true
-		itemSprite.texture = item.texture
+var itemStackGui : ItemStackGUI
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func insert(isg: ItemStackGUI):
+	itemStackGui = isg
+	backgroundSprite.frame = 1
+	container.add_child(itemStackGui)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func takeItem():
+	var item = itemStackGui
+	
+	container.remove_child(itemStackGui)
+	itemStackGui = null
+	backgroundSprite.frame = 0
+	
+	return item

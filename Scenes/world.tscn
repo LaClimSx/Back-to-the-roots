@@ -147,5 +147,4 @@ size_flags_vertical = 0
 
 [node name="House" parent="." instance=ExtResource("8_66nr8")]
 position = Vector2(304.213, 287.241)
-scale = Vector2(1, 1)
 script = SubResource("GDScript_3ano8")
