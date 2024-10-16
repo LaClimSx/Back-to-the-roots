@@ -6,6 +6,11 @@ var isOpen: bool = true
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
 var itemInHand: ItemStackGUI
+var oldIndex: int = -1
+var locked: bool = false
+
+var isHotBar: bool = true
+const HOT_BAR_POS: Vector2 = Vector2(292,555)
 
 func _ready():
 	connectSlots()
@@ -43,6 +48,7 @@ func close():
 	isOpen = false
 	
 func onSlotClicked(slot):
+	if locked: return
 	if slot.isEmpty():
 		if !itemInHand: return
 		
@@ -62,6 +68,8 @@ func takeItemFromSlot(slot):
 	add_child(itemInHand)
 	updateItemInHand()
 	
+	oldIndex = slot.index
+	
 func insertItemInSlot(slot):
 	var item = itemInHand
 	
@@ -69,6 +77,8 @@ func insertItemInSlot(slot):
 	itemInHand = null
 	
 	slot.insert(item)
+	
+	oldIndex = -1
 	
 func swapItems(slot):
 	var tempItem = slot.takeItem()
@@ -91,11 +101,10 @@ func stackItems(slot):
 		slotItem.slot.amount = totalAmount
 		remove_child(itemInHand)
 		itemInHand = null
+		oldIndex = -1
 	else:
-		print("there are" , totalAmount)
 		slotItem.slot.amount = maxAmount
 		itemInHand.slot.amount = totalAmount - maxAmount
-		print(itemInHand.slot.amount)
 		
 	slotItem.update()
 	if itemInHand: updateItemInHand()
@@ -105,5 +114,26 @@ func updateItemInHand():
 	itemInHand.global_position = get_global_mouse_position() - itemInHand.size/2
 	itemInHand.update()
 	
+func putItemBack():
+	locked = true
+	if oldIndex < 0:
+		var emptySlots = slots.filter(func(slot): return slot.isEmpty())
+		if emptySlots.is_empty(): return
+		
+		oldIndex = emptySlots[0].index
+		
+	var targetSlot = slots[oldIndex]
+	
+	var tween = create_tween()
+	var targetPosition = targetSlot.global_position + targetSlot.size/2
+	tween.tween_property(itemInHand,"global_position", targetPosition, 1)
+	
+	await tween.finished
+	insertItemInSlot(targetSlot)
+	locked = false
+	
 func _input(event):
+	if itemInHand && !locked && (Input.is_action_pressed("Right_click") || Input.is_action_pressed("Interact" ) || Input.is_action_pressed("toggle_inventory")):
+		putItemBack()
+		
 	updateItemInHand()
