@@ -142,15 +142,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 offset_left = -284.0
-offset_top = -92.9999
+offset_top = -93.0
 offset_right = -57.0
-offset_bottom = -56.9999
+offset_bottom = -57.0
 grow_vertical = 0
 size_flags_vertical = 0
 
 [node name="House" parent="." instance=ExtResource("8_66nr8")]
 position = Vector2(304.213, 287.241)
-scale = Vector2(1, 1)
 script = SubResource("GDScript_3ano8")
 
 [node name="Puit" parent="." instance=ExtResource("9_tkrlr")]

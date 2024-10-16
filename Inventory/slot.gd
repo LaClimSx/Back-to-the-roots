@@ -1,22 +1,33 @@
-extends Panel
+extends Button
 
 @onready var backgroundSprite: Sprite2D = $Background
-@onready var itemSprite: Sprite2D = $CenterContainer/Panel/Item
+@onready var container: CenterContainer = $CenterContainer
 
-func update(item: Item):
-	if !item:
-		backgroundSprite.frame = 0
-		itemSprite.visible = false
-	else:
-		backgroundSprite.frame = 1
-		itemSprite.visible = true
-		itemSprite.texture = item.texture
+@onready var inventory = preload("res://Inventory/player_inventory.tres")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var itemStackGui: ItemStackGUI
+var index: int
 
+func insert(isg: ItemStackGUI):
+	itemStackGui = isg
+	backgroundSprite.frame = 1
+	container.add_child(itemStackGui)
+	
+	if !itemStackGui.slot || inventory.slots[index] == itemStackGui.slot:
+		return
+		
+	inventory.insertSlot(index, itemStackGui.slot)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func takeItem():
+	var item = itemStackGui
+	
+	inventory.removeSlot(itemStackGui.slot)
+	
+	container.remove_child(itemStackGui)
+	itemStackGui = null
+	backgroundSprite.frame = 0
+	
+	return item
+	
+func isEmpty():
+	return !itemStackGui

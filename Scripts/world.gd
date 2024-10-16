@@ -15,6 +15,7 @@ func _process(delta):
 
 
 func checkActions():
+	'''
 	if Input.is_action_just_pressed("Right_click"):
 		var mouse_pos : Vector2 = get_global_mouse_position()
 		var tile_map_pos : Vector2i = tile_map.local_to_map(mouse_pos)
@@ -24,8 +25,8 @@ func checkActions():
 		
 		#If clicked tile has grown carrot, add carrot to inventory
 		if tile_map.get_cell_atlas_coords(1,tile_map_pos) == Vector2i(4,1) :
-			$Player.inventory.insert(carrot_item)
-	
+			$Player.inventory.insert(carrot_item)		
+	'''
 	if Input.is_action_just_pressed("Interact"):
 		var player = $Player
 		var player_tile_pos : Vector2i = tile_map.local_to_map(player.position)
@@ -33,18 +34,15 @@ func checkActions():
 		var viewing_tile : Vector2i
 		match player.direction:
 			0:
-				print("looking left")
 				viewing_tile = player_tile_pos + Vector2i(-1,0)
 			1:
-				print("looking right")
 				viewing_tile = player_tile_pos + Vector2i(1,0)
 			2:
-				print("looking up")
 				viewing_tile = player_tile_pos + Vector2i(0,-1)
 			3:
-				print("looking down")
 				viewing_tile = player_tile_pos + Vector2i(0,1)
 		viewing_tile.clamp(Vector2i.ZERO, tile_map.get_used_rect().size)
-		print(viewing_tile)
-
-			
+		
+		#If clicked tile has grown carrot, add carrot to inventory
+		if tile_map.get_cell_atlas_coords(1,viewing_tile) == Vector2i(4,1) :
+			$Player.inventory.insert(carrot_item)
