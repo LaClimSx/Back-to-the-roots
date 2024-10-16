@@ -4,6 +4,11 @@ extends CharacterBody2D
 var screen_size
 var last_dir = Vector2(0,0)
 
+enum Directions {LEFT, RIGHT, UP, DOWN}
+var direction = Directions.LEFT
+
+@export var inventory : Inventory
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -32,33 +37,43 @@ func _process(delta: float) -> void:
 	move_and_collide(velocity * delta)
 	position = position.clamp(Vector2.ZERO, screen_size)
 		
+	var animation = $AnimatedSprite2D.animation
+	
 	if velocity.x != 0:
 		if velocity.x > 0:
-			$AnimatedSprite2D.animation = "walk_right"
+			animation = "walk_right"
+			direction = Directions.RIGHT
 			#$AnimatedSprite2D.flip_v = false
 		else:
-			$AnimatedSprite2D.animation = "walk_left"
+			animation = "walk_left"
+			direction = Directions.LEFT
 	
 	elif velocity.y != 0:
 		if velocity.y > 0:
-			$AnimatedSprite2D.animation = "walk_face"
+			animation = "walk_face"
+			direction = Directions.DOWN
 			#$AnimatedSprite2D.flip_v = false
 		else:
-			$AnimatedSprite2D.animation = "walk_dos"
+			animation = "walk_dos"
+			direction = Directions.UP
 	
 	else:
 		if abs(last_dir.x) >= abs(last_dir.y):
 			if last_dir.x > 0:
-				$AnimatedSprite2D.animation = "idle_right"
+				animation = "idle_right"
+				direction = Directions.RIGHT
 			else:
-				$AnimatedSprite2D.animation = "idle_left"
+				animation = "idle_left"
+				direction = Directions.LEFT
 		else:
 			if last_dir.y > 0:
-				$AnimatedSprite2D.animation = "idle_face"
+				animation = "idle_face"
+				direction = Directions.DOWN
 			else:
-				$AnimatedSprite2D.animation = "idle_dos"
-				
-			
+				animation = "idle_dos"
+				direction = Directions.UP
+		
+	$AnimatedSprite2D.animation = animation
 
 func start(pos):
 	position = pos
