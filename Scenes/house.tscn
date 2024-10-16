@@ -19,7 +19,7 @@ region_enabled = true
 region_rect = Rect2(5.90802, 96.5088, 85.6974, 94.4912)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(44, 26, 24, 47, 18, 57, 20, 85, 38, 85, 38, 57, 59, 57, 59, 85, 78, 85, 80, 55, 52, 26)
+polygon = PackedVector2Array(44, 26, 24, 47, 18, 57, 20, 85, 38, 85, 38, 58, 59, 58, 59, 85, 78, 85, 80, 55, 52, 26)
 
 [node name="Door" parent="." instance=ExtResource("2_0qhl0")]
 position = Vector2(49, 72)

@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://v4ai3tyrasyh"]
+[gd_scene load_steps=11 format=3 uid="uid://v4ai3tyrasyh"]
 
 [ext_resource type="Texture2D" uid="uid://bkkxo4vhw8h2g" path="res://Assets/Tiny Wonder Farm Free/objects&items/farm objects free.png" id="1_n2iv1"]
 [ext_resource type="Script" path="res://Scripts/door.gd" id="1_w5qtv"]
 
-[sub_resource type="Animation" id="Animation_3lpuf"]
-resource_name = "open"
+[sub_resource type="Animation" id="Animation_bivry"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -57,8 +57,8 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_bivry"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_3lpuf"]
+resource_name = "open"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -69,7 +69,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -111,10 +111,38 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_oceeu"]
+resource_name = "closing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_60huj"]
 _data = {
 "RESET": SubResource("Animation_bivry"),
 "close": SubResource("Animation_0hr0b"),
+"closing": SubResource("Animation_oceeu"),
 "open": SubResource("Animation_3lpuf"),
 "opening": SubResource("Animation_pa0sd")
 }
@@ -134,7 +162,7 @@ vframes = 2
 region_enabled = true
 region_rect = Rect2(101.182, 113.563, 22.7471, 59.3124)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_60huj")
 }
@@ -149,5 +177,8 @@ disabled = true
 position = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="playerDetected"]
-position = Vector2(0, 14)
+position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_11yni")
+
+[connection signal="body_entered" from="playerDetected" to="." method="_on_player_detected_body_entered"]
+[connection signal="body_exited" from="playerDetected" to="." method="_on_player_detected_body_exited"]

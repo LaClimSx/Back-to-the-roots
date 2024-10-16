@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://rlhk8qhsj3ua"]
+[gd_scene load_steps=14 format=3 uid="uid://rlhk8qhsj3ua"]
 
 [ext_resource type="Texture2D" uid="uid://dkv5kj8w510of" path="res://Assets/Tiles/misc.png" id="1_7604j"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_rjk8m"]
@@ -99,6 +99,20 @@ sources/0 = SubResource("TileSetAtlasSource_gq4rf")
 sources/1 = SubResource("TileSetAtlasSource_lwop3")
 sources/2 = SubResource("TileSetAtlasSource_v1jmv")
 
+[sub_resource type="GDScript" id="GDScript_3ano8"]
+script/source = "extends StaticBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [node name="World" type="Node2D"]
 scale = Vector2(0.9993, 0.999162)
 script = ExtResource("1_rjk8m")
@@ -134,3 +148,4 @@ size_flags_vertical = 0
 [node name="House" parent="." instance=ExtResource("8_66nr8")]
 position = Vector2(304.213, 287.241)
 scale = Vector2(1, 1)
+script = SubResource("GDScript_3ano8")
