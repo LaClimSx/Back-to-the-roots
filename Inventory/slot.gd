@@ -15,10 +15,13 @@ func insert(isg: ItemStackGUI):
 	
 	if !itemStackGui.slot || inventory.slots[index] == itemStackGui.slot:
 		return
+		
 	inventory.insertSlot(index, itemStackGui.slot)
 
 func takeItem():
 	var item = itemStackGui
+	
+	inventory.removeSlot(itemStackGui.slot)
 	
 	container.remove_child(itemStackGui)
 	itemStackGui = null

@@ -43,11 +43,19 @@ func close():
 	isOpen = false
 	
 func onSlotClicked(slot):
-	if slot.isEmpty() && itemInHand:
+	if slot.isEmpty():
+		if !itemInHand: return
+		
 		insertItemInSlot(slot)
 		return
 	if !itemInHand:
 		takeItemFromSlot(slot)
+		return
+	
+	if slot.itemStackGui.slot.item.name == itemInHand.slot.item.name:
+		stackItems(slot)
+		return
+	swapItems(slot)
 	
 func takeItemFromSlot(slot):
 	itemInHand = slot.takeItem()
@@ -61,10 +69,41 @@ func insertItemInSlot(slot):
 	itemInHand = null
 	
 	slot.insert(item)
-
+	
+func swapItems(slot):
+	var tempItem = slot.takeItem()
+	
+	insertItemInSlot(slot)
+	
+	itemInHand = tempItem
+	add_child(itemInHand)
+	updateItemInHand()
+	
+func stackItems(slot):
+	var slotItem: ItemStackGUI = slot.itemStackGui
+	var maxAmount = slotItem.slot.item.maxAmount
+	var totalAmount = slotItem.slot.amount + itemInHand.slot.amount
+	
+	if slotItem.slot.amount == maxAmount:
+		swapItems(slot)
+		return
+	if totalAmount <= maxAmount:
+		slotItem.slot.amount = totalAmount
+		remove_child(itemInHand)
+		itemInHand = null
+	else:
+		print("there are" , totalAmount)
+		slotItem.slot.amount = maxAmount
+		itemInHand.slot.amount = totalAmount - maxAmount
+		print(itemInHand.slot.amount)
+		
+	slotItem.update()
+	if itemInHand: updateItemInHand()
+	
 func updateItemInHand():
 	if !itemInHand : return
 	itemInHand.global_position = get_global_mouse_position() - itemInHand.size/2
+	itemInHand.update()
 	
 func _input(event):
 	updateItemInHand()

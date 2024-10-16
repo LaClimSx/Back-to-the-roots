@@ -24,9 +24,7 @@ func checkActions():
 		
 		#If clicked tile has grown carrot, add carrot to inventory
 		if tile_map.get_cell_atlas_coords(1,tile_map_pos) == Vector2i(4,1) :
-			$Player.inventory.insert(carrot_item)
-			$Player.inventory.printInventory()
-		
+			$Player.inventory.insert(carrot_item)		
 	
 	if Input.is_action_just_pressed("Interact"):
 		var player = $Player
