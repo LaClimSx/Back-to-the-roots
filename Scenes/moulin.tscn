@@ -1,69 +1,83 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd6eibaeqjan1"]
+[gd_scene load_steps=16 format=3 uid="uid://dd6eibaeqjan1"]
 
-[ext_resource type="Texture2D" uid="uid://dbc85b6ulwdua" path="res://Assets/Cyrielle/moulin-Sheet.png" id="1_ywwue"]
+[ext_resource type="Texture2D" uid="uid://cc36u4526veca" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134057.png" id="1_k6ggn"]
+[ext_resource type="Texture2D" uid="uid://lhse2jov1pfr" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134105.png" id="2_047uj"]
+[ext_resource type="Texture2D" uid="uid://d4auafjv7mjqk" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134113.png" id="3_h3jcg"]
+[ext_resource type="Texture2D" uid="uid://cqh6mfnex8ycw" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134226.png" id="4_f1aom"]
+[ext_resource type="Texture2D" uid="uid://bgln1uohp3exk" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134233.png" id="5_7tifh"]
+[ext_resource type="Texture2D" uid="uid://sx66q6dkekml" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134243.png" id="6_128vr"]
+[ext_resource type="Texture2D" uid="uid://cljdnm0db1a8l" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134250.png" id="7_xhowg"]
+[ext_resource type="Texture2D" uid="uid://0o3envwhdt1k" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134302.png" id="8_efun1"]
+[ext_resource type="Texture2D" uid="uid://wxjy8vo8d3pn" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134314.png" id="9_4tc11"]
+[ext_resource type="Texture2D" uid="uid://b0w43oi5hai4x" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134320.png" id="10_mjyuf"]
+[ext_resource type="Texture2D" uid="uid://dipn72feuang3" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134328.png" id="11_jjgd4"]
+[ext_resource type="Texture2D" uid="uid://dh6bdjy68ukyf" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134347.png" id="12_5hucx"]
+[ext_resource type="Texture2D" uid="uid://b8ggrv6xmxog1" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134353.png" id="13_dqpme"]
+[ext_resource type="Texture2D" uid="uid://dns0hmmqhpdx3" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134359.png" id="14_ewv7f"]
 
-[sub_resource type="Animation" id="Animation_acn55"]
-resource_name = "tounetourne"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 2, 3, 4, 5, 6, 7, 8, 9]
-}
-
-[sub_resource type="Animation" id="Animation_rt2ej"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jipaa"]
-_data = {
-"RESET": SubResource("Animation_rt2ej"),
-"tounetourne": SubResource("Animation_acn55")
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ifjn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k6ggn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_047uj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h3jcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f1aom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7tifh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_128vr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xhowg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_efun1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4tc11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mjyuf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jjgd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5hucx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dqpme")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ewv7f")
+}],
+"loop": true,
+"name": &"moulin_bon",
+"speed": 5.0
+}]
 
 [node name="Moulin" type="StaticBody2D"]
-scale = Vector2(2, 2)
+y_sort_enabled = true
+scale = Vector2(0.1, 0.1)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(2, 29)
-texture = ExtResource("1_ywwue")
-region_enabled = true
-region_rect = Rect2(29.9687, 68.997, 40.3334, 31.003)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(2, -19)
-texture = ExtResource("1_ywwue")
-hframes = 10
-frame = 1
-region_enabled = true
-region_rect = Rect2(0, -0.059267, 1000.09, 72.6107)
-
-[node name="moulin" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Sprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_jipaa")
-}
-autoplay = "tounetourne"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 550)
+sprite_frames = SubResource("SpriteFrames_5ifjn")
+animation = &"moulin_bon"
+autoplay = "moulin_bon"
+frame_progress = 0.834558
+offset = Vector2(0, -550)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-16, 44.5, -16, 19, -16, 15, -11, 10, 14, 10, 22, 15, 22, 44.5)
+position = Vector2(31, 176.5)
+polygon = PackedVector2Array(-12, 390.5, -173, 364.5, -271, 324, -296.5, 162.5, -292, -5.5, 251.5, -5.5, 245, 191, 225.5, 321, 122.5, 363)

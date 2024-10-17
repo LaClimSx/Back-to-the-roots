@@ -388,11 +388,13 @@ animations = [{
 size = Vector2(13, 15)
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_mwc1x")
 inventory = ExtResource("2_yar4t")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_e7l31")
 animation = &"idle_dos"

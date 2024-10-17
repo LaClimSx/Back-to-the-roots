@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://btquhh5o6ewuu" path="res://Scenes/inventory_gui.tscn" id="5_0ywr5"]
 [ext_resource type="Script" path="res://Scripts/canvas_layer.gd" id="5_b8gca"]
 [ext_resource type="PackedScene" uid="uid://dcouvu2n0fdiq" path="res://Scenes/house.tscn" id="8_66nr8"]
-[ext_resource type="PackedScene" path="res://Scenes/puit.tscn" id="9_tkrlr"]
-[ext_resource type="PackedScene" path="res://Scenes/etabli.tscn" id="10_ip7p4"]
-[ext_resource type="PackedScene" path="res://Scenes/moulin.tscn" id="11_d6woa"]
+[ext_resource type="PackedScene" uid="uid://d0ob0p02raj3k" path="res://Scenes/puit.tscn" id="9_tkrlr"]
+[ext_resource type="PackedScene" uid="uid://uyvn4jld2gp6" path="res://Scenes/etabli.tscn" id="10_ip7p4"]
+[ext_resource type="PackedScene" uid="uid://dd6eibaeqjan1" path="res://Scenes/moulin.tscn" id="11_d6woa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq4rf"]
 texture = ExtResource("1_7604j")
@@ -117,11 +117,11 @@ func _process(delta: float) -> void:
 "
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 scale = Vector2(0.9993, 0.999162)
 script = ExtResource("1_rjk8m")
 
 [node name="Player" parent="." instance=ExtResource("2_pts0t")]
-z_index = 2
 position = Vector2(3.0021, 1.00084)
 
 [node name="TileMap" type="TileMap" parent="."]
