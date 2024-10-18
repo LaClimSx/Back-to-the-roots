@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcouvu2n0fdiq"]
+[gd_scene load_steps=10 format=3 uid="uid://dcouvu2n0fdiq"]
 
 [ext_resource type="Texture2D" uid="uid://b6bqlyip7nsd8" path="res://Assets/Bâtiments/maison/Sans titre 41_20241016202109.png" id="1_e0h1k"]
+[ext_resource type="Script" path="res://Scripts/house.gd" id="1_gxx45"]
 [ext_resource type="PackedScene" uid="uid://v4ai3tyrasyh" path="res://Scenes/door.tscn" id="2_0qhl0"]
 [ext_resource type="Texture2D" uid="uid://dnuuo5g7tyrln" path="res://Assets/Bâtiments/maison/Sans titre 41_20241017180302.png" id="2_gfn0t"]
 [ext_resource type="Texture2D" uid="uid://qgmtrlnfdg" path="res://Assets/Bâtiments/maison/Sans titre 41_20241016203329.png" id="3_t8287"]
@@ -46,6 +47,7 @@ animations = [{
 
 [node name="House" type="StaticBody2D"]
 scale = Vector2(0.15, 0.15)
+script = ExtResource("1_gxx45")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_17epx")
@@ -59,3 +61,6 @@ polygon = PackedVector2Array(22.2775, 22.8579, 15.3566, 33.7696, 9.3969, 48.4074
 
 [node name="Door" parent="." instance=ExtResource("2_0qhl0")]
 position = Vector2(26.6667, 246.667)
+
+[connection signal="actual_health" from="." to="Door" method="_on_house_actual_health"]
+[connection signal="s_max_health" from="." to="Door" method="_on_house_s_max_health"]

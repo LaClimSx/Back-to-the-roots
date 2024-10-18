@@ -21,15 +21,28 @@
 [sub_resource type="GDScript" id="GDScript_mn58l"]
 script/source = "extends StaticBody2D
 
+@export var max_health = 5000
+@export var loss_health_by_tic = 500
+var health = max_health
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	health = max_health
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if(health > max_health/2):
+		$AnimatedSprite2D.play(\"puit_bon\")
+	elif(health==0):
+		$AnimatedSprite2D.play(\"puit_cassé\")	
+	else:
+		$AnimatedSprite2D.play(\"puit_abimé\")
+
+
+func _on_world_timer_timeout() -> void:
+	health -= loss_health_by_tic
+	health = clamp(health, 0, max_health)
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ngp2"]

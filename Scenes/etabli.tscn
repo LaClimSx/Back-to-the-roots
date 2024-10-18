@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://uyvn4jld2gp6"]
+[gd_scene load_steps=6 format=3 uid="uid://uyvn4jld2gp6"]
 
+[ext_resource type="Script" path="res://Scripts/etabli.gd" id="1_pw14u"]
 [ext_resource type="Texture2D" uid="uid://c2u4jovp287i2" path="res://Assets/Bâtiments/établi/Sans titre 42_20241017122024.png" id="1_wxxdy"]
 [ext_resource type="Texture2D" uid="uid://cb4drru5dt4uv" path="res://Assets/Bâtiments/établi/Sans titre 42_20241017122018.png" id="2_jbned"]
 [ext_resource type="Texture2D" uid="uid://b0ri8wyd678g1" path="res://Assets/Bâtiments/établi/Sans titre 42_20241017122725.png" id="3_cn853"]
@@ -33,6 +34,7 @@ animations = [{
 
 [node name="Etabli" type="StaticBody2D"]
 scale = Vector2(0.03, 0.03)
+script = ExtResource("1_pw14u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dqlkc")
