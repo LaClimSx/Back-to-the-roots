@@ -149,14 +149,14 @@ grow_vertical = 0
 size_flags_vertical = 0
 
 [node name="House" parent="." instance=ExtResource("8_66nr8")]
-position = Vector2(304.213, 287.241)
+position = Vector2(318.223, 307.257)
 script = SubResource("GDScript_3ano8")
 
 [node name="Puit" parent="." instance=ExtResource("9_tkrlr")]
 position = Vector2(268.188, 432.362)
 
 [node name="Etabli" parent="." instance=ExtResource("10_ip7p4")]
-position = Vector2(403.282, 357.299)
+position = Vector2(368.258, 341.286)
 
 [node name="Moulin" parent="." instance=ExtResource("11_d6woa")]
 position = Vector2(614.43, 278.233)

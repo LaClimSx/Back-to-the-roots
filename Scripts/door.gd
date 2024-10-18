@@ -13,13 +13,13 @@ func _process(delta: float) -> void:
 
 func _on_player_detected_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		$anim.play("opening")
-		await $anim.animation_finished
-		$anim.play("open")
+		$porte.play("opening_bon")
+		await $porte.animation_finished
+		$porte.play("ouvert_bon")
 
 
 func _on_player_detected_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		$anim.play("closing")
-		await $anim.animation_finished
-		$anim.play("close")
+		$porte.play("closing_bon")
+		await $porte.animation_finished
+		$porte.play("fermé_bon")
