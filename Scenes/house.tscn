@@ -1,25 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcouvu2n0fdiq"]
+[gd_scene load_steps=10 format=3 uid="uid://dcouvu2n0fdiq"]
 
-[ext_resource type="Texture2D" uid="uid://bkkxo4vhw8h2g" path="res://Assets/Tiny Wonder Farm Free/objects&items/farm objects free.png" id="1_8tj5l"]
+[ext_resource type="Texture2D" uid="uid://b6bqlyip7nsd8" path="res://Assets/Bâtiments/maison/Sans titre 41_20241016202109.png" id="1_e0h1k"]
+[ext_resource type="Script" path="res://Scripts/house.gd" id="1_gxx45"]
 [ext_resource type="PackedScene" uid="uid://v4ai3tyrasyh" path="res://Scenes/door.tscn" id="2_0qhl0"]
+[ext_resource type="Texture2D" uid="uid://dnuuo5g7tyrln" path="res://Assets/Bâtiments/maison/Sans titre 41_20241017180302.png" id="2_gfn0t"]
+[ext_resource type="Texture2D" uid="uid://qgmtrlnfdg" path="res://Assets/Bâtiments/maison/Sans titre 41_20241016203329.png" id="3_t8287"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu676"]
+atlas = ExtResource("1_e0h1k")
+region = Rect2(61, 100, 632, 725)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utmkh"]
+atlas = ExtResource("2_gfn0t")
+region = Rect2(61, 100, 632, 725)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t05xa"]
+atlas = ExtResource("3_t8287")
+region = Rect2(61, 100, 632, 725)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17epx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu676")
+}],
+"loop": true,
+"name": &"maison_abimé",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utmkh")
+}],
+"loop": true,
+"name": &"maison_bon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t05xa")
+}],
+"loop": true,
+"name": &"maison_cassé",
+"speed": 5.0
+}]
 
 [node name="House" type="StaticBody2D"]
+scale = Vector2(0.15, 0.15)
+script = ExtResource("1_gxx45")
 
-[node name="toit" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(49, 25)
-texture = ExtResource("1_8tj5l")
-region_enabled = true
-region_rect = Rect2(5.90802, 96.5088, 85.6974, 62.1224)
-
-[node name="house" type="Sprite2D" parent="."]
-position = Vector2(49, 41)
-texture = ExtResource("1_8tj5l")
-region_enabled = true
-region_rect = Rect2(5.90802, 96.5088, 85.6974, 94.4912)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_17epx")
+animation = &"maison_bon"
+autoplay = "maison_bon"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(44, 26, 24, 47, 18, 57, 20, 85, 38, 85, 38, 58, 59, 58, 59, 85, 78, 85, 80, 55, 52, 26)
+position = Vector2(-228.879, -22.8865)
+scale = Vector2(5.20161, 3.75742)
+polygon = PackedVector2Array(22.2775, 22.8579, 15.3566, 33.7696, 9.3969, 48.4074, 11.8961, 84.3363, 18.4326, 87.2639, 32.4667, 89.4817, 31.185, 62.8677, 35.03, 50.4478, 42.7199, 41.5764, 52.9731, 45.125, 56.8181, 52.222, 58.0997, 89.4817, 78, 85, 80.3364, 46.5444, 73.031, 30.8421, 67.0713, 23.124)
 
 [node name="Door" parent="." instance=ExtResource("2_0qhl0")]
-position = Vector2(49, 72)
+position = Vector2(26.6667, 246.667)
+
+[connection signal="actual_health" from="." to="Door" method="_on_house_actual_health"]
+[connection signal="s_max_health" from="." to="Door" method="_on_house_s_max_health"]

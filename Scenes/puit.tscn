@@ -1,79 +1,130 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0ob0p02raj3k"]
+[gd_scene load_steps=20 format=3 uid="uid://d0ob0p02raj3k"]
 
-[ext_resource type="Texture2D" uid="uid://0a20oboosrxs" path="res://Assets/Cyrielle/puit-Sheet.png" id="1_2qo17"]
+[ext_resource type="Texture2D" uid="uid://bo6k16lv8jpub" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124148.png" id="1_a1vh7"]
+[ext_resource type="Texture2D" uid="uid://cmhw880gnqblq" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124847.png" id="1_nvf6j"]
+[ext_resource type="Texture2D" uid="uid://db2if80l7d3ti" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124855.png" id="2_e0in1"]
+[ext_resource type="Texture2D" uid="uid://c3jdpewd3a6sk" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124217.png" id="2_xurnr"]
+[ext_resource type="Texture2D" uid="uid://bq2x0qlnmt018" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124239.png" id="3_fbc73"]
+[ext_resource type="Texture2D" uid="uid://b0j11d16auxax" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124902.png" id="3_xibdf"]
+[ext_resource type="Texture2D" uid="uid://c51k330uslkbi" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124909.png" id="4_m4ksx"]
+[ext_resource type="Texture2D" uid="uid://dx0wkpfkldwri" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124330.png" id="4_p1ba5"]
+[ext_resource type="Texture2D" uid="uid://bxtmi7cl3c72f" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124347.png" id="5_0abdr"]
+[ext_resource type="Texture2D" uid="uid://d4ux87qawnsv" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124917.png" id="5_ojrxf"]
+[ext_resource type="Texture2D" uid="uid://dhpubjd0oxy61" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124412.png" id="6_2l2lq"]
+[ext_resource type="Texture2D" uid="uid://dgtdojpqkeewf" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124923.png" id="6_eorb7"]
+[ext_resource type="Texture2D" uid="uid://cnx386ukdq73v" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124427.png" id="7_kkk3h"]
+[ext_resource type="Texture2D" uid="uid://cjyajn07xglbj" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124929.png" id="7_tjr07"]
+[ext_resource type="Texture2D" uid="uid://ch57dq37he06t" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124449.png" id="8_bm5yp"]
+[ext_resource type="Texture2D" uid="uid://6xwmr5o2u175" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124935.png" id="8_j4wax"]
+[ext_resource type="Texture2D" uid="uid://c1ks6svsqjvpx" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017125812.png" id="17_3sn8x"]
 
 [sub_resource type="GDScript" id="GDScript_mn58l"]
 script/source = "extends StaticBody2D
 
+@export var max_health = 5000
+@export var loss_health_by_tic = 500
+var health = max_health
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	health = max_health
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if(health > max_health/2):
+		$AnimatedSprite2D.play(\"puit_bon\")
+	elif(health==0):
+		$AnimatedSprite2D.play(\"puit_cassé\")	
+	else:
+		$AnimatedSprite2D.play(\"puit_abimé\")
+
+
+func _on_world_timer_timeout() -> void:
+	health -= loss_health_by_tic
+	health = clamp(health, 0, max_health)
 "
 
-[sub_resource type="Animation" id="Animation_jaohw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_rbr33"]
-resource_name = "puit"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jvgw4"]
-_data = {
-"RESET": SubResource("Animation_jaohw"),
-"puit": SubResource("Animation_rbr33")
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ngp2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nvf6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_e0in1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xibdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m4ksx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ojrxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eorb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tjr07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j4wax")
+}],
+"loop": true,
+"name": &"puit_abimé",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a1vh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xurnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fbc73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p1ba5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0abdr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2l2lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kkk3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bm5yp")
+}],
+"loop": true,
+"name": &"puit_bon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_3sn8x")
+}],
+"loop": true,
+"name": &"puit_cassé",
+"speed": 5.0
+}]
 
 [node name="Puit" type="StaticBody2D"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.06, 0.06)
 script = SubResource("GDScript_mn58l")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = 2
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
-texture = ExtResource("1_2qo17")
-region_enabled = true
-region_rect = Rect2(0, 0, 97.7836, 52.026)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_2qo17")
-hframes = 10
-
-[node name="puitanim" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Sprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_jvgw4")
-}
-autoplay = "puit"
+sprite_frames = SubResource("SpriteFrames_2ngp2")
+animation = &"puit_cassé"
+autoplay = "puit_bon"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-32, 33, -32, 18, -31, 18, -31, 9, -27, 5, -18, 3, -10, 2, 4, 2, 14, 3, 24, 5, 28, 7, 30, 9, 30, 19, 31, 19, 31, 32, 27, 35, 20, 37, 9, 39, -3, 39, -12, 39, -20, 38, -25, 36)
+position = Vector2(12, 66)
+scale = Vector2(7.04365, 6.13345)
+polygon = PackedVector2Array(-37.7645, 32.6081, -38.9003, 20.5431, -39.7521, 7.82594, -41.1718, -8.15203, -32.9375, -14.9997, -25.271, -17.6084, -11.3577, -20.217, 6.24676, -20.217, 19.5921, -17.9345, 32.0856, -14.3476, 37.1966, -7.17378, 36.9127, 5.86946, 36.0608, 20.217, 34.0732, 31.9559, 26.4068, 35.5428, 20, 37, 9, 39, -3, 39, -12, 39, -20, 38, -28.3944, 36.5211)

@@ -1,183 +1,118 @@
-[gd_scene load_steps=11 format=3 uid="uid://v4ai3tyrasyh"]
+[gd_scene load_steps=9 format=3 uid="uid://v4ai3tyrasyh"]
 
-[ext_resource type="Texture2D" uid="uid://bkkxo4vhw8h2g" path="res://Assets/Tiny Wonder Farm Free/objects&items/farm objects free.png" id="1_n2iv1"]
 [ext_resource type="Script" path="res://Scripts/door.gd" id="1_w5qtv"]
+[ext_resource type="Texture2D" uid="uid://dc44rbaa1otv6" path="res://Assets/Bâtiments/maison/porte_abimé_ouverte.png" id="2_mvo5e"]
+[ext_resource type="Texture2D" uid="uid://dd3h436xgkfxy" path="res://Assets/Bâtiments/maison/porte_abimé_fermé.png" id="3_xesyh"]
+[ext_resource type="Texture2D" uid="uid://c6i4xjfvi4ri3" path="res://Assets/Bâtiments/maison/porte_bon_ouverte.png" id="4_wlrt5"]
+[ext_resource type="Texture2D" uid="uid://34daxq6578w4" path="res://Assets/Bâtiments/maison/porte_bon_fermé.png" id="5_by4dd"]
+[ext_resource type="Texture2D" uid="uid://bjrq5ehh017ew" path="res://Assets/Bâtiments/maison/porte_cassé_fermé.png" id="6_c0t3k"]
 
-[sub_resource type="Animation" id="Animation_bivry"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_0hr0b"]
-resource_name = "close"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_3lpuf"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_pa0sd"]
-resource_name = "opening"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_oceeu"]
-resource_name = "closing"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_60huj"]
-_data = {
-"RESET": SubResource("Animation_bivry"),
-"close": SubResource("Animation_0hr0b"),
-"closing": SubResource("Animation_oceeu"),
-"open": SubResource("Animation_3lpuf"),
-"opening": SubResource("Animation_pa0sd")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t86uh"]
-size = Vector2(22, 28)
+[sub_resource type="SpriteFrames" id="SpriteFrames_36v3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mvo5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xesyh")
+}],
+"loop": false,
+"name": &"closing_abimé",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wlrt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_by4dd")
+}],
+"loop": false,
+"name": &"closing_bon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xesyh")
+}],
+"loop": true,
+"name": &"fermé_abimé",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_by4dd")
+}],
+"loop": false,
+"name": &"fermé_bon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_c0t3k")
+}],
+"loop": false,
+"name": &"fermé_cassé",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xesyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mvo5e")
+}],
+"loop": false,
+"name": &"opening_abimé",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_by4dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wlrt5")
+}],
+"loop": false,
+"name": &"opening_bon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mvo5e")
+}],
+"loop": false,
+"name": &"ouvert_abimé",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wlrt5")
+}],
+"loop": false,
+"name": &"ouvert_bon",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_11yni"]
-radius = 11.0
+radius = 84.9739
 
 [node name="Door" type="StaticBody2D"]
 script = ExtResource("1_w5qtv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_n2iv1")
-vframes = 2
-region_enabled = true
-region_rect = Rect2(101.182, 113.563, 22.7471, 59.3124)
+[node name="porte" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_36v3l")
+animation = &"ouvert_bon"
+autoplay = "fermé_bon"
 
-[node name="anim" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_60huj")
-}
-autoplay = "close"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_t86uh")
-disabled = true
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-91, -37, -88, 73, 46, 74, 45, -40, 40, -67, 17, -98, -11, -111, -42, -108, -77, -84)
 
 [node name="playerDetected" type="Area2D" parent="."]
 position = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="playerDetected"]
-position = Vector2(0, 11)
+position = Vector2(-20, 76)
 shape = SubResource("CircleShape2D_11yni")
 
 [connection signal="body_entered" from="playerDetected" to="." method="_on_player_detected_body_entered"]

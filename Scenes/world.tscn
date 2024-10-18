@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://rlhk8qhsj3ua"]
+[gd_scene load_steps=16 format=3 uid="uid://rlhk8qhsj3ua"]
 
 [ext_resource type="Texture2D" uid="uid://dkv5kj8w510of" path="res://Assets/Tiles/misc.png" id="1_7604j"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_rjk8m"]
@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://btquhh5o6ewuu" path="res://Scenes/inventory_gui.tscn" id="5_0ywr5"]
 [ext_resource type="Script" path="res://Scripts/canvas_layer.gd" id="5_b8gca"]
 [ext_resource type="PackedScene" uid="uid://dcouvu2n0fdiq" path="res://Scenes/house.tscn" id="8_66nr8"]
-[ext_resource type="PackedScene" path="res://Scenes/puit.tscn" id="9_tkrlr"]
-[ext_resource type="PackedScene" path="res://Scenes/etabli.tscn" id="10_ip7p4"]
-[ext_resource type="PackedScene" path="res://Scenes/moulin.tscn" id="11_d6woa"]
+[ext_resource type="PackedScene" uid="uid://d0ob0p02raj3k" path="res://Scenes/puit.tscn" id="9_tkrlr"]
+[ext_resource type="PackedScene" uid="uid://uyvn4jld2gp6" path="res://Scenes/etabli.tscn" id="10_ip7p4"]
+[ext_resource type="PackedScene" uid="uid://dd6eibaeqjan1" path="res://Scenes/moulin.tscn" id="11_d6woa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq4rf"]
 texture = ExtResource("1_7604j")
@@ -102,26 +102,12 @@ sources/0 = SubResource("TileSetAtlasSource_gq4rf")
 sources/1 = SubResource("TileSetAtlasSource_lwop3")
 sources/2 = SubResource("TileSetAtlasSource_v1jmv")
 
-[sub_resource type="GDScript" id="GDScript_3ano8"]
-script/source = "extends StaticBody2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 scale = Vector2(0.9993, 0.999162)
 script = ExtResource("1_rjk8m")
 
 [node name="Player" parent="." instance=ExtResource("2_pts0t")]
-z_index = 2
 position = Vector2(3.0021, 1.00084)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -148,15 +134,22 @@ offset_bottom = -57.0
 grow_vertical = 0
 size_flags_vertical = 0
 
-[node name="House" parent="." instance=ExtResource("8_66nr8")]
-position = Vector2(304.213, 287.241)
-script = SubResource("GDScript_3ano8")
-
 [node name="Puit" parent="." instance=ExtResource("9_tkrlr")]
 position = Vector2(268.188, 432.362)
 
 [node name="Etabli" parent="." instance=ExtResource("10_ip7p4")]
-position = Vector2(403.282, 357.299)
+position = Vector2(368.258, 341.286)
 
 [node name="Moulin" parent="." instance=ExtResource("11_d6woa")]
 position = Vector2(614.43, 278.233)
+
+[node name="House" parent="." instance=ExtResource("8_66nr8")]
+position = Vector2(315.221, 305.256)
+
+[node name="worldTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="worldTimer" to="Puit" method="_on_world_timer_timeout"]
+[connection signal="timeout" from="worldTimer" to="Etabli" method="_on_world_timer_timeout"]
+[connection signal="timeout" from="worldTimer" to="Moulin" method="_on_timer_timeout"]
+[connection signal="timeout" from="worldTimer" to="House" method="_on_world_timer_timeout"]

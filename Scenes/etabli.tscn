@@ -1,12 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://uyvn4jld2gp6"]
+[gd_scene load_steps=6 format=3 uid="uid://uyvn4jld2gp6"]
 
-[ext_resource type="Texture2D" uid="uid://b4874xweccrnv" path="res://Assets/Cyrielle/etabli.png" id="1_6tkoo"]
+[ext_resource type="Script" path="res://Scripts/etabli.gd" id="1_pw14u"]
+[ext_resource type="Texture2D" uid="uid://c2u4jovp287i2" path="res://Assets/Bâtiments/établi/Sans titre 42_20241017122024.png" id="1_wxxdy"]
+[ext_resource type="Texture2D" uid="uid://cb4drru5dt4uv" path="res://Assets/Bâtiments/établi/Sans titre 42_20241017122018.png" id="2_jbned"]
+[ext_resource type="Texture2D" uid="uid://b0ri8wyd678g1" path="res://Assets/Bâtiments/établi/Sans titre 42_20241017122725.png" id="3_cn853"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqlkc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wxxdy")
+}],
+"loop": true,
+"name": &"établi_abimé",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jbned")
+}],
+"loop": true,
+"name": &"établi_bon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cn853")
+}],
+"loop": true,
+"name": &"établi_cassé",
+"speed": 5.0
+}]
 
 [node name="Etabli" type="StaticBody2D"]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.03, 0.03)
+script = ExtResource("1_pw14u")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_6tkoo")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dqlkc")
+animation = &"établi_cassé"
+autoplay = "établi_bon"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-16, 1, -6, -9, 8, -9.33333, 6.66667, -6.66667, 1, 2, 1, 15, -3, 15, -3, 4, -13, 4, -13, 15, -16, 15)
+position = Vector2(-190.317, 166.49)
+scale = Vector2(13.5208, 11.0094)
+polygon = PackedVector2Array(-16.0998, -15.2436, -6.92881, -38.1331, 37.8416, -37.7698, 46.914, -14.8803, 47.0126, 14.5491, 39.8139, 14.7913, 39.518, -12.8214, -8.70385, -12.337, -8.40801, 14.7913, -16, 15)
