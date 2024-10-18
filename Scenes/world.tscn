@@ -160,3 +160,9 @@ position = Vector2(368.258, 341.286)
 
 [node name="Moulin" parent="." instance=ExtResource("11_d6woa")]
 position = Vector2(614.43, 278.233)
+
+[node name="worldTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="worldTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="worldTimer" to="Moulin" method="_on_timer_timeout"]

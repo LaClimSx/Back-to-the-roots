@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://dd6eibaeqjan1"]
+[gd_scene load_steps=30 format=3 uid="uid://dd6eibaeqjan1"]
 
 [ext_resource type="Texture2D" uid="uid://cc36u4526veca" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134057.png" id="1_k6ggn"]
+[ext_resource type="Script" path="res://Scripts/moulin.gd" id="1_lnxlr"]
 [ext_resource type="Texture2D" uid="uid://cadpuixxxuoui" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017140617.png" id="1_vhkol"]
 [ext_resource type="Texture2D" uid="uid://lhse2jov1pfr" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134105.png" id="2_047uj"]
 [ext_resource type="Texture2D" uid="uid://bbuw7hnx8crwm" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017140623.png" id="2_i2gye"]
@@ -130,6 +131,7 @@ animations = [{
 [node name="Moulin" type="StaticBody2D"]
 y_sort_enabled = true
 scale = Vector2(0.1, 0.1)
+script = ExtResource("1_lnxlr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true

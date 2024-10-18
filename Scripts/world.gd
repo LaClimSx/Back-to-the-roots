@@ -48,3 +48,7 @@ func checkActions():
 		if tile_map.get_cell_atlas_coords(1,viewing_tile) == Vector2i(4,1) :
 			$Player.inventory.insert(carrot_item)
 			print("Inserted")
+
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.
