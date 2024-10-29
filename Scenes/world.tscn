@@ -103,6 +103,7 @@ sources/1 = SubResource("TileSetAtlasSource_lwop3")
 sources/2 = SubResource("TileSetAtlasSource_v1jmv")
 
 [node name="World" type="Node2D"]
+process_mode = 1
 y_sort_enabled = true
 scale = Vector2(0.9993, 0.999162)
 script = ExtResource("1_rjk8m")
