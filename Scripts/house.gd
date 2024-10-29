@@ -26,6 +26,15 @@ func _process(delta: float) -> void:
 		$"Interract Label".hide()	
 	else:
 		$AnimatedSprite2D.play("maison_abimé")
+	
+	if Input.is_action_pressed("Interact"):
+		print("interractionnnn")
+		#show right pop up
+	elif Input.is_action_pressed("Repair"):
+		get_tree().paused = true
+		get_node("RepairMenu/Anim").play("TransIN")
+		print("repairrrr")
+		
 
 func _on_world_timer_timeout() -> void:
 	health -= loss_health_by_tic
@@ -37,17 +46,9 @@ func _on_world_timer_timeout() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" && health>0: #& tiens pas le marteau
 		$"Interract Label".show()
-		$"Repair label".show()
-		if Input.is_action_pressed("Interact"):
-			print("interractionnnn")
-		elif Input.is_action_pressed("Repair"): 
-			print("repairrrr")
+		$"Repair label".show()			
 	#elif body.name == "Player": #& tiens marteau
-	#	$"Repair label".show()
-		elif Input.is_action_pressed("Repair"):
-			print("repairrrr")
-			
-			
+	#	$"Repair label".show()	
 		
 
 
