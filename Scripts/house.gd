@@ -28,6 +28,8 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play("maison_abimé")
 	
 	if Input.is_action_pressed("Interact"):
+		get_tree().paused = true
+		get_node("Interact Menu/Anim").play("TransIN")
 		print("interractionnnn")
 		#show right pop up
 	elif Input.is_action_pressed("Repair"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dcouvu2n0fdiq"]
+[gd_scene load_steps=20 format=3 uid="uid://dcouvu2n0fdiq"]
 
 [ext_resource type="Texture2D" uid="uid://b6bqlyip7nsd8" path="res://Assets/Bâtiments/maison/Sans titre 41_20241016202109.png" id="1_e0h1k"]
 [ext_resource type="Script" path="res://Scripts/house.gd" id="1_gxx45"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ljyyhfin2fwg" path="res://Scenes/interract_label.tscn" id="6_4nr27"]
 [ext_resource type="PackedScene" uid="uid://duq7v03be7qs2" path="res://Scenes/repair_label.tscn" id="7_gmsw4"]
 [ext_resource type="Script" path="res://Scripts/repair_menu.gd" id="8_fce3l"]
+[ext_resource type="Script" path="res://Scripts/interact_menu.gd" id="8_jwp42"]
 [ext_resource type="Texture2D" uid="uid://coxopis6iuqbk" path="res://Assets/Items/carrot.png" id="9_yr1gg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iu676"]
@@ -134,6 +135,7 @@ offset_top = -413.333
 offset_right = 242.333
 offset_bottom = -333.333
 theme_override_font_sizes/font_size = 40
+text = "Press \"space\" to sell items"
 horizontal_alignment = 1
 vertical_alignment = 1
 structured_text_bidi_override_options = [null]
@@ -146,6 +148,163 @@ offset_bottom = -391.667
 theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Interact Menu" type="CanvasLayer" parent="."]
+process_mode = 3
+offset = Vector2(0, -600)
+transform = Transform2D(1, 0, 0, 1, 0, -600)
+script = ExtResource("8_jwp42")
+
+[node name="Panel" type="Panel" parent="Interact Menu"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.498
+anchor_right = 0.5
+anchor_bottom = 0.498
+offset_left = -448.0
+offset_top = -245.704
+offset_right = 445.0
+offset_bottom = 245.296
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Anim" type="AnimationPlayer" parent="Interact Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_jci3i")
+}
+autoplay = "RESET"
+
+[node name="Control" type="Control" parent="Interact Menu"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 129.0
+offset_top = 78.0
+offset_right = 1014.0
+offset_bottom = 567.0
+
+[node name="close" type="Button" parent="Interact Menu/Control"]
+self_modulate = Color(1, 0, 0, 1)
+offset_left = 836.0
+offset_top = 18.0
+offset_right = 874.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 21
+text = "X"
+
+[node name="Sell" type="Label" parent="Interact Menu/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -445.5
+offset_right = 446.5
+offset_bottom = 111.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Sell your products"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="price2" type="Label" parent="Interact Menu/Control"]
+offset_left = 441.0
+offset_top = 254.0
+offset_right = 891.0
+offset_bottom = 309.0
+theme_override_font_sizes/font_size = 40
+text = "Price : x$"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="transformation2" type="Sprite2D" parent="Interact Menu/Control"]
+position = Vector2(670, 176)
+scale = Vector2(5.875, 5.875)
+texture = ExtResource("9_yr1gg")
+
+[node name="sell all2" type="Button" parent="Interact Menu/Control"]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 106.5
+offset_top = -94.0
+offset_right = 333.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Sell All"
+
+[node name="sell one2" type="Button" parent="Interact Menu/Control"]
+self_modulate = Color(1, 0.635294, 0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 104.5
+offset_top = -169.0
+offset_right = 331.5
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Sell 1"
+
+[node name="price" type="Label" parent="Interact Menu/Control"]
+offset_left = -3.0
+offset_top = 254.0
+offset_right = 447.0
+offset_bottom = 309.0
+theme_override_font_sizes/font_size = 40
+text = "Price : x$"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="transformation1" type="Sprite2D" parent="Interact Menu/Control"]
+position = Vector2(226, 176)
+scale = Vector2(5.875, 5.875)
+texture = ExtResource("9_yr1gg")
+
+[node name="sell all1" type="Button" parent="Interact Menu/Control"]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -335.5
+offset_top = -95.0
+offset_right = -108.5
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Sell All"
+
+[node name="sell one1" type="Button" parent="Interact Menu/Control"]
+self_modulate = Color(1, 0.635294, 0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -337.5
+offset_top = -170.0
+offset_right = -110.5
+offset_bottom = -106.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Sell 1"
 
 [node name="RepairMenu" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -269,5 +428,10 @@ text = "Repair"
 [connection signal="s_max_health" from="." to="Door" method="_on_house_s_max_health"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="Interact Menu/Control/close" to="Interact Menu" method="_on_close_pressed"]
+[connection signal="pressed" from="Interact Menu/Control/sell all2" to="Interact Menu" method="_on_sell_all_2_pressed"]
+[connection signal="pressed" from="Interact Menu/Control/sell one2" to="Interact Menu" method="_on_sell_one_2_pressed"]
+[connection signal="pressed" from="Interact Menu/Control/sell all1" to="Interact Menu" method="_on_sell_all_1_pressed"]
+[connection signal="pressed" from="Interact Menu/Control/sell one1" to="Interact Menu" method="_on_sell_one_1_pressed"]
 [connection signal="pressed" from="RepairMenu/Control/close" to="RepairMenu" method="_on_close_pressed"]
 [connection signal="pressed" from="RepairMenu/Control/repair" to="RepairMenu" method="_on_repair_pressed"]
