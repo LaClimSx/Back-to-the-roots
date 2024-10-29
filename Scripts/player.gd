@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var speed = 100
 var screen_size
@@ -11,6 +11,7 @@ var direction = Directions.LEFT
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	inventory.use_item.connect(use_item)
 	screen_size = get_viewport_rect().size
 	hide()
 
@@ -78,3 +79,6 @@ func _process(delta: float) -> void:
 func start(pos):
 	position = pos
 	show()
+	
+func use_item(item: Item) -> void:
+	item.use(self)
