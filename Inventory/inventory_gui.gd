@@ -4,6 +4,9 @@ var isOpen: bool = true
 @onready var inventory : Inventory = preload("res://Inventory/player_inventory.tres")
 @onready var ItemStackGuiClass = preload("res://Inventory/item_stack_gui.tscn")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
+@onready var selector: Sprite2D = $Selector
+
+var currently_selected: int = 0
 
 var itemInHand: ItemStackGUI
 var oldIndex: int = -1
@@ -28,7 +31,9 @@ func connectSlots():
 func update():
 	for i in range(min(inventory.slots.size(),slots.size())):
 		var inventorySlot : InventorySlot = inventory.slots[i]
-		if !inventorySlot.item: continue
+		if !inventorySlot.item: 
+			slots[i].clear()
+			continue
 		
 		var itemStackGui: ItemStackGUI = slots[i].itemStackGui
 		if !itemStackGui:
@@ -131,8 +136,53 @@ func putItemBack():
 	insertItemInSlot(targetSlot)
 	locked = false
 	
+func move_selector(direction: int):
+	currently_selected = (currently_selected + direction) % slots.size()
+	selector.global_position = slots[currently_selected].global_position
+
+func select_slot(index: int):
+	currently_selected = index
+	selector.global_position = slots[currently_selected].global_position
+
+func check_selection():
+	if Input.is_action_just_pressed("select_1"):
+		select_slot(0)
+		return
+	if Input.is_action_just_pressed("select_2"):
+		select_slot(1)
+		return
+	if Input.is_action_just_pressed("select_3"):
+		select_slot(2)
+		return
+	if Input.is_action_just_pressed("select_4"):
+		select_slot(3)
+		return
+	if Input.is_action_just_pressed("select_5"):
+		select_slot(4)
+		return
+	if Input.is_action_just_pressed("select_6"):
+		select_slot(5)
+		return
+	if Input.is_action_just_pressed("select_7"):
+		select_slot(6)
+		return
+	if Input.is_action_just_pressed("select_8"):
+		select_slot(7)
+		return
+	if Input.is_action_just_pressed("select_9"):
+		select_slot(8)
+		return
+
 func _input(event):
 	if itemInHand && !locked && (Input.is_action_pressed("Right_click") || Input.is_action_pressed("Interact" ) || Input.is_action_pressed("toggle_inventory")):
 		putItemBack()
+	check_selection()
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			move_selector(1)
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+			move_selector(-1)
+	elif Input.is_action_just_pressed("Interact"):
+		inventory.use_item_at_index(currently_selected) #TODO : change this later
 		
 	updateItemInHand()

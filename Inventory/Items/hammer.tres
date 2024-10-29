@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tool" load_steps=5 format=3 uid="uid://bq8mygvms6a06"]
+
+[ext_resource type="Texture2D" uid="uid://bhrsxjoxalels" path="res://Assets/Outils/Marteau/hammer_broken.png" id="1_ayi1m"]
+[ext_resource type="Script" path="res://Inventory/Items/tool.gd" id="1_kpyv8"]
+[ext_resource type="Texture2D" uid="uid://dppis3ileju38" path="res://Assets/Outils/Marteau/hamme_good.png" id="2_a6six"]
+[ext_resource type="Texture2D" uid="uid://dxmixkdxfacqm" path="res://Assets/Outils/Marteau/hammer_mid.png" id="3_afq6i"]
+
+[resource]
+script = ExtResource("1_kpyv8")
+maxDurability = 6
+durability = 6
+good_texture = ExtResource("2_a6six")
+mid_texture = ExtResource("3_afq6i")
+broken_texture = ExtResource("1_ayi1m")
+name = "hammer"
+texture = ExtResource("2_a6six")
+maxAmount = 1
