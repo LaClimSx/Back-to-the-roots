@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tool" load_steps=5 format=3 uid="uid://bqs0rn85ij070"]
+
+[ext_resource type="Texture2D" uid="uid://bvdh843bluvxf" path="res://Assets/Outils/Haches/Sans titre 46_20241017145042.png" id="1_kbimu"]
+[ext_resource type="Texture2D" uid="uid://bn8ovujtg4yxm" path="res://Assets/Outils/Haches/Sans titre 46_20241017144828.png" id="2_cykiw"]
+[ext_resource type="Texture2D" uid="uid://bqu7wethkwoq4" path="res://Assets/Outils/Haches/Sans titre 46_20241017144948.png" id="3_cqj26"]
+[ext_resource type="Script" path="res://Inventory/Items/tool.gd" id="4_lotrf"]
+
+[resource]
+script = ExtResource("4_lotrf")
+maxDurability = 6
+durability = 6
+good_texture = ExtResource("2_cykiw")
+mid_texture = ExtResource("3_cqj26")
+broken_texture = ExtResource("1_kbimu")
+name = "axe"
+texture = ExtResource("2_cykiw")
+maxAmount = 1
