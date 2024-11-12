@@ -140,12 +140,10 @@ func putItemBack():
 func move_selector(direction: int):
 	currently_selected = (currently_selected + direction) % slots.size()
 	selector.global_position = slots[currently_selected].global_position
-	inventory.selected_index = currently_selected
 
 func select_slot(index: int):
 	currently_selected = index
 	selector.global_position = slots[currently_selected].global_position
-	inventory.selected_index = currently_selected
 
 func check_selection():
 	if Input.is_action_just_pressed("select_1"):
@@ -176,6 +174,14 @@ func check_selection():
 		select_slot(8)
 		return
 
+func use_item() -> void :
+	inventory.use_item_at_index(currently_selected)
+	
+func get_selected_item() -> Item:
+	return inventory.slots[currently_selected].item
+	
+
+
 func _input(event):
 	if itemInHand && !locked && (Input.is_action_pressed("Right_click") || Input.is_action_pressed("Interact" ) || Input.is_action_pressed("toggle_inventory")):
 		putItemBack()
@@ -185,7 +191,7 @@ func _input(event):
 			move_selector(1)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			move_selector(-1)
-	elif Input.is_action_just_pressed("Interact"):
-		inventory.use_item_at_index(currently_selected) #TODO : change this later
+	#elif Input.is_action_just_pressed("Interact"):
+	#	inventory.use_item_at_index(currently_selected) #TODO : change this later
 		
 	updateItemInHand()
