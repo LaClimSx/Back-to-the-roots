@@ -47,19 +47,20 @@ func checkActions():
 		viewing_tile.clamp(Vector2i.ZERO, ground.get_used_rect().size)
 		print(viewing_tile)
 		
-		#If clicked tile has grown carrot, add carrot to inventory
+		#If clicked tile has grown carrot, add 1 to 3 carrots to inventory and remove the carrot from the tile
 		if crops.get_cell_atlas_coords(viewing_tile) == Vector2i(4,1) :
-			$Player.inventory.insert(carrot_item)
-			print("Inserted")
+			for i in range(randi_range(1,3)): $Player.inventory.insert(carrot_item)
+			crops.set_cell(viewing_tile)
+			print("Harvested")
 
 		#If player has hoe (not broken) and tile is dirt, plow the tile
-		if selected_item && selected_item.name  == "hoe" && selected_item.durability >= 1 && ground.get_cell_atlas_coords(viewing_tile) == Vector2i(10,4) :
+		elif selected_item && selected_item.name  == "hoe" && selected_item.durability >= 1 && ground.get_cell_atlas_coords(viewing_tile) == Vector2i(10,4) :
 			ground.set_cell(viewing_tile,0,Vector2i(1,0))
 			inventory_gui.use_item()
 			print("Plowed")
 
 		#If player has carrot and tile is empty field, plant the carrot
-		if selected_item && selected_item.name == "carrot" && ground.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) && crops.get_cell_atlas_coords(viewing_tile) == Vector2i(-1,-1) :
+		elif selected_item && selected_item.name == "carrot" && ground.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) && crops.get_cell_atlas_coords(viewing_tile) == Vector2i(-1,-1) :
 			crops.set_cell(viewing_tile,2,Vector2i(2,1))
 			inventory_gui.use_item()
 			print("Planted")
