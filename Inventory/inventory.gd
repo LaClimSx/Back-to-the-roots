@@ -5,8 +5,6 @@ class_name Inventory
 signal updated
 signal use_item
 
-var selected_index: int = 0
-
 @export var slots: Array[InventorySlot]
 
 
@@ -47,9 +45,4 @@ func use_item_at_index(index: int) -> void:
 			updated.emit()
 		else:
 			remove_at_index(index)
-
-func get_selected_item() -> Item:
-	if selected_index < 0 || selected_index >= slots.size() || !slots[selected_index].item: return null
-	return slots[selected_index].item
-
 	
