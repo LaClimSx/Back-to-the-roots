@@ -55,5 +55,11 @@ func checkActions():
 			tile_map.set_cell(0,viewing_tile,0,Vector2i(1,0))
 			print("Plowed")
 
+		#If player has carrot and tile is field, plant the carrot
+		#TODO: Fix, right now it plants the carrot even when there is already a carrot in the ground. So check for carrot first
+		if selected_item && selected_item.name == "carrot" && tile_map.get_cell_atlas_coords(0,viewing_tile) == Vector2i(2,0) :
+			tile_map.set_cell(1,viewing_tile,2,Vector2i(2,1))
+			print("Planted")
+
 func _on_timer_timeout() -> void:
 	pass # Replace with function body.
