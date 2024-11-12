@@ -6,6 +6,7 @@ var isOpen: bool = true
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 @onready var selector: Sprite2D = $Selector
 
+
 var currently_selected: int = 0
 
 var itemInHand: ItemStackGUI
@@ -139,10 +140,12 @@ func putItemBack():
 func move_selector(direction: int):
 	currently_selected = (currently_selected + direction) % slots.size()
 	selector.global_position = slots[currently_selected].global_position
+	inventory.selected_index = currently_selected
 
 func select_slot(index: int):
 	currently_selected = index
 	selector.global_position = slots[currently_selected].global_position
+	inventory.selected_index = currently_selected
 
 func check_selection():
 	if Input.is_action_just_pressed("select_1"):
