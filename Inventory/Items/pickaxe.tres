@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tool" load_steps=5 format=3 uid="uid://cgxc3qe1rv28u"]
+
+[ext_resource type="Texture2D" uid="uid://bv42qett4la77" path="res://Assets/Outils/Pioche/Sans titre 46_20241017145429.png" id="1_cyt31"]
+[ext_resource type="Texture2D" uid="uid://h6crphpet0od" path="res://Assets/Outils/Pioche/Sans titre 46_20241017145250.png" id="2_ogd55"]
+[ext_resource type="Texture2D" uid="uid://dfhb4r328w5n0" path="res://Assets/Outils/Pioche/Sans titre 46_20241017145341.png" id="3_apm0n"]
+[ext_resource type="Script" path="res://Inventory/Items/tool.gd" id="4_73ubs"]
+
+[resource]
+script = ExtResource("4_73ubs")
+maxDurability = 6
+durability = 6
+good_texture = ExtResource("2_ogd55")
+mid_texture = ExtResource("3_apm0n")
+broken_texture = ExtResource("1_cyt31")
+name = "pickaxe"
+texture = ExtResource("2_ogd55")
+maxAmount = 1

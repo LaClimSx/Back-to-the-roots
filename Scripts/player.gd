@@ -33,8 +33,6 @@ func _process(delta: float) -> void:
 		last_dir = velocity
 		$AnimatedSprite2D.play()
 		
-	#position += velocity * delta
-	#position = position.clamp(Vector2.ZERO, screen_size)
 	move_and_collide(velocity * delta)
 	position = position.clamp(Vector2.ZERO, screen_size)
 		

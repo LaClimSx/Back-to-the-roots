@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tool" load_steps=5 format=3 uid="uid://dtdpjnas5yuj"]
+
+[ext_resource type="Texture2D" uid="uid://ccp7mvhssjuyh" path="res://Assets/Outils/Faux/Sans titre 46_20241017144547.png" id="1_c0v0b"]
+[ext_resource type="Texture2D" uid="uid://br6v0t8jwlot0" path="res://Assets/Outils/Faux/Sans titre 46_20241017144343.png" id="2_0fwq6"]
+[ext_resource type="Texture2D" uid="uid://bj7jqjy7165ut" path="res://Assets/Outils/Faux/Sans titre 46_20241017144443.png" id="3_hmnao"]
+[ext_resource type="Script" path="res://Inventory/Items/tool.gd" id="4_pj7qd"]
+
+[resource]
+script = ExtResource("4_pj7qd")
+maxDurability = 6
+durability = 6
+good_texture = ExtResource("2_0fwq6")
+mid_texture = ExtResource("3_hmnao")
+broken_texture = ExtResource("1_c0v0b")
+name = "hoe"
+texture = ExtResource("2_0fwq6")
+maxAmount = 1
