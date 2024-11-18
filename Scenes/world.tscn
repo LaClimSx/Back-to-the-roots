@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://rlhk8qhsj3ua"]
+[gd_scene load_steps=21 format=4 uid="uid://rlhk8qhsj3ua"]
 
 [ext_resource type="Texture2D" uid="uid://dkv5kj8w510of" path="res://Assets/Tiles/misc.png" id="1_7604j"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_rjk8m"]
@@ -8,9 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://btquhh5o6ewuu" path="res://Scenes/inventory_gui.tscn" id="5_0ywr5"]
 [ext_resource type="Script" path="res://Scripts/canvas_layer.gd" id="5_b8gca"]
 [ext_resource type="Script" path="res://Scenes/crops.gd" id="6_mrkq6"]
+[ext_resource type="Texture2D" uid="uid://mja0ufxcn7cf" path="res://Assets/Tiles/wheat_tileset.png" id="6_sngnb"]
 [ext_resource type="PackedScene" uid="uid://dcouvu2n0fdiq" path="res://Scenes/house.tscn" id="8_66nr8"]
 [ext_resource type="PackedScene" uid="uid://d0ob0p02raj3k" path="res://Scenes/puit.tscn" id="9_tkrlr"]
 [ext_resource type="PackedScene" uid="uid://uyvn4jld2gp6" path="res://Scenes/etabli.tscn" id="10_ip7p4"]
+[ext_resource type="Theme" uid="uid://c4vl7jpvynye1" path="res://Assets/theme.tres" id="10_oukug"]
 [ext_resource type="PackedScene" uid="uid://dd6eibaeqjan1" path="res://Scenes/moulin.tscn" id="11_d6woa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq4rf"]
@@ -103,6 +105,17 @@ sources/0 = SubResource("TileSetAtlasSource_gq4rf")
 sources/1 = SubResource("TileSetAtlasSource_lwop3")
 sources/2 = SubResource("TileSetAtlasSource_v1jmv")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjm0n"]
+texture = ExtResource("6_sngnb")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nb3od"]
+tile_size = Vector2i(100, 100)
+sources/1 = SubResource("TileSetAtlasSource_bjm0n")
+
 [node name="World" type="Node2D"]
 process_mode = 1
 y_sort_enabled = true
@@ -122,8 +135,9 @@ tile_set = SubResource("TileSet_i6het")
 [node name="Crops" type="TileMapLayer" parent="LayerGroup"]
 z_index = 1
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAbABoAAgACAAEAAAAcABoAAgADAAEAAAAdABoAAgAEAAEAAAAfABoAAgAEAAEAAAAgABoAAgADAAEAAAA=")
-tile_set = SubResource("TileSet_i6het")
+scale = Vector2(0.16, 0.16)
+tile_map_data = PackedByteArray("AAAbABoAAQAAAAAAAAAcABoAAQAAAAAAAAAdABoAAQABAAAAAAAfABoAAQACAAAAAAAgABoAAQACAAAAAAAeABoAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_nb3od")
 script = ExtResource("6_mrkq6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -141,6 +155,18 @@ offset_bottom = -57.0
 grow_vertical = 0
 size_flags_vertical = 0
 
+[node name="MoneyCounter" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_top = 10.0
+offset_right = -15.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme = ExtResource("10_oukug")
+text = "Argent : 0$"
+
 [node name="Puit" parent="." instance=ExtResource("9_tkrlr")]
 position = Vector2(268.188, 432.362)
 
@@ -156,8 +182,8 @@ position = Vector2(315.221, 305.256)
 [node name="worldTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="timeout" from="worldTimer" to="LayerGroup/Crops" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Puit" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Etabli" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Moulin" method="_on_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="House" method="_on_world_timer_timeout"]
-[connection signal="timeout" from="worldTimer" to="LayerGroup/Crops" method="_on_world_timer_timeout"]
