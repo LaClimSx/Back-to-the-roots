@@ -4,7 +4,7 @@ signal actual_health(h: int)
 signal s_max_health(mh: int)
 signal actual_price(p: int)
 
-@export var max_health = 500
+@export var max_health = 50
 @export var loss_health_by_tic = 10
 var health = max_health
 var player_inside : bool = false
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 		get_node("Interact Menu/Anim").play("TransIN")
 		
 		
-	elif Input.is_action_pressed("Repair") && health <= max_health/2:
+	elif Input.is_action_pressed("Repair") && health <= max_health/2 && item && item.name == "pickaxe" && player_inside:
 		get_tree().paused = true
 		get_node("RepairMenu/Anim").play("TransIN")
 		
@@ -66,7 +66,7 @@ func _on_world_timer_timeout() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "Player" && health>0:
+	if body.name == "Player":
 		player_inside = true
 		
 
