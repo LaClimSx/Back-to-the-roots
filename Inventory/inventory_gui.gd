@@ -197,6 +197,19 @@ func _input(event):
 		
 	updateItemInHand()
 	
+	#Returns the amount of said item in the inventory, -1 if none
+func find_item(name: String) -> int:
+	return -1
+	#TODO: Ecrire
+	
 func sell_item(name: String, all: bool, unit_price: int) -> void:
 	pass
 	#TODO: Ecrire le corps de la fonction
+	
+func insert_item(item: Item, amount: int) -> void:
+	pass
+	#TODO: Ecrire
+	
+func remove_item(item: Item, amount: int) -> void:
+	pass
+	#TODO: Ecrire

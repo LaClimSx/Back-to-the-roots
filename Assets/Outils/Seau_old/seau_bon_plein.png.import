@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b22ahnmkvxvet"
-path="res://.godot/imported/seau_bon_plein.png-ee6845da3149044b9c8004f26e6a2324.ctex"
+path="res://.godot/imported/seau_bon_plein.png-fc359fe4c3dc4f02ff08305794163904.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Outils/Seau/seau_bon_plein.png"
-dest_files=["res://.godot/imported/seau_bon_plein.png-ee6845da3149044b9c8004f26e6a2324.ctex"]
+source_file="res://Assets/Outils/Seau_old/seau_bon_plein.png"
+dest_files=["res://.godot/imported/seau_bon_plein.png-fc359fe4c3dc4f02ff08305794163904.ctex"]
 
 [params]
 

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Bucket" load_steps=5 format=3 uid="uid://cp6cnowxc75qq"]
+
+[ext_resource type="Texture2D" uid="uid://c0edvy7scqyo6" path="res://Assets/Outils/Seau/seau_cassé.png" id="1_7psu7"]
+[ext_resource type="Texture2D" uid="uid://cc7mkvnirvwof" path="res://Assets/Outils/Seau/seau_bon_vide.png" id="2_w723e"]
+[ext_resource type="Texture2D" uid="uid://c8oejfctpibtn" path="res://Assets/Outils/Seau/seau_abimé_vide.png" id="3_0s16o"]
+[ext_resource type="Script" path="res://Inventory/bucket.gd" id="4_57ymb"]
+
+[resource]
+script = ExtResource("4_57ymb")
+maxDurability = 8
+durability = 8
+good_texture = ExtResource("2_w723e")
+mid_texture = ExtResource("3_0s16o")
+broken_texture = ExtResource("1_7psu7")
+name = "bucket"
+texture = ExtResource("2_w723e")
+maxAmount = 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3hvrdwj31tpc"
-path="res://.godot/imported/seau_abimé_plein.png-d2dc55486c1d54edaa82616bb950d365.ctex"
+uid="uid://bsmgchyidd0t5"
+path="res://.godot/imported/Sans titre 46_20241118145828.png-9dcd3015a2174ae8091849ffbd3b013b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Outils/Seau/seau_abimé_plein.png"
-dest_files=["res://.godot/imported/seau_abimé_plein.png-d2dc55486c1d54edaa82616bb950d365.ctex"]
+source_file="res://Assets/Outils/Seau/Sans titre 46_20241118145828.png"
+dest_files=["res://.godot/imported/Sans titre 46_20241118145828.png-9dcd3015a2174ae8091849ffbd3b013b.ctex"]
 
 [params]
 
