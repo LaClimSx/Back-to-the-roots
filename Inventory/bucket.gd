@@ -19,7 +19,7 @@ func use(player: Player) -> void:
 	pass
 	
 func useBucket(water_amount: int) -> int:
-	if quantity <= 0 || state == STATE.broken: return 0
+<S	if quantity <= 0 || state == STATE.broken: return 0
 	if durability > 0:
 		durability -= 1
 		if durability <= maxDurability/3:
@@ -39,8 +39,10 @@ func useBucket(water_amount: int) -> int:
 		match (quantity - water_amount):
 			1: texture = mid1
 			_: texture = mid2
-			
-	return min(quantity, water_amount)
+	
+	var used_water =  min(quantity, water_amount)
+	quantity = quantity - used_water
+	return used_water
 	
 func fillBucket(amount: int) -> void:
 	if state == STATE.broken : return
@@ -58,3 +60,4 @@ func fillBucket(amount: int) -> void:
 			0: texture = mid0
 			1: texture = mid1
 			2: texture = mid2
+	print(quantity)

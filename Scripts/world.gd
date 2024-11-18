@@ -56,6 +56,27 @@ func checkActions():
 				inventory_gui.use_item()
 				print("Plowed")
 
+		#If player has bucket (not broken) and tile is tilled soil, water the soil
+		elif selected_item && selected_item.name == "bucket" && selected_item.state > 0 :
+			var current_water_level: int = 0
+			match (ground_atlas):
+				Vector2i(0,1): current_water_level = 0
+				Vector2i(1,1): current_water_level = 1
+				Vector2i(2,1): current_water_level = 2
+				Vector2i(3,1): current_water_level = 3
+				_: return
+			var used_water = selected_item.useBucket(4 - current_water_level)
+			inventory_gui.update()
+			
+			var new_water_level = current_water_level + used_water
+			match (new_water_level):
+				0: ground.set_cell(viewing_tile,0,Vector2i(0,1))
+				1: ground.set_cell(viewing_tile,0,Vector2i(1,1))
+				2: ground.set_cell(viewing_tile,0,Vector2i(2,1))
+				3: ground.set_cell(viewing_tile,0,Vector2i(3,1))
+				4: ground.set_cell(viewing_tile,0,Vector2i(4,1))
+			print("Watered")
+
 		#If player has wheat and tile is empty field, plant the wheat
 		elif selected_item && selected_item.name == "wheat" && ground_atlas == Vector2i(4,1) && crops.get_cell_atlas_coords(viewing_tile) == Vector2i(-1,-1) :
 			crops.set_cell(viewing_tile,1,Vector2i(0,0))
