@@ -1,8 +1,12 @@
 extends CanvasLayer
 
+var inventory_gui
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Global.inventory_gui:
+		inventory_gui = Global.inventory_gui
 	pass # Replace with function body.
 
 
