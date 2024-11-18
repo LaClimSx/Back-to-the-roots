@@ -3,8 +3,9 @@ extends Node2D
 @onready var ground : TileMapLayer = $LayerGroup/Ground
 @onready var crops : TileMapLayer = $LayerGroup/Crops
 @onready var wheat_item = preload("res://Inventory/Items/wheat.tres")
-@onready var inventory_gui : Control = $CanvasLayer/Inventory
+@onready var inventory_gui : Control = Global.inventory_gui
 
+const TILEMAP_SCALING : float = 0.16
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,23 +18,10 @@ func _process(delta):
 
 
 func checkActions():
-	'''
-	if Input.is_action_just_pressed("Right_click"):
-		var mouse_pos : Vector2 = get_global_mouse_position()
-		var tile_map_pos : Vector2i = tile_map.local_to_map(mouse_pos)
-		print(tile_map_pos)
-		var current_tile_atlas : Vector2i = tile_map.get_cell_atlas_coords(0,tile_map_pos)
-		tile_map.set_cell(0,tile_map_pos,1,Vector2i(10,4)) if current_tile_atlas == Vector2i(1,1) else tile_map.set_cell(0,tile_map_pos,1,Vector2i(3,3))
-		
-		#If clicked tile has grown carrot, add carrot to inventory
-		if tile_map.get_cell_atlas_coords(1,tile_map_pos) == Vector2i(4,1) :
-			$Player.inventory.insert(carrot_item)		
-	'''
-	
 	if Input.is_action_just_pressed("Interact"):
 		var player : Player = $Player
 		var selected_item : Item = inventory_gui.get_selected_item()
-		var player_tile_pos : Vector2i = ground.local_to_map(player.position)
+		var player_tile_pos : Vector2i = ground.local_to_map(player.position / TILEMAP_SCALING)
 		var viewing_tile : Vector2i
 		match player.direction:
 			0:
@@ -46,6 +34,7 @@ func checkActions():
 				viewing_tile = player_tile_pos + Vector2i(0,1)
 		viewing_tile.clamp(Vector2i.ZERO, ground.get_used_rect().size)
 		print(viewing_tile)
+		var ground_atlas : Vector2i = ground.get_cell_atlas_coords(viewing_tile)
 		
 		#If clicked tile has grown wheat, add 1 to 3 wheat to inventory and remove the wheat from the tile
 		if crops.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) :
@@ -54,13 +43,21 @@ func checkActions():
 			print("Harvested")
 
 		#If player has hoe (not broken) and tile is dirt, plow the tile
-		elif selected_item && selected_item.name  == "hoe" && selected_item.durability >= 1 && ground.get_cell_atlas_coords(viewing_tile) == Vector2i(10,4) :
-			ground.set_cell(viewing_tile,0,Vector2i(1,0))
-			inventory_gui.use_item()
-			print("Plowed")
+		elif selected_item && selected_item.name  == "hoe" && selected_item.state > 0 :
+			#If dirt
+			if ground_atlas == Vector2i(1,0) :
+				#If full durability plow entirely else only half plow
+				ground.set_cell(viewing_tile,0,Vector2i(0,1)) if selected_item.state > 1 else ground.set_cell(viewing_tile,0,Vector2i(2,0))
+				inventory_gui.use_item()
+				print("Plowed")
+			#If half_tilted_dirt
+			elif ground_atlas == Vector2i(2,0) :
+				ground.set_cell(viewing_tile,0,Vector2i(0,1))
+				inventory_gui.use_item()
+				print("Plowed")
 
 		#If player has wheat and tile is empty field, plant the wheat
-		elif selected_item && selected_item.name == "wheat" && ground.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) && crops.get_cell_atlas_coords(viewing_tile) == Vector2i(-1,-1) :
+		elif selected_item && selected_item.name == "wheat" && ground_atlas == Vector2i(4,1) && crops.get_cell_atlas_coords(viewing_tile) == Vector2i(-1,-1) :
 			crops.set_cell(viewing_tile,1,Vector2i(0,0))
 			inventory_gui.use_item()
 			print("Planted")
