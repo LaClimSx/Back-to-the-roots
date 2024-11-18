@@ -197,5 +197,6 @@ func _input(event):
 		
 	updateItemInHand()
 	
-func sell_flour(all: bool, unit_price: int) -> void:
-	#CHERCHE Farine dans inventaire
+func sell_item(name: String, all: bool, unit_price: int) -> void:
+	pass
+	#TODO: Ecrire le corps de la fonction
