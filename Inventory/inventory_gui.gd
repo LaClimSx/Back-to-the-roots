@@ -19,6 +19,7 @@ func _ready():
 	connectSlots()
 	inventory.updated.connect(update)
 	update()
+	Global.inventory_gui = self
 	
 func connectSlots():
 	for i in range(slots.size()):
@@ -195,3 +196,6 @@ func _input(event):
 	#	inventory.use_item_at_index(currently_selected) #TODO : change this later
 		
 	updateItemInHand()
+	
+func sell_flour(all: bool, unit_price: int) -> void:
+	#CHERCHE Farine dans inventaire

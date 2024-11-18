@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var ground : TileMapLayer = $LayerGroup/Ground
 @onready var crops : TileMapLayer = $LayerGroup/Crops
-@onready var carrot_item = preload("res://Inventory/Items/carrot.tres")
+@onready var wheat_item = preload("res://Inventory/Items/wheat.tres")
 @onready var inventory_gui : Control = $CanvasLayer/Inventory
 
 
@@ -47,9 +47,9 @@ func checkActions():
 		viewing_tile.clamp(Vector2i.ZERO, ground.get_used_rect().size)
 		print(viewing_tile)
 		
-		#If clicked tile has grown carrot, add 1 to 3 carrots to inventory and remove the carrot from the tile
-		if crops.get_cell_atlas_coords(viewing_tile) == Vector2i(4,1) :
-			for i in range(randi_range(1,3)): $Player.inventory.insert(carrot_item)
+		#If clicked tile has grown wheat, add 1 to 3 wheat to inventory and remove the wheat from the tile
+		if crops.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) :
+			for i in range(randi_range(1,3)): $Player.inventory.insert(wheat_item)
 			crops.set_cell(viewing_tile)
 			print("Harvested")
 
@@ -59,9 +59,9 @@ func checkActions():
 			inventory_gui.use_item()
 			print("Plowed")
 
-		#If player has carrot and tile is empty field, plant the carrot
-		elif selected_item && selected_item.name == "carrot" && ground.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) && crops.get_cell_atlas_coords(viewing_tile) == Vector2i(-1,-1) :
-			crops.set_cell(viewing_tile,2,Vector2i(2,1))
+		#If player has wheat and tile is empty field, plant the wheat
+		elif selected_item && selected_item.name == "wheat" && ground.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) && crops.get_cell_atlas_coords(viewing_tile) == Vector2i(-1,-1) :
+			crops.set_cell(viewing_tile,1,Vector2i(0,0))
 			inventory_gui.use_item()
 			print("Planted")
 
