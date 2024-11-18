@@ -9,7 +9,7 @@ var direction = Directions.LEFT
 
 @export var inventory : Inventory
 
-@export var money : int
+@export var money : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -82,3 +82,6 @@ func start(pos):
 	
 func use_item(item: Item) -> void:
 	item.use(self)
+	
+func add_money(amount: int) -> void:
+	money += amount
