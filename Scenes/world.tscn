@@ -124,3 +124,4 @@ autostart = true
 [connection signal="timeout" from="worldTimer" to="Moulin" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="House" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Quarry" method="timer_timeout"]
+[connection signal="timeout" from="worldTimer" to="Forest" method="timer_timeout"]

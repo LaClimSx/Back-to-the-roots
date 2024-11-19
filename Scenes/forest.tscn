@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://byvp6vqdlhxph"]
+[gd_scene load_steps=4 format=3 uid="uid://byvp6vqdlhxph"]
 
 [ext_resource type="Texture2D" uid="uid://br8gn7ro1egxw" path="res://Assets/Bâtiments/forêt/tree.png" id="1_6b7he"]
+[ext_resource type="Script" path="res://Scripts/forest.gd" id="1_7xm8v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_004b1"]
 radius = 62.0
 height = 124.0
 
 [node name="Forest" type="StaticBody2D"]
+script = ExtResource("1_7xm8v")
+max_durability = 100
+loss_dura_by_tic = -1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_6b7he")
@@ -20,3 +24,6 @@ polygon = PackedVector2Array(25, 47, -26, 48, -27, 44, -17, 39, -12, 28, -11, 16
 position = Vector2(0, 6)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_004b1")
+
+[connection signal="body_entered" from="Area2D" to="." method="enter_area"]
+[connection signal="body_exited" from="Area2D" to="." method="exit_area"]
