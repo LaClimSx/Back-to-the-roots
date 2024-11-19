@@ -198,8 +198,8 @@ func _input(event):
 	updateItemInHand()
 	
 #Returns the amount of said item in the inventory, -1 if none
-func find_item(itemName: String) -> int:
-	return inventory.find_item(itemName)
+func find_item(item: Item) -> int:
+	return inventory.find_item(item)
 	
 func insert_item(item: Item, amount: int = 1) -> int:
 	return inventory.insertN(item, amount)
@@ -211,7 +211,6 @@ func sell_item(item: Item, all: bool, unit_price: int) -> int:
 	var amount = inventory.sellN(item, all, unit_price)
 	moneyUpdated.emit()
 	return amount
-
-
+	
 func get_tool(name: String) -> Tool:
 	return inventory.get_tool(name)

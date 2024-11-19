@@ -15,7 +15,7 @@ func _ready() -> void:
 	print(parent_name)
 	match parent_name:
 		"House": 
-			default_cost = Vector2i(2, 1)
+			default_cost = Vector2i(2, 1) #(stick, stone)
 			$Control/repairLabel.text = "Répare ta maison"
 		"Moulin": 
 			default_cost = Vector2i(1, 2)
@@ -43,7 +43,8 @@ func _on_close_pressed() -> void:
 
 func _on_repair_pressed() -> void:
 	var inv_gui = Global.inventory_gui
-	if (inv_gui.find_item("stick") >= wood_cost && inv_gui.find_item("stone") >= stone_cost):
+	if (inv_gui.find_item(stick) >= wood_cost && inv_gui.find_item(stone) >= stone_cost):
+		print("Enough to repair")
 		inv_gui.remove_item(stick, wood_cost)
 		inv_gui.remove_item(stone, stone_cost)
 		emit_signal("repair")
