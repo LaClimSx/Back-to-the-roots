@@ -271,8 +271,8 @@ text = "Vendre 1"
 [node name="RepairMenu" parent="." instance=ExtResource("11_s1o4m")]
 
 [connection signal="actual_price" from="." to="InteractMenu" method="_on_house_actual_price"]
-[connection signal="s_state" from="." to="Door" method="_on_house_s_state"]
-[connection signal="s_state" from="." to="RepairMenu" method="_on_house_s_state"]
+[connection signal="s_state" from="." to="Door" method="_on_s_state"]
+[connection signal="s_state" from="." to="RepairMenu" method="_on_s_state"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="pressed" from="InteractMenu/Control/close" to="InteractMenu" method="_on_close_pressed"]

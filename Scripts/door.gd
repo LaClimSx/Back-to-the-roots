@@ -37,7 +37,7 @@ func _on_player_detected_body_exited(body: Node2D) -> void:
 
 	
 
-func _on_house_s_state(s: Building.STATE) -> void:
+func _on_s_state(s: Building.STATE) -> void:
 	state = s
 	match state:
 		Building.STATE.good: $porte.play("fermé_bon")

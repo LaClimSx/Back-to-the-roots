@@ -11,11 +11,21 @@ func _ready() -> void:
 	var parent_name: String = get_parent().name
 	print(parent_name)
 	match parent_name:
-		"House": default_cost = Vector2i(2, 1)
-		"Moulin": default_cost = Vector2i(1, 2)
-		"Etabli": default_cost = Vector2i(2, 1)
-		"Puits": default_cost = Vector2i(0, 3)
-		_: default_cost = Vector2i(-1, -1) #This should not happen
+		"House": 
+			default_cost = Vector2i(2, 1)
+			$Control/repairLabel.text = "Répare ta maison"
+		"Moulin": 
+			default_cost = Vector2i(1, 2)
+			$Control/repairLabel.text = "Répare ton moulin"
+		"Etabli": 
+			default_cost = Vector2i(2, 1)
+			$Control/repairLabel.text = "Répare ton établi"
+		"Puits": 
+			default_cost = Vector2i(0, 3)
+			$Control/repairLabel.text = "Répare ton puits"
+		_: #This should not happen
+			default_cost = Vector2i(-1, -1) 
+			$Control/repairLabel.text = "Rien à réparer"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -33,7 +43,7 @@ func _on_repair_pressed() -> void:
 	$Anim.play("TransOUT")
 	get_tree().paused = false
 
-func _on_house_s_state(s: Building.STATE) -> void:
+func _on_s_state(s: Building.STATE) -> void:
 	if s == Building.STATE.good:
 		wood_cost = 0
 		stone_cost = 0

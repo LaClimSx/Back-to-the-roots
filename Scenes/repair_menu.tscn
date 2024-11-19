@@ -100,7 +100,7 @@ offset_bottom = 56.0
 theme_override_font_sizes/font_size = 21
 text = "X"
 
-[node name="Repair" type="Label" parent="Control"]
+[node name="repairLabel" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
