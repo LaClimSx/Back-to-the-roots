@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/crops.gd" id="6_mrkq6"]
 [ext_resource type="Texture2D" uid="uid://mja0ufxcn7cf" path="res://Assets/Tiles/wheat_tileset.png" id="6_sngnb"]
 [ext_resource type="PackedScene" uid="uid://dcouvu2n0fdiq" path="res://Scenes/house.tscn" id="8_66nr8"]
-[ext_resource type="PackedScene" uid="uid://d0ob0p02raj3k" path="res://Scenes/puit.tscn" id="9_tkrlr"]
+[ext_resource type="PackedScene" uid="uid://d0ob0p02raj3k" path="res://Scenes/puits.tscn" id="9_tkrlr"]
 [ext_resource type="PackedScene" uid="uid://uyvn4jld2gp6" path="res://Scenes/etabli.tscn" id="10_ip7p4"]
 [ext_resource type="Theme" uid="uid://c4vl7jpvynye1" path="res://Assets/theme.tres" id="10_oukug"]
 [ext_resource type="PackedScene" uid="uid://dd6eibaeqjan1" path="res://Scenes/moulin.tscn" id="11_d6woa"]
@@ -112,7 +112,6 @@ position = Vector2(802.562, 317.266)
 
 [node name="Forest" parent="." instance=ExtResource("14_fk78e")]
 position = Vector2(811.568, 478.401)
-scale = Vector2(1, 1)
 
 [node name="worldTimer" type="Timer" parent="."]
 autostart = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://d0ob0p02raj3k"]
 
-[ext_resource type="Script" path="res://Scripts/puit.gd" id="1_6cmja"]
+[ext_resource type="Script" path="res://Scripts/puits.gd" id="1_6cmja"]
 [ext_resource type="Texture2D" uid="uid://bo6k16lv8jpub" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124148.png" id="1_a1vh7"]
 [ext_resource type="Texture2D" uid="uid://cmhw880gnqblq" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124847.png" id="1_nvf6j"]
 [ext_resource type="Texture2D" uid="uid://db2if80l7d3ti" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124855.png" id="2_e0in1"]
@@ -94,7 +94,7 @@ animations = [{
 radius = 350.0
 height = 866.667
 
-[node name="Puit" type="StaticBody2D"]
+[node name="Puits" type="StaticBody2D"]
 scale = Vector2(0.06, 0.06)
 script = ExtResource("1_6cmja")
 max_durability = 1000
@@ -117,14 +117,13 @@ position = Vector2(0, 116.667)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_ipkyw")
 
-[node name="Repair label" parent="." instance=ExtResource("19_ve3d1")]
+[node name="RepairLabel" parent="." instance=ExtResource("19_ve3d1")]
 offset_left = -246.667
 offset_top = -466.667
 offset_right = 240.333
 offset_bottom = -401.667
 theme_override_fonts/font = ExtResource("20_v3xk7")
 theme_override_font_sizes/font_size = 50
-text = "Appuyez sur R pour réparer"
 horizontal_alignment = 1
 vertical_alignment = 1
 

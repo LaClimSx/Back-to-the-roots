@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://duq7v03be7qs2"]
 
-[node name="Repair label" type="Label"]
+[node name="RepairLabel" type="Label"]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Press R to repair"
+text = "Appuyez sur R pour réparer"

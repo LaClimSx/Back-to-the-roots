@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://v4ai3tyrasyh" path="res://Scenes/door.tscn" id="2_0qhl0"]
 [ext_resource type="Texture2D" uid="uid://dnuuo5g7tyrln" path="res://Assets/Bâtiments/maison/Sans titre 41_20241017180302.png" id="2_gfn0t"]
 [ext_resource type="Texture2D" uid="uid://qgmtrlnfdg" path="res://Assets/Bâtiments/maison/Sans titre 41_20241016203329.png" id="3_t8287"]
-[ext_resource type="PackedScene" uid="uid://ljyyhfin2fwg" path="res://Scenes/interract_label.tscn" id="6_4nr27"]
+[ext_resource type="PackedScene" uid="uid://ljyyhfin2fwg" path="res://Scenes/interact_label.tscn" id="6_4nr27"]
 [ext_resource type="PackedScene" uid="uid://duq7v03be7qs2" path="res://Scenes/repair_label.tscn" id="7_gmsw4"]
 [ext_resource type="Script" path="res://Scripts/repair_menu.gd" id="8_fce3l"]
 [ext_resource type="Script" path="res://Scripts/interact_menu.gd" id="8_jwp42"]
@@ -111,7 +111,7 @@ _data = {
 [node name="House" type="StaticBody2D"]
 scale = Vector2(0.15, 0.15)
 script = ExtResource("1_gxx45")
-max_durability = 50
+max_durability = 100
 loss_dura_by_tic = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -133,22 +133,22 @@ position = Vector2(26.6667, 246.667)
 position = Vector2(6.66667, 306.667)
 shape = SubResource("CapsuleShape2D_jtlgr")
 
-[node name="Interract Label" parent="." instance=ExtResource("6_4nr27")]
-offset_left = -240.0
+[node name="InteractLabel" parent="." instance=ExtResource("6_4nr27")]
+offset_left = -460.0
 offset_top = -406.667
-offset_right = 252.0
+offset_right = 468.0
 offset_bottom = -326.667
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 50
-text = "Press \"space\" to sell items"
+text = "Appuyez sur \"Espace\" pour vendre votre farine"
 horizontal_alignment = 1
 vertical_alignment = 1
 structured_text_bidi_override_options = [null]
 
-[node name="Repair label" parent="." instance=ExtResource("7_gmsw4")]
-offset_left = -246.667
+[node name="RepairLabel" parent="." instance=ExtResource("7_gmsw4")]
+offset_left = -280.0
 offset_top = -466.667
-offset_right = 240.333
+offset_right = 279.0
 offset_bottom = -401.667
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 50

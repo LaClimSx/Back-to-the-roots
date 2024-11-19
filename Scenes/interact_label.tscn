@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ljyyhfin2fwg"]
 
-[node name="Interract Label" type="Label"]
+[node name="InteractLabel" type="Label"]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Press \"space\" to interract"

@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://b8ggrv6xmxog1" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134353.png" id="13_dqpme"]
 [ext_resource type="Texture2D" uid="uid://doylf5ryjnhx1" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017140741.png" id="13_ne2sc"]
 [ext_resource type="Texture2D" uid="uid://bn6ri5o4lj4b" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017141356.png" id="27_gayjo"]
-[ext_resource type="PackedScene" uid="uid://ljyyhfin2fwg" path="res://Scenes/interract_label.tscn" id="29_0cem7"]
+[ext_resource type="PackedScene" uid="uid://ljyyhfin2fwg" path="res://Scenes/interact_label.tscn" id="29_0cem7"]
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="29_3n3i5"]
 [ext_resource type="PackedScene" uid="uid://duq7v03be7qs2" path="res://Scenes/repair_label.tscn" id="31_iky3b"]
 [ext_resource type="Script" path="res://Scenes/interact_menu_moulin.gd" id="32_yqon2"]
@@ -195,7 +195,7 @@ y_sort_enabled = true
 scale = Vector2(0.1, 0.1)
 script = ExtResource("1_lnxlr")
 max_durability = 2000
-loss_dura_by_tic = 500
+loss_dura_by_tic = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
@@ -209,7 +209,7 @@ offset = Vector2(0, -550)
 position = Vector2(31, 176.5)
 polygon = PackedVector2Array(-12, 390.5, -173, 364.5, -271, 324, -296.5, 162.5, -292, -5.5, 251.5, -5.5, 245, 191, 225.5, 321, 122.5, 363)
 
-[node name="Interract Label" parent="." instance=ExtResource("29_0cem7")]
+[node name="InteractLabel" parent="." instance=ExtResource("29_0cem7")]
 offset_left = -250.0
 offset_top = -570.0
 offset_right = 242.0
@@ -221,7 +221,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 structured_text_bidi_override_options = [null]
 
-[node name="Repair label" parent="." instance=ExtResource("31_iky3b")]
+[node name="RepairLabel" parent="." instance=ExtResource("31_iky3b")]
 offset_left = -240.0
 offset_top = -640.0
 offset_right = 247.0

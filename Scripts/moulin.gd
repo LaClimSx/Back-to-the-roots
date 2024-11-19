@@ -10,8 +10,8 @@ func _ready():
 	reparable = true
 	interactable = true
 	corresponding_item_name = ""
-	repair_label = get_node("Repair label")
-	interact_label = get_node("Interract Label")
+	repair_label = get_node("RepairLabel")
+	interact_label = get_node("InteractLabel")
 	actual_exchange.emit(exchange)
 	super()
 
