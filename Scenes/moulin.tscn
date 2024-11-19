@@ -135,7 +135,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_ijauc"]
+[sub_resource type="Animation" id="Animation_xshtp"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -150,7 +150,7 @@ tracks/0/keys = {
 "values": [Vector2(0, -600)]
 }
 
-[sub_resource type="Animation" id="Animation_pmmld"]
+[sub_resource type="Animation" id="Animation_c6bgu"]
 resource_name = "TransIN"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -165,7 +165,7 @@ tracks/0/keys = {
 "values": [Vector2(0, -600), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_01ybx"]
+[sub_resource type="Animation" id="Animation_utt4i"]
 resource_name = "TransOUT"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -180,11 +180,11 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -600)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jci3i"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ril8e"]
 _data = {
-"RESET": SubResource("Animation_ijauc"),
-"TransIN": SubResource("Animation_pmmld"),
-"TransOUT": SubResource("Animation_01ybx")
+"RESET": SubResource("Animation_xshtp"),
+"TransIN": SubResource("Animation_c6bgu"),
+"TransOUT": SubResource("Animation_utt4i")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rj2np"]
@@ -250,7 +250,7 @@ grow_vertical = 2
 
 [node name="Anim" type="AnimationPlayer" parent="Interact Menu Moulin"]
 libraries = {
-"": SubResource("AnimationLibrary_jci3i")
+"": SubResource("AnimationLibrary_ril8e")
 }
 autoplay = "RESET"
 
@@ -351,6 +351,7 @@ offset_right = 119.5
 offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 40
 text = "Vendre"
 
@@ -393,7 +394,7 @@ grow_vertical = 2
 
 [node name="Anim" type="AnimationPlayer" parent="RepairMenuMoulin"]
 libraries = {
-"": SubResource("AnimationLibrary_jci3i")
+"": SubResource("AnimationLibrary_ril8e")
 }
 autoplay = "RESET"
 
@@ -493,6 +494,7 @@ offset_right = 114.5
 offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 40
 text = "Repair"
 
