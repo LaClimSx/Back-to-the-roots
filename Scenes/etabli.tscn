@@ -625,10 +625,10 @@ theme_override_font_sizes/font_size = 100
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="s_health" from="." to="Interact Menu Etabli" method="_on_etabli_s_health"]
-[connection signal="s_health" from="." to="RepairMenuEtabli" method="_on_etabli_s_health"]
-[connection signal="s_max_health" from="." to="Interact Menu Etabli" method="_on_etabli_s_max_health"]
-[connection signal="s_max_health" from="." to="RepairMenuEtabli" method="_on_etabli_s_max_health"]
+[connection signal="s_durability" from="." to="Interact Menu Etabli" method="_on_etabli_s_durability"]
+[connection signal="s_durability" from="." to="RepairMenuEtabli" method="_on_etabli_s_durability"]
+[connection signal="s_max_durability" from="." to="Interact Menu Etabli" method="_on_etabli_s_max_durability"]
+[connection signal="s_max_durability" from="." to="RepairMenuEtabli" method="_on_etabli_s_max_durability"]
 [connection signal="pressed" from="Interact Menu Etabli/Control/close" to="Interact Menu Etabli" method="_on_close_pressed"]
 [connection signal="pressed" from="Interact Menu Etabli/Control/repare_hammer" to="Interact Menu Etabli" method="_on_sell_one_1_pressed"]
 [connection signal="pressed" from="Interact Menu Etabli/Control/repare_hache" to="Interact Menu Etabli" method="_on_sell_one_1_pressed"]

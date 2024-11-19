@@ -25,18 +25,16 @@ func _on_repair_pressed() -> void:
 	get_node("Anim").play("TransOUT")
 	get_tree().paused = false
 
-
-func _on_etabli_s_health(h: int) -> void:
-	if(h == max_health):
+func _on_etabli_s_durability(d: int) -> void:
+	if(d == max_health):
 		wood_cost = 0
 		stone_cost = 0
-	elif h == max_health/2:
+	elif d == max_health/2:
 		wood_cost = 2
 		stone_cost = 1
-	elif h == 0:
+	elif d == 0:
 		wood_cost = 4
 		stone_cost = 2
 
-
-func _on_etabli_s_max_health(mh: int) -> void:
-	max_health = mh
+func _on_etabli_s_max_durability(md: int) -> void:
+	max_health = md

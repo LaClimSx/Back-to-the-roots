@@ -24,13 +24,13 @@ func animate():
 	match state:
 		STATE.good:
 			$AnimatedSprite2D.play("maison_bon")
-		STATE.broken:
-			$AnimatedSprite2D.play("maison_cassé")
-			interact_label.hide()
 		STATE.mid:
 			$AnimatedSprite2D.play("maison_abimé")
 			price = 3
 			actual_price.emit(price)
+		STATE.broken:
+			$AnimatedSprite2D.play("maison_cassé")
+			interact_label.hide()
 
 func interact():
 	get_tree().paused = true
