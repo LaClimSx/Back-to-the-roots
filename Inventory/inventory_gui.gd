@@ -201,10 +201,10 @@ func _input(event):
 func find_item(itemName: String) -> int:
 	return inventory.find_item(itemName)
 	
-func insert_item(item: Item, amount: int) -> int:
+func insert_item(item: Item, amount: int = 1) -> int:
 	return inventory.insertN(item, amount)
 	
-func remove_item(item: Item, amount: int) -> int:
+func remove_item(item: Item, amount: int = 1) -> int:
 	return inventory.removeN(item, amount)
 
 func sell_item(item: Item, all: bool, unit_price: int) -> int:
