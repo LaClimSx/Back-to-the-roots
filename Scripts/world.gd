@@ -10,6 +10,7 @@ const TILEMAP_SCALING : float = 0.16
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.start(Vector2(556, 324))
+	print("used rect : ", (ground.get_used_rect().size * 100 * TILEMAP_SCALING))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

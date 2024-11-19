@@ -36,7 +36,7 @@ func _on_player_detected_body_exited(body: Node2D) -> void:
 			$porte.play("fermé_abimé")
 
 
-func _on_house_actual_health(h: int) -> void:
+func _on_house_actual_health(h: int) -> void: #TODO: remove if new superclass works
 	health = h
 	if(health == max_health):
 		$porte.play("fermé_bon")
@@ -45,5 +45,19 @@ func _on_house_actual_health(h: int) -> void:
 	elif health == 0:
 		$porte.play("fermé_cassé")
 	
-func _on_house_s_max_health(mh: int) -> void:
+func _on_house_s_max_health(mh: int) -> void:  #TODO: remove if new superclass works
 	max_health = mh
+	
+
+func _on_house_s_durability(d: int) -> void:
+	health = d
+	if(health == max_health):
+		$porte.play("fermé_bon")
+	elif health== max_health/2:
+		$porte.play("fermé_abimé")
+	elif health == 0:
+		$porte.play("fermé_cassé")
+
+
+func _on_house_s_max_durability(md: int) -> void:
+	max_health = md

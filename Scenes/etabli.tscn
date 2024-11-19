@@ -336,6 +336,7 @@ position = Vector2(557, 333)
 texture = ExtResource("10_u1kn3")
 
 [node name="wood pioche" type="Label" parent="Interact Menu Etabli/Control"]
+layout_mode = 0
 offset_left = 611.0
 offset_top = 317.0
 offset_right = 785.0
@@ -347,6 +348,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="stones pioche" type="Label" parent="Interact Menu Etabli/Control"]
+layout_mode = 0
 offset_left = 612.0
 offset_top = 277.0
 offset_right = 835.0
@@ -380,6 +382,7 @@ position = Vector2(389, 140)
 texture = ExtResource("9_1r12i")
 
 [node name="wood fau" type="Label" parent="Interact Menu Etabli/Control"]
+layout_mode = 0
 offset_left = 443.0
 offset_top = 137.5
 offset_right = 617.0
@@ -391,6 +394,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="stones fau" type="Label" parent="Interact Menu Etabli/Control"]
+layout_mode = 0
 offset_left = 445.0
 offset_top = 94.5
 offset_right = 668.0
@@ -424,6 +428,7 @@ position = Vector2(696, 146)
 texture = ExtResource("11_xdnbd")
 
 [node name="wood seau" type="Label" parent="Interact Menu Etabli/Control"]
+layout_mode = 0
 offset_left = 750.0
 offset_top = 130.0
 offset_right = 924.0
@@ -435,6 +440,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="stones seau" type="Label" parent="Interact Menu Etabli/Control"]
+layout_mode = 0
 offset_left = 751.0
 offset_top = 90.0
 offset_right = 974.0
@@ -619,10 +625,10 @@ theme_override_font_sizes/font_size = 100
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="s_health" from="." to="RepairMenuEtabli" method="_on_etabli_s_health"]
-[connection signal="s_health" from="." to="Interact Menu Etabli" method="_on_etabli_s_health"]
-[connection signal="s_max_health" from="." to="RepairMenuEtabli" method="_on_etabli_s_max_health"]
-[connection signal="s_max_health" from="." to="Interact Menu Etabli" method="_on_etabli_s_max_health"]
+[connection signal="s_durability" from="." to="Interact Menu Etabli" method="_on_etabli_s_durability"]
+[connection signal="s_durability" from="." to="RepairMenuEtabli" method="_on_etabli_s_durability"]
+[connection signal="s_max_durability" from="." to="Interact Menu Etabli" method="_on_etabli_s_max_durability"]
+[connection signal="s_max_durability" from="." to="RepairMenuEtabli" method="_on_etabli_s_max_durability"]
 [connection signal="pressed" from="Interact Menu Etabli/Control/close" to="Interact Menu Etabli" method="_on_close_pressed"]
 [connection signal="pressed" from="Interact Menu Etabli/Control/repare_hammer" to="Interact Menu Etabli" method="_on_sell_one_1_pressed"]
 [connection signal="pressed" from="Interact Menu Etabli/Control/repare_hache" to="Interact Menu Etabli" method="_on_sell_one_1_pressed"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://d0ob0p02raj3k"]
+[gd_scene load_steps=23 format=3 uid="uid://d0ob0p02raj3k"]
 
+[ext_resource type="Script" path="res://Scripts/puit.gd" id="1_6cmja"]
 [ext_resource type="Texture2D" uid="uid://bo6k16lv8jpub" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124148.png" id="1_a1vh7"]
 [ext_resource type="Texture2D" uid="uid://cmhw880gnqblq" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124847.png" id="1_nvf6j"]
 [ext_resource type="Texture2D" uid="uid://db2if80l7d3ti" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124855.png" id="2_e0in1"]
@@ -17,60 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://ch57dq37he06t" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124449.png" id="8_bm5yp"]
 [ext_resource type="Texture2D" uid="uid://6xwmr5o2u175" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124935.png" id="8_j4wax"]
 [ext_resource type="Texture2D" uid="uid://c1ks6svsqjvpx" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017125812.png" id="17_3sn8x"]
-
-[sub_resource type="GDScript" id="GDScript_mn58l"]
-script/source = "extends StaticBody2D
-
-@export var max_health = 5000
-@export var loss_health_by_tic = 100
-var health = max_health
-var player_inside : bool = false
-
-enum STATE {broken, mid, good}
-var state: STATE = STATE.good
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	health = max_health
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if(health > max_health/2):
-		$AnimatedSprite2D.play(\"puit_bon\")
-	elif(health==0):
-		$AnimatedSprite2D.play(\"puit_cassé\")
-		state = STATE.broken
-	else:
-		$AnimatedSprite2D.play(\"puit_abimé\")
-		state = STATE.mid
-		
-	if player_inside && Input.is_action_just_released(\"Interact\"):
-		var selected_item : Item = Global.inventory_gui.get_selected_item()
-		if selected_item && selected_item.name == \"bucket\" && selected_item.state > 0 :
-			if state == STATE.good:
-				selected_item.fillBucket(4)
-			elif state == STATE.mid:
-				selected_item.fillBucket(2)
-			Global.inventory_gui.update()
-			
-
-func _on_world_timer_timeout() -> void:
-	health -= loss_health_by_tic
-	health = clamp(health, 0, max_health)
-
-
-func _on_area_2d_body_entered(body):
-	if body.name == \"Player\" && health>0: 
-		#$\"Repair label\".show()
-		player_inside = true
-	
-
-
-func _on_area_2d_body_exited(body):
-	#$\"Repair label\".hide()
-	player_inside = false
-"
+[ext_resource type="PackedScene" uid="uid://duq7v03be7qs2" path="res://Scenes/repair_label.tscn" id="19_ve3d1"]
+[ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="20_v3xk7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ngp2"]
 animations = [{
@@ -141,12 +90,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bx1sl"]
-radius = 383.333
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ipkyw"]
+radius = 350.0
+height = 866.667
 
 [node name="Puit" type="StaticBody2D"]
 scale = Vector2(0.06, 0.06)
-script = SubResource("GDScript_mn58l")
+script = ExtResource("1_6cmja")
+max_durability = 1000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
@@ -163,7 +114,19 @@ polygon = PackedVector2Array(-37.7645, 32.6081, -38.9003, 20.5431, -39.7521, 7.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 116.667)
-shape = SubResource("CircleShape2D_bx1sl")
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_ipkyw")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Repair label" parent="." instance=ExtResource("19_ve3d1")]
+offset_left = -246.667
+offset_top = -466.667
+offset_right = 240.333
+offset_bottom = -401.667
+theme_override_fonts/font = ExtResource("20_v3xk7")
+theme_override_font_sizes/font_size = 50
+text = "Appuyez sur R pour réparer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="enter_area"]
+[connection signal="body_exited" from="Area2D" to="." method="exit_area"]

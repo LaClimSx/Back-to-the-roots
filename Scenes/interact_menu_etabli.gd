@@ -30,7 +30,7 @@ func _on_close_pressed() -> void:
 	get_tree().paused = false
 
 
-func _on_etabli_s_health(h: int) -> void:
+func _on_etabli_s_durability(d):
 	var multi = 0
 	
 	var marteau = preload("res://Inventory/Items/hammer.tres")
@@ -38,9 +38,9 @@ func _on_etabli_s_health(h: int) -> void:
 	var pioche = preload("res://Inventory/Items/pickaxe.tres")
 	var fau = preload("res://Inventory/Items/hoe.tres")
 	var seau = preload("res://Inventory/Items/bucket.tres")
-	if(h == max_health):
+	if(d == max_health):
 		multi = 1
-	elif h == max_health/2:
+	elif d == max_health/2:
 		multi = 2
 		
 	if(marteau.state == 2):
@@ -94,10 +94,9 @@ func _on_etabli_s_health(h: int) -> void:
 		$"Control/stones seau".text = "x" + str(seau_stone) + " pierres"
 
 
-func _on_etabli_s_max_health(mh: int) -> void:
-	max_health = mh
-
-
+func _on_etabli_s_max_durability(md: int) -> void:
+	max_health = md
+	
 func _on_repare_hammer_pressed() -> void:
 	pass # Replace with function body.
 
