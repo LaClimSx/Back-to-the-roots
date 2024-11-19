@@ -13,6 +13,7 @@ var direction = Directions.LEFT
 func _ready() -> void:
 	inventory.use_item.connect(use_item)
 	screen_size = get_viewport_rect().size
+	print("screen size : ", screen_size)
 	hide()
 
 
