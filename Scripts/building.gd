@@ -101,3 +101,9 @@ func repair() -> void:
 
 func animate() -> void:
 	pass
+	
+func repair_itself() -> void:
+	if reparable:
+		durability = max_durability
+		state = STATE.good
+		s_state.emit(state)

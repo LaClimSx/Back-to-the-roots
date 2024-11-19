@@ -133,3 +133,4 @@ vertical_alignment = 1
 [connection signal="s_state" from="." to="RepairMenu" method="_on_s_state"]
 [connection signal="body_entered" from="Area2D" to="." method="enter_area"]
 [connection signal="body_exited" from="Area2D" to="." method="exit_area"]
+[connection signal="repair" from="RepairMenu" to="." method="repair_itself"]

@@ -391,3 +391,4 @@ autowrap_mode = 3
 [connection signal="pressed" from="InteractMenuMoulin/Control/plus" to="InteractMenuMoulin" method="_on_plus_pressed"]
 [connection signal="pressed" from="InteractMenuMoulin/Control/moins" to="InteractMenuMoulin" method="_on_moins_pressed"]
 [connection signal="pressed" from="InteractMenuMoulin/Control/sell one1" to="InteractMenuMoulin" method="_on_sell_one_1_pressed"]
+[connection signal="repair" from="RepairMenu" to="." method="repair_itself"]

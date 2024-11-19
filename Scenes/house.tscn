@@ -278,3 +278,4 @@ text = "Vendre 1"
 [connection signal="pressed" from="InteractMenu/Control/close" to="InteractMenu" method="_on_close_pressed"]
 [connection signal="pressed" from="InteractMenu/Control/sell all1" to="InteractMenu" method="_on_sell_all_1_pressed"]
 [connection signal="pressed" from="InteractMenu/Control/sell one1" to="InteractMenu" method="_on_sell_one_1_pressed"]
+[connection signal="repair" from="RepairMenu" to="." method="repair_itself"]

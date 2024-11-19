@@ -42,7 +42,6 @@ func _on_close_pressed() -> void:
 
 
 func _on_repair_pressed() -> void:
-	# TODO faire des bails avec les ressources + enlever durabilité marteau
 	var inv_gui = Global.inventory_gui
 	if (inv_gui.find_item("stick") >= wood_cost && inv_gui.find_item("stone") >= stone_cost):
 		inv_gui.remove_item(stick, wood_cost)
@@ -51,7 +50,7 @@ func _on_repair_pressed() -> void:
 		inv_gui.use_item()
 		$Anim.play("TransOUT")
 		get_tree().paused = false
-	else:
+	else: #TODO: What to do when not enough ? For now nothing
 		print("Fonds insuffisants")
 
 func _on_s_state(s: Building.STATE) -> void:

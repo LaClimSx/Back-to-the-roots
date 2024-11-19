@@ -459,3 +459,4 @@ text = "Réparer"
 [connection signal="pressed" from="InteractMenuEtabli/Control/repare_pioche" to="InteractMenuEtabli" method="_on_sell_one_1_pressed"]
 [connection signal="pressed" from="InteractMenuEtabli/Control/repare_fau" to="InteractMenuEtabli" method="_on_sell_one_1_pressed"]
 [connection signal="pressed" from="InteractMenuEtabli/Control/repare_seau" to="InteractMenuEtabli" method="_on_sell_one_1_pressed"]
+[connection signal="repair" from="RepairMenu" to="." method="repair_itself"]
