@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dd6eibaeqjan1"]
+[gd_scene load_steps=43 format=3 uid="uid://dd6eibaeqjan1"]
 
 [ext_resource type="Texture2D" uid="uid://cc36u4526veca" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134057.png" id="1_k6ggn"]
 [ext_resource type="Script" path="res://Scripts/moulin.gd" id="1_lnxlr"]
@@ -34,7 +34,8 @@
 [ext_resource type="Script" path="res://Scenes/interact_menu_moulin.gd" id="32_yqon2"]
 [ext_resource type="Texture2D" uid="uid://c13aycu3v6uv5" path="res://Assets/Items/flour.png" id="33_gunke"]
 [ext_resource type="Script" path="res://Scenes/repair_menu_moulin.gd" id="34_6ntf5"]
-[ext_resource type="Texture2D" uid="uid://coxopis6iuqbk" path="res://Assets/Items/carrot.png" id="35_e6xyr"]
+[ext_resource type="Texture2D" uid="uid://ckmg4pkw65285" path="res://Assets/Items/stick.png" id="35_uq0q2"]
+[ext_resource type="Texture2D" uid="uid://c3ik14rlow5yl" path="res://Assets/Items/stone.png" id="36_jeeuq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5ifjn"]
 animations = [{
@@ -210,21 +211,21 @@ position = Vector2(31, 176.5)
 polygon = PackedVector2Array(-12, 390.5, -173, 364.5, -271, 324, -296.5, 162.5, -292, -5.5, 251.5, -5.5, 245, 191, 225.5, 321, 122.5, 363)
 
 [node name="InteractLabel" parent="." instance=ExtResource("29_0cem7")]
-offset_left = -250.0
+offset_left = -490.0
 offset_top = -570.0
-offset_right = 242.0
+offset_right = 482.0
 offset_bottom = -490.0
 theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 50
-text = "Press \"space\" to sell items"
+text = "Appuyez sur \"Espace\" pour transformer votre blé"
 horizontal_alignment = 1
 vertical_alignment = 1
 structured_text_bidi_override_options = [null]
 
 [node name="RepairLabel" parent="." instance=ExtResource("31_iky3b")]
-offset_left = -240.0
+offset_left = -280.0
 offset_top = -640.0
-offset_right = 247.0
+offset_right = 279.0
 offset_bottom = -575.0
 theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 50
@@ -446,7 +447,7 @@ offset_bottom = 30.5
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 45
-text = "coût : "
+text = "Coût : "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -459,7 +460,7 @@ offset_right = 842.0
 offset_bottom = 279.0
 theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 45
-text = "x Z stone(s)"
+text = "x Z pierre(s)"
 
 [node name="wood" type="Label" parent="RepairMenuMoulin/Control"]
 layout_mode = 0
@@ -469,18 +470,16 @@ offset_right = 468.0
 offset_bottom = 276.0
 theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 45
-text = "x Z wood(s)"
+text = "x Z bois"
 vertical_alignment = 1
 
 [node name="wood_sprit" type="Sprite2D" parent="RepairMenuMoulin/Control"]
 position = Vector2(208, 245)
-scale = Vector2(5.875, 5.875)
-texture = ExtResource("35_e6xyr")
+texture = ExtResource("35_uq0q2")
 
 [node name="stones" type="Sprite2D" parent="RepairMenuMoulin/Control"]
 position = Vector2(567, 249)
-scale = Vector2(5.875, 5.875)
-texture = ExtResource("35_e6xyr")
+texture = ExtResource("36_jeeuq")
 
 [node name="repair" type="Button" parent="RepairMenuMoulin/Control"]
 self_modulate = Color(0, 1, 0, 1)
@@ -498,7 +497,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 40
-text = "Repair"
+text = "Réparer"
 
 [node name="Area2D" type="Area2D" parent="."]
 

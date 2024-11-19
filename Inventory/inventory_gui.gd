@@ -208,8 +208,10 @@ func remove_item(item: Item, amount: int = 1) -> int:
 	return inventory.removeN(item, amount)
 
 func sell_item(item: Item, all: bool, unit_price: int) -> int:
+	var amount = inventory.sellN(item, all, unit_price)
 	moneyUpdated.emit()
-	return inventory.sellN(item, all, unit_price)
+	return amount
+
 
 func get_tool(name: String) -> Tool:
 	return inventory.get_tool(name)

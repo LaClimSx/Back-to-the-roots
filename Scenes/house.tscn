@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dcouvu2n0fdiq"]
+[gd_scene load_steps=23 format=3 uid="uid://dcouvu2n0fdiq"]
 
 [ext_resource type="Texture2D" uid="uid://b6bqlyip7nsd8" path="res://Assets/Bâtiments/maison/Sans titre 41_20241016202109.png" id="1_e0h1k"]
 [ext_resource type="Script" path="res://Scripts/house.gd" id="1_gxx45"]
@@ -10,8 +10,9 @@
 [ext_resource type="Script" path="res://Scripts/repair_menu.gd" id="8_fce3l"]
 [ext_resource type="Script" path="res://Scripts/interact_menu.gd" id="8_jwp42"]
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="9_1gnbb"]
-[ext_resource type="Texture2D" uid="uid://coxopis6iuqbk" path="res://Assets/Items/carrot.png" id="9_yr1gg"]
-[ext_resource type="Texture2D" uid="uid://dxi0rmohf44ub" path="res://Assets/Items/wheat_item.png" id="10_htk6e"]
+[ext_resource type="Texture2D" uid="uid://c13aycu3v6uv5" path="res://Assets/Items/flour.png" id="10_afsmt"]
+[ext_resource type="Texture2D" uid="uid://ckmg4pkw65285" path="res://Assets/Items/stick.png" id="12_wjf37"]
+[ext_resource type="Texture2D" uid="uid://c3ik14rlow5yl" path="res://Assets/Items/stone.png" id="13_ou3ir"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iu676"]
 atlas = ExtResource("1_e0h1k")
@@ -111,8 +112,8 @@ _data = {
 [node name="House" type="StaticBody2D"]
 scale = Vector2(0.15, 0.15)
 script = ExtResource("1_gxx45")
-max_durability = 100
-loss_dura_by_tic = 10
+max_durability = 1000
+loss_dura_by_tic = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_17epx")
@@ -210,7 +211,7 @@ offset_bottom = 127.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 50
-text = "Sell your products"
+text = "Vends ta farine"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -223,7 +224,7 @@ offset_right = 673.0
 offset_bottom = 300.5
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 45
-text = "Price : x$"
+text = "Prix : x$"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -231,7 +232,7 @@ autowrap_mode = 2
 [node name="transformation1" type="Sprite2D" parent="InteractMenu/Control"]
 position = Vector2(451, 177.5)
 scale = Vector2(1.25, 1.25)
-texture = ExtResource("10_htk6e")
+texture = ExtResource("10_afsmt")
 
 [node name="sell all1" type="Button" parent="InteractMenu/Control"]
 self_modulate = Color(1, 1, 0, 1)
@@ -249,7 +250,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 40
-text = "Sell All"
+text = "Tout vendre"
 
 [node name="sell one1" type="Button" parent="InteractMenu/Control"]
 self_modulate = Color(1, 0.635294, 0, 1)
@@ -267,7 +268,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 40
-text = "Sell 1"
+text = "Vendre 1"
 
 [node name="RepairMenu" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -323,7 +324,7 @@ offset_bottom = 111.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 50
-text = "Repair your house"
+text = "Répare ta maison"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -340,7 +341,7 @@ offset_bottom = 30.5
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 45
-text = "cost : "
+text = "Coût "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -353,7 +354,7 @@ offset_right = 842.0
 offset_bottom = 279.0
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 45
-text = "x Z stone(s)"
+text = "x Z pierre(s)"
 
 [node name="wood" type="Label" parent="RepairMenu/Control"]
 layout_mode = 0
@@ -363,18 +364,16 @@ offset_right = 468.0
 offset_bottom = 276.0
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 45
-text = "x Z wood(s)"
+text = "x Z bois"
 vertical_alignment = 1
 
 [node name="wood_sprit" type="Sprite2D" parent="RepairMenu/Control"]
 position = Vector2(208, 245)
-scale = Vector2(5.875, 5.875)
-texture = ExtResource("9_yr1gg")
+texture = ExtResource("12_wjf37")
 
 [node name="stones" type="Sprite2D" parent="RepairMenu/Control"]
 position = Vector2(567, 249)
-scale = Vector2(5.875, 5.875)
-texture = ExtResource("9_yr1gg")
+texture = ExtResource("13_ou3ir")
 
 [node name="repair" type="Button" parent="RepairMenu/Control"]
 self_modulate = Color(0, 1, 0, 1)
@@ -392,7 +391,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 40
-text = "Repair"
+text = "Réparer"
 
 [connection signal="actual_price" from="." to="InteractMenu" method="_on_house_actual_price"]
 [connection signal="s_durability" from="." to="Door" method="_on_house_s_durability"]
