@@ -392,11 +392,11 @@ theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 40
 text = "Repair"
 
-[connection signal="actual_health" from="." to="Door" method="_on_house_actual_health"]
-[connection signal="actual_health" from="." to="RepairMenu" method="_on_house_actual_health"]
 [connection signal="actual_price" from="." to="Interact Menu" method="_on_house_actual_price"]
-[connection signal="s_max_health" from="." to="Door" method="_on_house_s_max_health"]
-[connection signal="s_max_health" from="." to="RepairMenu" method="_on_house_s_max_health"]
+[connection signal="s_durability" from="." to="Door" method="_on_house_s_durability"]
+[connection signal="s_durability" from="." to="RepairMenu" method="_on_house_s_durability"]
+[connection signal="s_max_durability" from="." to="Door" method="_on_house_s_max_durability"]
+[connection signal="s_max_durability" from="." to="RepairMenu" method="_on_house_s_max_durability"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="pressed" from="Interact Menu/Control/close" to="Interact Menu" method="_on_close_pressed"]
