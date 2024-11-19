@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@onready var flour = preload("res://Inventory/Items/flour.tres")
+
 var inventory_gui
 var price
 
@@ -20,15 +22,15 @@ func _on_close_pressed() -> void:
 	get_node("Anim").play("TransOUT")
 	get_tree().paused = false
 
-
+#TODO enlever durabilité du batiment
 func _on_sell_one_1_pressed() -> void:
 	#faire des bails avec les ressources
-	inventory_gui.sell_item("wheat", false, price)
+	inventory_gui.sell_item(flour, false, price)
 
 
 func _on_sell_all_1_pressed() -> void:
 	#faire des bails avec les ressources
-	inventory_gui.sell_item("wheat", true, price)
+	inventory_gui.sell_item(flour, true, price)
 	get_node("Anim").play("TransOUT")
 	get_tree().paused = false
 

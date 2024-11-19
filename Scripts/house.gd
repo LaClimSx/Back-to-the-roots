@@ -39,21 +39,21 @@ func _process(delta: float) -> void:
 		
 	var item = inventory_gui.get_selected_item()
 	
-	if player_inside && item && item.name == "pickaxe" && health <= max_health/2: #TODO marteau a durabilité
+	if player_inside && item && item.name == "hammer" && item.state > 0 && health <= max_health/2 : 
 		$"Repair label".show()
 		
 	if player_inside && health>0 :
 		$"Interract Label".show()
 	
-	if(item && item.name != "pickaxe"): #TODO ou marteau a plus de durabilité
+	if(item && (item.name != "hammer" || item.state == 0)): 
 		$"Repair label".hide()
 	
-	if Input.is_action_pressed("Interact") && player_inside:
+	if Input.is_action_pressed("Interact") && player_inside && health>0:
 		get_tree().paused = true
 		get_node("Interact Menu/Anim").play("TransIN")
 		
 		
-	elif Input.is_action_pressed("Repair") && health <= max_health/2 && item && item.name == "pickaxe" && player_inside:
+	elif Input.is_action_pressed("Repair") && health <= max_health/2 && item && item.name == "hammer" && player_inside:
 		get_tree().paused = true
 		get_node("RepairMenu/Anim").play("TransIN")
 		

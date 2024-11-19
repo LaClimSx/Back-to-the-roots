@@ -245,6 +245,7 @@ offset_right = 117.5
 offset_bottom = -39.5
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 40
 text = "Sell All"
 
@@ -262,6 +263,7 @@ offset_right = 115.5
 offset_bottom = -114.5
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 40
 text = "Sell 1"
 
@@ -386,6 +388,7 @@ offset_right = 114.5
 offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 40
 text = "Repair"
 
