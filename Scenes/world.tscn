@@ -120,5 +120,5 @@ position = Vector2(811.568, 478.401)
 [connection signal="timeout" from="worldTimer" to="LayerGroup/Crops" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Puit" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Etabli" method="_on_world_timer_timeout"]
-[connection signal="timeout" from="worldTimer" to="Moulin" method="_on_timer_timeout"]
+[connection signal="timeout" from="worldTimer" to="Moulin" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="House" method="_on_world_timer_timeout"]

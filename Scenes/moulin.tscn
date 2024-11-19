@@ -505,10 +505,10 @@ position = Vector2(-10, 410)
 shape = SubResource("CircleShape2D_rj2np")
 
 [connection signal="actual_exchange" from="." to="Interact Menu Moulin" method="_on_moulin_actual_exchange"]
-[connection signal="actual_health_moulin" from="." to="Interact Menu Moulin" method="_on_moulin_actual_health_moulin"]
-[connection signal="actual_health_moulin" from="." to="RepairMenuMoulin" method="_on_moulin_actual_health_moulin"]
-[connection signal="max_health_moulin" from="." to="Interact Menu Moulin" method="_on_moulin_max_health_moulin"]
-[connection signal="max_health_moulin" from="." to="RepairMenuMoulin" method="_on_moulin_max_health_moulin"]
+[connection signal="s_durability" from="." to="Interact Menu Moulin" method="_on_moulin_s_durability"]
+[connection signal="s_durability" from="." to="RepairMenuMoulin" method="_on_moulin_s_durability"]
+[connection signal="s_max_durability" from="." to="Interact Menu Moulin" method="_on_moulin_s_max_durability"]
+[connection signal="s_max_durability" from="." to="RepairMenuMoulin" method="_on_moulin_s_max_durability"]
 [connection signal="pressed" from="Interact Menu Moulin/Control/close" to="Interact Menu Moulin" method="_on_close_pressed"]
 [connection signal="pressed" from="Interact Menu Moulin/Control/plus" to="Interact Menu Moulin" method="_on_plus_pressed"]
 [connection signal="pressed" from="Interact Menu Moulin/Control/moins" to="Interact Menu Moulin" method="_on_moins_pressed"]
