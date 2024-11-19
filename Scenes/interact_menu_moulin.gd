@@ -6,8 +6,7 @@ extends CanvasLayer
 
 var inventory_gui
 var exchange
-var max_health
-var health
+var state: Building.STATE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,11 +27,8 @@ func _on_close_pressed() -> void:
 func _on_moulin_actual_exchange(p: int) -> void:
 	exchange = p
 
-func _on_moulin_s_durability(d: int) -> void:
-	health = d
-
-func _on_moulin_s_max_durability(md: int) -> void:
-	max_health = md
+func _on_moulin_s_state(d: int) -> void:
+	state = d
 
 func _on_moins_pressed() -> void:
 	var max = inventory_gui.find_item("wheat")

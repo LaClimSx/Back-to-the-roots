@@ -37,4 +37,3 @@ func _on_sell_all_1_pressed() -> void:
 
 func _on_house_actual_price(p: int) -> void:
 	price = p
-	print("price per flour: ", price)

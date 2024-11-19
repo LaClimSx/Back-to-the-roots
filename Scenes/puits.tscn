@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d0ob0p02raj3k"]
+[gd_scene load_steps=24 format=3 uid="uid://d0ob0p02raj3k"]
 
 [ext_resource type="Script" path="res://Scripts/puits.gd" id="1_6cmja"]
 [ext_resource type="Texture2D" uid="uid://bo6k16lv8jpub" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124148.png" id="1_a1vh7"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c1ks6svsqjvpx" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017125812.png" id="17_3sn8x"]
 [ext_resource type="PackedScene" uid="uid://duq7v03be7qs2" path="res://Scenes/repair_label.tscn" id="19_ve3d1"]
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="20_v3xk7"]
+[ext_resource type="PackedScene" uid="uid://dhpl8urm0uvxa" path="res://Scenes/repair_menu.tscn" id="21_0qiuq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ngp2"]
 animations = [{
@@ -127,5 +128,8 @@ theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RepairMenu" parent="." instance=ExtResource("21_0qiuq")]
+
+[connection signal="s_state" from="." to="RepairMenu" method="_on_house_s_state"]
 [connection signal="body_entered" from="Area2D" to="." method="enter_area"]
 [connection signal="body_exited" from="Area2D" to="." method="exit_area"]

@@ -3,7 +3,6 @@ extends CanvasLayer
 @onready var flour = preload("res://Inventory/Items/flour.tres")
 
 var inventory_gui
-var max_health
 
 var max = 0
 var mid = 0.5
@@ -30,7 +29,7 @@ func _on_close_pressed() -> void:
 	get_tree().paused = false
 
 
-func _on_etabli_s_durability(d):
+func _on_etabli_s_state(s: Building.STATE):
 	var multi = 0
 	
 	var marteau = preload("res://Inventory/Items/hammer.tres")
@@ -38,9 +37,9 @@ func _on_etabli_s_durability(d):
 	var pioche = preload("res://Inventory/Items/pickaxe.tres")
 	var fau = preload("res://Inventory/Items/hoe.tres")
 	var seau = preload("res://Inventory/Items/bucket.tres")
-	if(d == max_health):
+	if s == Building.STATE.good:
 		multi = 1
-	elif d == max_health/2:
+	elif s == Building.STATE.mid:
 		multi = 2
 		
 	if(marteau.state == 2):
@@ -93,10 +92,6 @@ func _on_etabli_s_durability(d):
 		$"Control/wood seau".text = "x" + str(outil_cost_wood*low*multi) + " bois"
 		$"Control/stones seau".text = "x" + str(seau_stone) + " pierres"
 
-
-func _on_etabli_s_max_durability(md: int) -> void:
-	max_health = md
-	
 func _on_repare_hammer_pressed() -> void:
 	pass # Replace with function body.
 

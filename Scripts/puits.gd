@@ -29,3 +29,7 @@ func interact():
 	elif state == STATE.mid:
 		selected_item.fillBucket(2)
 	inventory_gui.update()
+	
+func repair():
+	get_tree().paused = true
+	$RepairMenu/Anim.play("TransIN")
