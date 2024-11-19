@@ -9,14 +9,11 @@ var direction = Directions.LEFT
 
 @export var inventory : Inventory
 
-@export var money : int = 0
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	inventory.use_item.connect(use_item)
 	screen_size = get_viewport_rect().size
 	hide()
-	Global.player = self
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -83,6 +80,3 @@ func start(pos):
 	
 func use_item(item: Item) -> void:
 	item.use(self)
-	
-func add_money(amount: int) -> void:
-	money += amount
