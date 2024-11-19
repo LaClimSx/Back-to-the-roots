@@ -22,7 +22,7 @@
 script/source = "extends StaticBody2D
 
 @export var max_health = 5000
-@export var loss_health_by_tic = 500
+@export var loss_health_by_tic = 100
 var health = max_health
 var player_inside : bool = false
 

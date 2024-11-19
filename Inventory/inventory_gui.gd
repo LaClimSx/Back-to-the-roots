@@ -13,7 +13,7 @@ var itemInHand: ItemStackGUI
 var oldIndex: int = -1
 var locked: bool = false
 
-var isHotBar: bool = true
+signal moneyUpdated
 
 func _ready():
 	connectSlots()
@@ -197,19 +197,19 @@ func _input(event):
 		
 	updateItemInHand()
 	
-	#Returns the amount of said item in the inventory, -1 if none
-func find_item(name: String) -> int:
-	return -1
-	#TODO: Ecrire
+#Returns the amount of said item in the inventory, -1 if none
+func find_item(itemName: String) -> int:
+	return inventory.find_item(itemName)
 	
-func sell_item(name: String, all: bool, unit_price: int) -> void:
-	pass
-	#TODO: Ecrire le corps de la fonction
+func insert_item(item: Item, amount: int) -> int:
+	return inventory.insertN(item, amount)
 	
-func insert_item(item: Item, amount: int) -> void:
-	pass
-	#TODO: Ecrire
-	
-func remove_item(item: Item, amount: int) -> void:
-	pass
-	#TODO: Ecrire
+func remove_item(item: Item, amount: int) -> int:
+	return inventory.removeN(item, amount)
+
+func sell_item(item: Item, all: bool, unit_price: int) -> int:
+	moneyUpdated.emit()
+	return inventory.sellN(item, all, unit_price)
+
+func get_tool(name: String) -> Tool:
+	return inventory.get_tool(name)

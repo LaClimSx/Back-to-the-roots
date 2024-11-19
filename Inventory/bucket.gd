@@ -18,6 +18,8 @@ var broken: Texture2D = preload("res://Assets/Outils/Seau/seau_cassé.png")
 func use(player: Player) -> void:
 	pass
 	
+#Try to use water_amount of water
+#Return the actual amount of water used
 func useBucket(water_amount: int) -> int:
 	if quantity <= 0 || state == STATE.broken: return 0
 	if durability > 0:
@@ -36,14 +38,15 @@ func useBucket(water_amount: int) -> int:
 			3: texture = good3
 	elif state == STATE.mid:
 		if water_amount >= quantity : texture = mid0
-		match (quantity - water_amount):
+		else : match (quantity - water_amount):
 			1: texture = mid1
 			_: texture = mid2
 	
 	var used_water =  min(quantity, water_amount)
-	quantity = quantity - used_water
+	quantity = quantity - used_water if state != STATE.broken else 0
 	return used_water
 	
+#Fill the bucket with amount of water (mod size of the bucket)
 func fillBucket(amount: int) -> void:
 	if state == STATE.broken : return
 	if state == STATE.good:
@@ -55,9 +58,21 @@ func fillBucket(amount: int) -> void:
 			3: texture = good3
 			4: texture = good4
 	elif state == STATE.mid:
-		quantity = clamp(quantity + amount, 0, 2)
+		#If the bucket and the well are mid, only fill one water
+		if quantity == 0 && amount == 2 :
+			quantity = 1
+		else :
+			quantity = clamp(quantity + amount, 0, 2)
 		match (quantity):
 			0: texture = mid0
 			1: texture = mid1
 			2: texture = mid2
-	print(quantity)
+	
+func repair() -> void:
+	super()
+	match (quantity):
+		0: texture = good0
+		1: texture = good1
+		2: texture = good2
+		3: texture = good3
+		4: texture = good4

@@ -21,3 +21,8 @@ func use(player: Player) -> void:
 			texture = broken_texture
 			state = STATE.broken
 	print(durability)
+	
+func repair() -> void:
+	durability = maxDurability
+	texture = good_texture
+	state = STATE.good

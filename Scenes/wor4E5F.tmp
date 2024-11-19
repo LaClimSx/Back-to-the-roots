@@ -49,6 +49,7 @@ script = ExtResource("1_rjk8m")
 
 [node name="Player" parent="." instance=ExtResource("2_pts0t")]
 position = Vector2(3.0021, 1.00084)
+speed = 100
 
 [node name="LayerGroup" type="Node2D" parent="."]
 
@@ -108,7 +109,6 @@ position = Vector2(315.221, 305.256)
 [node name="worldTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="moneyUpdated" from="CanvasLayer/Inventory" to="CanvasLayer" method="_on_inventory_money_updated"]
 [connection signal="timeout" from="worldTimer" to="LayerGroup/Crops" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Puit" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Etabli" method="_on_world_timer_timeout"]
