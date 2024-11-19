@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	if(item_in_hand && (item_in_hand.name != "hammer" || item_in_hand.state == 0)): 
 		$"Repair label".hide()
 	
-	if Input.is_action_pressed("Interact") && player_inside_etabli:
+	if Input.is_action_pressed("Interact") && player_inside_etabli && health>0:
 		get_tree().paused = true
 		get_node("Interact Menu Etabli/Anim").play("TransIN")
 		
