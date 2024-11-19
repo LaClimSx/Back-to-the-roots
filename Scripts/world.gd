@@ -38,9 +38,11 @@ func checkActions():
 		var ground_atlas : Vector2i = ground.get_cell_atlas_coords(viewing_tile)
 		
 		#If clicked tile has grown wheat, add 1 to 3 wheat to inventory and remove the wheat from the tile
+		#Also set the tile to dirt
 		if crops.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) :
-			for i in range(randi_range(1,3)): $Player.inventory.insert(wheat_item)
+			inventory_gui.insert_item(wheat_item,randi_range(1,3))
 			crops.set_cell(viewing_tile)
+			ground.set_cell(viewing_tile, 0, Vector2i(1,0))
 			print("Harvested")
 
 		#If player has hoe (not broken) and tile is dirt, plow the tile

@@ -17,8 +17,8 @@ func _ready() -> void:
 	emit_signal("s_health", health)
 	if Global.inventory_gui:
 		inventory_gui = Global.inventory_gui
-	$"Repair label".hide()
-	$"Interract Label".hide()
+	$"RepairLabel".hide()
+	$"InteractLabel".hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -32,13 +32,13 @@ func _process(delta: float) -> void:
 	item_in_hand = inventory_gui.get_selected_item()
 	
 	if (player_inside_etabli && item_in_hand && item_in_hand.name == "hammer" && item_in_hand.state > 0 && health <= max_health/2):
-		$"Repair label".show()
+		$"RepairLabel".show()
 		
 	if player_inside_etabli && health>0 :
-		$"Interract Label".show()
+		$"InteractLabel".show()
 	
 	if(item_in_hand && (item_in_hand.name != "hammer" || item_in_hand.state == 0)): 
-		$"Repair label".hide()
+		$"RepairLabel".hide()
 	
 	if Input.is_action_pressed("Interact") && player_inside_etabli && health>0:
 		get_tree().paused = true
@@ -64,5 +64,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if(body.name == "Player"):
 		player_inside_etabli = false
-		$"Interract Label".hide()
-		$"Repair label".hide()
+		$"InteractLabel".hide()
+		$"RepairLabel".hide()

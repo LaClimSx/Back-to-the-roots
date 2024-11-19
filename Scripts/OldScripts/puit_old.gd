@@ -41,11 +41,11 @@ func _on_world_timer_timeout() -> void:
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" && health>0: 
-		#$"Repair label".show()
+		#$"RepairLabel".show()
 		player_inside = true
 	
 
 
 func _on_area_2d_body_exited(body):
-	#$"Repair label".hide()
+	#$"RepairLabel".hide()
 	player_inside = false

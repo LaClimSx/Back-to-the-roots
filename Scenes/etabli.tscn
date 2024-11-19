@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/repair_menu_etabli.gd" id="8_t2h2i"]
 [ext_resource type="Texture2D" uid="uid://br6v0t8jwlot0" path="res://Assets/Outils/Faux/Sans titre 46_20241017144343.png" id="9_1r12i"]
 [ext_resource type="Texture2D" uid="uid://coxopis6iuqbk" path="res://Assets/Items/carrot.png" id="9_5cb25"]
-[ext_resource type="PackedScene" uid="uid://ljyyhfin2fwg" path="res://Scenes/interract_label.tscn" id="10_4m732"]
+[ext_resource type="PackedScene" uid="uid://ljyyhfin2fwg" path="res://Scenes/interact_label.tscn" id="10_4m732"]
 [ext_resource type="Texture2D" uid="uid://h6crphpet0od" path="res://Assets/Outils/Pioche/Sans titre 46_20241017145250.png" id="10_u1kn3"]
 [ext_resource type="PackedScene" uid="uid://duq7v03be7qs2" path="res://Scenes/repair_label.tscn" id="11_kb3ae"]
 [ext_resource type="Texture2D" uid="uid://b22ahnmkvxvet" path="res://Assets/Outils/Seau_old/seau_bon_plein.png" id="11_xdnbd"]
@@ -165,13 +165,13 @@ position = Vector2(-190.317, 166.49)
 scale = Vector2(13.5208, 11.0094)
 polygon = PackedVector2Array(-16.0998, -15.2436, -6.92881, -38.1331, 37.8416, -37.7698, 46.914, -14.8803, 47.0126, 14.5491, 39.8139, 14.7913, 39.518, -12.8214, -8.70385, -12.337, -8.40801, 14.7913, -16, 15)
 
-[node name="Interact Menu Etabli" type="CanvasLayer" parent="."]
+[node name="InteractMenuEtabli" type="CanvasLayer" parent="."]
 process_mode = 3
 offset = Vector2(0, -600)
 transform = Transform2D(1, 0, 0, 1, 0, -600)
 script = ExtResource("5_nklhl")
 
-[node name="Panel2" type="Panel" parent="Interact Menu Etabli"]
+[node name="Panel2" type="Panel" parent="InteractMenuEtabli"]
 use_parent_material = true
 anchors_preset = -1
 anchor_left = 0.5
@@ -185,7 +185,7 @@ offset_bottom = 201.296
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Interact Menu Etabli"]
+[node name="Panel" type="Panel" parent="InteractMenuEtabli"]
 use_parent_material = true
 anchors_preset = -1
 anchor_left = 0.5
@@ -199,13 +199,13 @@ offset_bottom = 202.296
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Anim" type="AnimationPlayer" parent="Interact Menu Etabli"]
+[node name="Anim" type="AnimationPlayer" parent="InteractMenuEtabli"]
 libraries = {
 "": SubResource("AnimationLibrary_jci3i")
 }
 autoplay = "RESET"
 
-[node name="Control" type="Control" parent="Interact Menu Etabli"]
+[node name="Control" type="Control" parent="InteractMenuEtabli"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 89.0
@@ -213,7 +213,7 @@ offset_top = 34.0
 offset_right = 1047.0
 offset_bottom = 587.0
 
-[node name="repare title" type="Label" parent="Interact Menu Etabli/Control"]
+[node name="repare title" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -229,7 +229,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="close" type="Button" parent="Interact Menu Etabli/Control"]
+[node name="close" type="Button" parent="InteractMenuEtabli/Control"]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 0
 offset_left = 906.0
@@ -239,11 +239,11 @@ offset_bottom = 46.0
 theme_override_font_sizes/font_size = 21
 text = "X"
 
-[node name="hammer" type="Sprite2D" parent="Interact Menu Etabli/Control"]
+[node name="hammer" type="Sprite2D" parent="InteractMenuEtabli/Control"]
 position = Vector2(80, 138)
 texture = ExtResource("7_3yv4n")
 
-[node name="wood hammer" type="Label" parent="Interact Menu Etabli/Control"]
+[node name="wood hammer" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 0
 offset_left = 154.0
 offset_top = 137.0
@@ -255,7 +255,7 @@ text = "xZ bois"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="stones hammer" type="Label" parent="Interact Menu Etabli/Control"]
+[node name="stones hammer" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 0
 offset_left = 155.0
 offset_top = 94.0
@@ -267,7 +267,7 @@ text = "xZ pierre(s)"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="repare_hammer" type="Button" parent="Interact Menu Etabli/Control"]
+[node name="repare_hammer" type="Button" parent="InteractMenuEtabli/Control"]
 self_modulate = Color(1, 0.635294, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -285,11 +285,11 @@ theme_override_fonts/font = ExtResource("6_dhmi0")
 theme_override_font_sizes/font_size = 35
 text = "Réparer"
 
-[node name="hache" type="Sprite2D" parent="Interact Menu Etabli/Control"]
+[node name="hache" type="Sprite2D" parent="InteractMenuEtabli/Control"]
 position = Vector2(229, 331)
 texture = ExtResource("8_h727v")
 
-[node name="wood hache" type="Label" parent="Interact Menu Etabli/Control"]
+[node name="wood hache" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 0
 offset_left = 295.0
 offset_top = 325.0
@@ -301,7 +301,7 @@ text = "xZ bois"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="stones hache" type="Label" parent="Interact Menu Etabli/Control"]
+[node name="stones hache" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 0
 offset_left = 295.0
 offset_top = 281.0
@@ -313,7 +313,7 @@ text = "xZ pierre(s)"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="repare_hache" type="Button" parent="Interact Menu Etabli/Control"]
+[node name="repare_hache" type="Button" parent="InteractMenuEtabli/Control"]
 self_modulate = Color(1, 0.635294, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -331,11 +331,11 @@ theme_override_fonts/font = ExtResource("6_dhmi0")
 theme_override_font_sizes/font_size = 35
 text = "Réparer"
 
-[node name="pioche" type="Sprite2D" parent="Interact Menu Etabli/Control"]
+[node name="pioche" type="Sprite2D" parent="InteractMenuEtabli/Control"]
 position = Vector2(557, 333)
 texture = ExtResource("10_u1kn3")
 
-[node name="wood pioche" type="Label" parent="Interact Menu Etabli/Control"]
+[node name="wood pioche" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 0
 offset_left = 611.0
 offset_top = 317.0
@@ -347,7 +347,7 @@ text = "xZ bois"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="stones pioche" type="Label" parent="Interact Menu Etabli/Control"]
+[node name="stones pioche" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 0
 offset_left = 612.0
 offset_top = 277.0
@@ -359,7 +359,7 @@ text = "xZ pierre(s)"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="repare_pioche" type="Button" parent="Interact Menu Etabli/Control"]
+[node name="repare_pioche" type="Button" parent="InteractMenuEtabli/Control"]
 self_modulate = Color(1, 0.635294, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -377,11 +377,11 @@ theme_override_fonts/font = ExtResource("6_dhmi0")
 theme_override_font_sizes/font_size = 35
 text = "Réparer"
 
-[node name="fau" type="Sprite2D" parent="Interact Menu Etabli/Control"]
+[node name="fau" type="Sprite2D" parent="InteractMenuEtabli/Control"]
 position = Vector2(389, 140)
 texture = ExtResource("9_1r12i")
 
-[node name="wood fau" type="Label" parent="Interact Menu Etabli/Control"]
+[node name="wood fau" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 0
 offset_left = 443.0
 offset_top = 137.5
@@ -393,7 +393,7 @@ text = "xZ bois"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="stones fau" type="Label" parent="Interact Menu Etabli/Control"]
+[node name="stones fau" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 0
 offset_left = 445.0
 offset_top = 94.5
@@ -405,7 +405,7 @@ text = "xZ pierre(s)"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="repare_fau" type="Button" parent="Interact Menu Etabli/Control"]
+[node name="repare_fau" type="Button" parent="InteractMenuEtabli/Control"]
 self_modulate = Color(1, 0.635294, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -423,11 +423,11 @@ theme_override_fonts/font = ExtResource("6_dhmi0")
 theme_override_font_sizes/font_size = 35
 text = "Réparer"
 
-[node name="seau" type="Sprite2D" parent="Interact Menu Etabli/Control"]
+[node name="seau" type="Sprite2D" parent="InteractMenuEtabli/Control"]
 position = Vector2(696, 146)
 texture = ExtResource("11_xdnbd")
 
-[node name="wood seau" type="Label" parent="Interact Menu Etabli/Control"]
+[node name="wood seau" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 0
 offset_left = 750.0
 offset_top = 130.0
@@ -439,7 +439,7 @@ text = "xZ bois"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="stones seau" type="Label" parent="Interact Menu Etabli/Control"]
+[node name="stones seau" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 0
 offset_left = 751.0
 offset_top = 90.0
@@ -451,7 +451,7 @@ text = "xZ pierre(s)"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="repare_seau" type="Button" parent="Interact Menu Etabli/Control"]
+[node name="repare_seau" type="Button" parent="InteractMenuEtabli/Control"]
 self_modulate = Color(1, 0.635294, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -601,7 +601,7 @@ position = Vector2(0, 166.667)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_je2dd")
 
-[node name="Interract Label" parent="." instance=ExtResource("10_4m732")]
+[node name="InteractLabel" parent="." instance=ExtResource("10_4m732")]
 offset_left = -1900.0
 offset_top = -766.667
 offset_right = -603.0
@@ -614,7 +614,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 structured_text_bidi_override_options = [null]
 
-[node name="Repair label" parent="." instance=ExtResource("11_kb3ae")]
+[node name="RepairLabel" parent="." instance=ExtResource("11_kb3ae")]
 offset_left = -966.667
 offset_top = -1200.0
 offset_right = -311.667
@@ -625,16 +625,16 @@ theme_override_font_sizes/font_size = 100
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="s_durability" from="." to="Interact Menu Etabli" method="_on_etabli_s_durability"]
+[connection signal="s_durability" from="." to="InteractMenuEtabli" method="_on_etabli_s_durability"]
 [connection signal="s_durability" from="." to="RepairMenuEtabli" method="_on_etabli_s_durability"]
-[connection signal="s_max_durability" from="." to="Interact Menu Etabli" method="_on_etabli_s_max_durability"]
+[connection signal="s_max_durability" from="." to="InteractMenuEtabli" method="_on_etabli_s_max_durability"]
 [connection signal="s_max_durability" from="." to="RepairMenuEtabli" method="_on_etabli_s_max_durability"]
-[connection signal="pressed" from="Interact Menu Etabli/Control/close" to="Interact Menu Etabli" method="_on_close_pressed"]
-[connection signal="pressed" from="Interact Menu Etabli/Control/repare_hammer" to="Interact Menu Etabli" method="_on_sell_one_1_pressed"]
-[connection signal="pressed" from="Interact Menu Etabli/Control/repare_hache" to="Interact Menu Etabli" method="_on_sell_one_1_pressed"]
-[connection signal="pressed" from="Interact Menu Etabli/Control/repare_pioche" to="Interact Menu Etabli" method="_on_sell_one_1_pressed"]
-[connection signal="pressed" from="Interact Menu Etabli/Control/repare_fau" to="Interact Menu Etabli" method="_on_sell_one_1_pressed"]
-[connection signal="pressed" from="Interact Menu Etabli/Control/repare_seau" to="Interact Menu Etabli" method="_on_sell_one_1_pressed"]
+[connection signal="pressed" from="InteractMenuEtabli/Control/close" to="InteractMenuEtabli" method="_on_close_pressed"]
+[connection signal="pressed" from="InteractMenuEtabli/Control/repare_hammer" to="InteractMenuEtabli" method="_on_sell_one_1_pressed"]
+[connection signal="pressed" from="InteractMenuEtabli/Control/repare_hache" to="InteractMenuEtabli" method="_on_sell_one_1_pressed"]
+[connection signal="pressed" from="InteractMenuEtabli/Control/repare_pioche" to="InteractMenuEtabli" method="_on_sell_one_1_pressed"]
+[connection signal="pressed" from="InteractMenuEtabli/Control/repare_fau" to="InteractMenuEtabli" method="_on_sell_one_1_pressed"]
+[connection signal="pressed" from="InteractMenuEtabli/Control/repare_seau" to="InteractMenuEtabli" method="_on_sell_one_1_pressed"]
 [connection signal="pressed" from="RepairMenuEtabli/Control/close" to="RepairMenuEtabli" method="_on_close_pressed"]
 [connection signal="pressed" from="RepairMenuEtabli/Control/repair" to="RepairMenuEtabli" method="_on_repair_pressed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -6,8 +6,8 @@ func _ready():
 	reparable = true
 	interactable = true
 	corresponding_item_name = ""
-	repair_label = get_node("Repair label")
-	interact_label = get_node("Interract Label")
+	repair_label = $RepairLabel
+	interact_label = $InteractLabel
 	super()
 
 
@@ -27,11 +27,11 @@ func animate():
 
 func interact():
 	get_tree().paused = true
-	get_node("Interact Menu Etabli/Anim").play("TransIN")
+	$InteractMenuEtabli/Anim.play("TransIN")
 
 func repair():
 	get_tree().paused = true
-	get_node("RepairMenuEtabli/Anim").play("TransIN")
+	$RepairMenuEtabli/Anim.play("TransIN")
 
 func _on_world_timer_timeout():
 	timer_timeout()
