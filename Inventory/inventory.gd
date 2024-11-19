@@ -123,4 +123,11 @@ func sellN(item: Item, all: bool, unit_price: int) -> int :
 	Global.money += unit_price * total
 	updated.emit()
 	return total
+
+#Returns the tool with the given name if it is in the inventory, null otherwise
+func get_tool(name: String) -> Tool:
+	for slot in slots:
+		if slot.item && slot.item.name == name:
+			return slot.item as Tool
+	return null
 	

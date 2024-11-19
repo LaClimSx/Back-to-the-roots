@@ -67,3 +67,12 @@ func fillBucket(amount: int) -> void:
 			0: texture = mid0
 			1: texture = mid1
 			2: texture = mid2
+	
+func repair() -> void:
+	super()
+	match (quantity):
+		0: texture = good0
+		1: texture = good1
+		2: texture = good2
+		3: texture = good3
+		4: texture = good4
