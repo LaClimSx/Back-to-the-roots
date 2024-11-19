@@ -1,18 +1,13 @@
 extends Building
 
-signal actual_exchange(p: int)
-var exchange : int
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	exchange = 3
 	reparable = true
 	interactable = true
 	corresponding_item_name = ""
 	repair_label = $RepairLabel
 	interact_label = $InteractLabel
-	actual_exchange.emit(exchange)
 	super()
 
 
@@ -26,8 +21,6 @@ func animate():
 			$AnimatedSprite2D.play("moulin_bon")
 		STATE.mid:
 			$AnimatedSprite2D.play("moulin_abimé")
-			exchange = 1
-			actual_exchange.emit(exchange)
 		STATE.broken:
 			$AnimatedSprite2D.play("moulin_cassé")
 			interact_label.hide()
@@ -35,6 +28,7 @@ func animate():
 func interact():
 	get_tree().paused = true
 	$InteractMenuMoulin/Anim.play("TransIN")
+	$InteractMenuMoulin.update()
 
 func repair():
 	get_tree().paused = true

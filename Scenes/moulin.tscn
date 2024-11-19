@@ -32,7 +32,7 @@
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="29_3n3i5"]
 [ext_resource type="PackedScene" uid="uid://duq7v03be7qs2" path="res://Scenes/repair_label.tscn" id="31_iky3b"]
 [ext_resource type="Script" path="res://Scenes/interact_menu_moulin.gd" id="32_yqon2"]
-[ext_resource type="Texture2D" uid="uid://c13aycu3v6uv5" path="res://Assets/Items/flour.png" id="33_gunke"]
+[ext_resource type="Texture2D" uid="uid://dxi0rmohf44ub" path="res://Assets/Items/wheat_item.png" id="33_lo44j"]
 [ext_resource type="PackedScene" uid="uid://dhpl8urm0uvxa" path="res://Scenes/repair_menu.tscn" id="34_s55y8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5ifjn"]
@@ -296,7 +296,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="price" type="Label" parent="InteractMenuMoulin/Control"]
+[node name="exchangeRate" type="Label" parent="InteractMenuMoulin/Control"]
 layout_mode = 0
 offset_left = 223.0
 offset_top = 245.5
@@ -304,15 +304,15 @@ offset_right = 673.0
 offset_bottom = 300.5
 theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 45
-text = "Prix unitaire: x$"
+text = "Taux d'échange 1:3"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="transformation1" type="Sprite2D" parent="InteractMenuMoulin/Control"]
-position = Vector2(441, 145)
-scale = Vector2(2.055, 2.055)
-texture = ExtResource("33_gunke")
+position = Vector2(455, 167)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("33_lo44j")
 
 [node name="plus" type="Button" parent="InteractMenuMoulin/Control"]
 layout_mode = 1
@@ -344,7 +344,7 @@ theme_override_font_sizes/font_size = 45
 text = "-"
 autowrap_mode = 3
 
-[node name="sell one1" type="Button" parent="InteractMenuMoulin/Control"]
+[node name="sell" type="Button" parent="InteractMenuMoulin/Control"]
 self_modulate = Color(1, 0.635294, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -362,7 +362,7 @@ theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 40
 text = "Vendre"
 
-[node name="numbre" type="Label" parent="InteractMenuMoulin/Control"]
+[node name="number" type="Label" parent="InteractMenuMoulin/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.507
@@ -381,8 +381,8 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="RepairMenu" parent="." instance=ExtResource("34_s55y8")]
+visible = false
 
-[connection signal="actual_exchange" from="." to="InteractMenuMoulin" method="_on_moulin_actual_exchange"]
 [connection signal="s_state" from="." to="InteractMenuMoulin" method="_on_moulin_s_state"]
 [connection signal="s_state" from="." to="RepairMenu" method="_on_s_state"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
@@ -390,5 +390,5 @@ autowrap_mode = 3
 [connection signal="pressed" from="InteractMenuMoulin/Control/close" to="InteractMenuMoulin" method="_on_close_pressed"]
 [connection signal="pressed" from="InteractMenuMoulin/Control/plus" to="InteractMenuMoulin" method="_on_plus_pressed"]
 [connection signal="pressed" from="InteractMenuMoulin/Control/moins" to="InteractMenuMoulin" method="_on_moins_pressed"]
-[connection signal="pressed" from="InteractMenuMoulin/Control/sell one1" to="InteractMenuMoulin" method="_on_sell_one_1_pressed"]
+[connection signal="pressed" from="InteractMenuMoulin/Control/sell" to="InteractMenuMoulin" method="_on_sell_pressed"]
 [connection signal="repair" from="RepairMenu" to="." method="repair_itself"]

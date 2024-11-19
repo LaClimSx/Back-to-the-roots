@@ -98,10 +98,10 @@ func use_item_at_index(index: int) -> void:
 			remove_at_index(index)
 			
 #Returns the amount of said item in the inventory, -1 if none
-func find_item(itemName: String) -> int:
+func find_item(item: Item) -> int:
 	var total : int = 0
 	for slot in slots:
-		if slot.item && slot.item.name == itemName:
+		if slot.item && slot.item.name == item.name:
 			total += slot.amount
 	return total if total > 0 else -1
 
