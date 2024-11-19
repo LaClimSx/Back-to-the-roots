@@ -28,21 +28,16 @@ func _on_close_pressed() -> void:
 func _on_moulin_actual_exchange(p: int) -> void:
 	exchange = p
 
-
 func _on_moulin_actual_health_moulin(h: int) -> void:
 	health = h
 
-
 func _on_moulin_max_health_moulin(mh: int) -> void:
 	max_health = mh
-
 
 func _on_moins_pressed() -> void:
 	var new = int($Control/numbre.text) - 1
 	$Control/numbre.text = str(new.clamp(new, 0,  max))
 	
-
-
 func _on_plus_pressed() -> void:
 	var max = inventory_gui.find_item("wheat")
 	if max == -1:
@@ -51,6 +46,7 @@ func _on_plus_pressed() -> void:
 		var new = int($Control/numbre.text + 1)
 		$Control/numbre.text = str(new.clamp(new, 0,  max))
 
+#TODO enlever durabilité du batiment
 func _on_sell_one_1_pressed() -> void:
 	var nb = $Control/numbre 
 	inventory_gui.insert_item(flour, nb* exchange)

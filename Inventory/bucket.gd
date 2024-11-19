@@ -19,7 +19,7 @@ func use(player: Player) -> void:
 	pass
 	
 func useBucket(water_amount: int) -> int:
-<S	if quantity <= 0 || state == STATE.broken: return 0
+	if quantity <= 0 || state == STATE.broken: return 0
 	if durability > 0:
 		durability -= 1
 		if durability <= maxDurability/3:

@@ -22,7 +22,7 @@ func _on_close_pressed() -> void:
 
 
 func _on_repair_pressed() -> void:
-	# TODO faire des bails avec les ressources
+	# TODO faire des bails avec les ressources + enlever durabilité marteau
 	get_node("Anim").play("TransOUT")
 	get_tree().paused = false
 
