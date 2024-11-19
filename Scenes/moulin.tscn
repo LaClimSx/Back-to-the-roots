@@ -194,7 +194,7 @@ radius = 376.563
 y_sort_enabled = true
 scale = Vector2(0.1, 0.1)
 script = ExtResource("1_lnxlr")
-max_durability = 50
+max_durability = 2000
 loss_dura_by_tic = 500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyrft1ix47r6b"]
+[gd_scene load_steps=4 format=3 uid="uid://dyrft1ix47r6b"]
 
+[ext_resource type="Script" path="res://Scripts/quarry.gd" id="1_3y8u3"]
 [ext_resource type="Texture2D" uid="uid://c50h727ec8lmp" path="res://Assets/Bâtiments/carrière/stone_quarry.png" id="1_rtl5c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_004b1"]
@@ -7,6 +8,7 @@ radius = 53.0
 height = 126.0
 
 [node name="Quarry" type="StaticBody2D"]
+script = ExtResource("1_3y8u3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_rtl5c")

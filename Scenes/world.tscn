@@ -110,11 +110,12 @@ position = Vector2(315.221, 305.256)
 [node name="Quarry" parent="." instance=ExtResource("13_av1ix")]
 position = Vector2(802.562, 317.266)
 
-[node name="worldTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="Forest" parent="." instance=ExtResource("14_fk78e")]
 position = Vector2(811.568, 478.401)
+scale = Vector2(1, 1)
+
+[node name="worldTimer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="moneyUpdated" from="CanvasLayer/Inventory" to="CanvasLayer" method="_on_inventory_money_updated"]
 [connection signal="timeout" from="worldTimer" to="LayerGroup/Crops" method="_on_world_timer_timeout"]

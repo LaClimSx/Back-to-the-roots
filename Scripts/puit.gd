@@ -1,6 +1,5 @@
 extends Building
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	interactable = true
@@ -9,7 +8,6 @@ func _ready():
 	repair_label = get_node("Repair label")
 	interact_label = null
 	super()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
