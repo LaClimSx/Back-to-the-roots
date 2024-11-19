@@ -155,13 +155,13 @@ theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Interact Menu" type="CanvasLayer" parent="."]
+[node name="InteractMenu" type="CanvasLayer" parent="."]
 process_mode = 3
 offset = Vector2(0, -600)
 transform = Transform2D(1, 0, 0, 1, 0, -600)
 script = ExtResource("8_jwp42")
 
-[node name="Panel" type="Panel" parent="Interact Menu"]
+[node name="Panel" type="Panel" parent="InteractMenu"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.498
@@ -174,13 +174,13 @@ offset_bottom = 245.296
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Anim" type="AnimationPlayer" parent="Interact Menu"]
+[node name="Anim" type="AnimationPlayer" parent="InteractMenu"]
 libraries = {
 "": SubResource("AnimationLibrary_jci3i")
 }
 autoplay = "RESET"
 
-[node name="Control" type="Control" parent="Interact Menu"]
+[node name="Control" type="Control" parent="InteractMenu"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 129.0
@@ -188,7 +188,7 @@ offset_top = 78.0
 offset_right = 1014.0
 offset_bottom = 567.0
 
-[node name="close" type="Button" parent="Interact Menu/Control"]
+[node name="close" type="Button" parent="InteractMenu/Control"]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 0
 offset_left = 644.0
@@ -198,7 +198,7 @@ offset_bottom = 43.0
 theme_override_font_sizes/font_size = 21
 text = "X"
 
-[node name="Sell" type="Label" parent="Interact Menu/Control"]
+[node name="Sell" type="Label" parent="InteractMenu/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -215,7 +215,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="price" type="Label" parent="Interact Menu/Control"]
+[node name="price" type="Label" parent="InteractMenu/Control"]
 layout_mode = 0
 offset_left = 223.0
 offset_top = 245.5
@@ -228,12 +228,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="transformation1" type="Sprite2D" parent="Interact Menu/Control"]
+[node name="transformation1" type="Sprite2D" parent="InteractMenu/Control"]
 position = Vector2(451, 177.5)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("10_htk6e")
 
-[node name="sell all1" type="Button" parent="Interact Menu/Control"]
+[node name="sell all1" type="Button" parent="InteractMenu/Control"]
 self_modulate = Color(1, 1, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -251,7 +251,7 @@ theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 40
 text = "Sell All"
 
-[node name="sell one1" type="Button" parent="Interact Menu/Control"]
+[node name="sell one1" type="Button" parent="InteractMenu/Control"]
 self_modulate = Color(1, 0.635294, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -394,15 +394,15 @@ theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 40
 text = "Repair"
 
-[connection signal="actual_price" from="." to="Interact Menu" method="_on_house_actual_price"]
+[connection signal="actual_price" from="." to="InteractMenu" method="_on_house_actual_price"]
 [connection signal="s_durability" from="." to="Door" method="_on_house_s_durability"]
 [connection signal="s_durability" from="." to="RepairMenu" method="_on_house_s_durability"]
 [connection signal="s_max_durability" from="." to="Door" method="_on_house_s_max_durability"]
 [connection signal="s_max_durability" from="." to="RepairMenu" method="_on_house_s_max_durability"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="pressed" from="Interact Menu/Control/close" to="Interact Menu" method="_on_close_pressed"]
-[connection signal="pressed" from="Interact Menu/Control/sell all1" to="Interact Menu" method="_on_sell_all_1_pressed"]
-[connection signal="pressed" from="Interact Menu/Control/sell one1" to="Interact Menu" method="_on_sell_one_1_pressed"]
+[connection signal="pressed" from="InteractMenu/Control/close" to="InteractMenu" method="_on_close_pressed"]
+[connection signal="pressed" from="InteractMenu/Control/sell all1" to="InteractMenu" method="_on_sell_all_1_pressed"]
+[connection signal="pressed" from="InteractMenu/Control/sell one1" to="InteractMenu" method="_on_sell_one_1_pressed"]
 [connection signal="pressed" from="RepairMenu/Control/close" to="RepairMenu" method="_on_close_pressed"]
 [connection signal="pressed" from="RepairMenu/Control/repair" to="RepairMenu" method="_on_repair_pressed"]

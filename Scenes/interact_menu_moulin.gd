@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 
 
 func _on_close_pressed() -> void:
-	get_node("Anim").play("TransOUT")
+	$Anim.play("TransOUT")
 	get_tree().paused = false
 
 

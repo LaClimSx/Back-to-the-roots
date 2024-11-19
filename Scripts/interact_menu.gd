@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 
 
 func _on_close_pressed() -> void:
-	get_node("Anim").play("TransOUT")
+	$Anim.play("TransOUT")
 	get_tree().paused = false
 
 #TODO enlever durabilité du batiment
@@ -31,7 +31,7 @@ func _on_sell_one_1_pressed() -> void:
 func _on_sell_all_1_pressed() -> void:
 	#faire des bails avec les ressources
 	inventory_gui.sell_item(flour, true, price)
-	get_node("Anim").play("TransOUT")
+	$Anim.play("TransOUT")
 	get_tree().paused = false
 
 

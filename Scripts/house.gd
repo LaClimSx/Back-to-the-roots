@@ -34,12 +34,11 @@ func animate():
 
 func interact():
 	get_tree().paused = true
-	get_node("Interact Menu/Anim").play("TransIN")
+	$InteractMenu/Anim.play("TransIN")
 
 func repair():
 	get_tree().paused = true
-	get_node("RepairMenu/Anim").play("TransIN")
-
+	$RepairMenu/Anim.play("TransIN")
 
 func _on_world_timer_timeout():
 	timer_timeout()

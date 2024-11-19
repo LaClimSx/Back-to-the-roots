@@ -231,13 +231,13 @@ theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Interact Menu Moulin" type="CanvasLayer" parent="."]
+[node name="InteractMenuMoulin" type="CanvasLayer" parent="."]
 process_mode = 3
 offset = Vector2(0, -600)
 transform = Transform2D(1, 0, 0, 1, 0, -600)
 script = ExtResource("32_yqon2")
 
-[node name="Panel" type="Panel" parent="Interact Menu Moulin"]
+[node name="Panel" type="Panel" parent="InteractMenuMoulin"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.498
@@ -250,13 +250,13 @@ offset_bottom = 245.296
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Anim" type="AnimationPlayer" parent="Interact Menu Moulin"]
+[node name="Anim" type="AnimationPlayer" parent="InteractMenuMoulin"]
 libraries = {
 "": SubResource("AnimationLibrary_ril8e")
 }
 autoplay = "RESET"
 
-[node name="Control" type="Control" parent="Interact Menu Moulin"]
+[node name="Control" type="Control" parent="InteractMenuMoulin"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 129.0
@@ -264,7 +264,7 @@ offset_top = 78.0
 offset_right = 1014.0
 offset_bottom = 567.0
 
-[node name="close" type="Button" parent="Interact Menu Moulin/Control"]
+[node name="close" type="Button" parent="InteractMenuMoulin/Control"]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 0
 offset_left = 644.0
@@ -274,7 +274,7 @@ offset_bottom = 43.0
 theme_override_font_sizes/font_size = 21
 text = "X"
 
-[node name="Sell" type="Label" parent="Interact Menu Moulin/Control"]
+[node name="Sell" type="Label" parent="InteractMenuMoulin/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -291,7 +291,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="price" type="Label" parent="Interact Menu Moulin/Control"]
+[node name="price" type="Label" parent="InteractMenuMoulin/Control"]
 layout_mode = 0
 offset_left = 223.0
 offset_top = 245.5
@@ -304,12 +304,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="transformation1" type="Sprite2D" parent="Interact Menu Moulin/Control"]
+[node name="transformation1" type="Sprite2D" parent="InteractMenuMoulin/Control"]
 position = Vector2(441, 145)
 scale = Vector2(2.055, 2.055)
 texture = ExtResource("33_gunke")
 
-[node name="plus" type="Button" parent="Interact Menu Moulin/Control"]
+[node name="plus" type="Button" parent="InteractMenuMoulin/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 4.941
@@ -324,7 +324,7 @@ theme_override_font_sizes/font_size = 45
 text = "+"
 autowrap_mode = 3
 
-[node name="moins" type="Button" parent="Interact Menu Moulin/Control"]
+[node name="moins" type="Button" parent="InteractMenuMoulin/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.42
@@ -339,7 +339,7 @@ theme_override_font_sizes/font_size = 45
 text = "-"
 autowrap_mode = 3
 
-[node name="sell one1" type="Button" parent="Interact Menu Moulin/Control"]
+[node name="sell one1" type="Button" parent="InteractMenuMoulin/Control"]
 self_modulate = Color(1, 0.635294, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -357,7 +357,7 @@ theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 40
 text = "Vendre"
 
-[node name="numbre" type="Label" parent="Interact Menu Moulin/Control"]
+[node name="numbre" type="Label" parent="InteractMenuMoulin/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.507
@@ -506,15 +506,15 @@ text = "Repair"
 position = Vector2(-10, 410)
 shape = SubResource("CircleShape2D_rj2np")
 
-[connection signal="actual_exchange" from="." to="Interact Menu Moulin" method="_on_moulin_actual_exchange"]
-[connection signal="s_durability" from="." to="Interact Menu Moulin" method="_on_moulin_s_durability"]
+[connection signal="actual_exchange" from="." to="InteractMenuMoulin" method="_on_moulin_actual_exchange"]
+[connection signal="s_durability" from="." to="InteractMenuMoulin" method="_on_moulin_s_durability"]
 [connection signal="s_durability" from="." to="RepairMenuMoulin" method="_on_moulin_s_durability"]
-[connection signal="s_max_durability" from="." to="Interact Menu Moulin" method="_on_moulin_s_max_durability"]
+[connection signal="s_max_durability" from="." to="InteractMenuMoulin" method="_on_moulin_s_max_durability"]
 [connection signal="s_max_durability" from="." to="RepairMenuMoulin" method="_on_moulin_s_max_durability"]
-[connection signal="pressed" from="Interact Menu Moulin/Control/close" to="Interact Menu Moulin" method="_on_close_pressed"]
-[connection signal="pressed" from="Interact Menu Moulin/Control/plus" to="Interact Menu Moulin" method="_on_plus_pressed"]
-[connection signal="pressed" from="Interact Menu Moulin/Control/moins" to="Interact Menu Moulin" method="_on_moins_pressed"]
-[connection signal="pressed" from="Interact Menu Moulin/Control/sell one1" to="Interact Menu Moulin" method="_on_sell_one_1_pressed"]
+[connection signal="pressed" from="InteractMenuMoulin/Control/close" to="InteractMenuMoulin" method="_on_close_pressed"]
+[connection signal="pressed" from="InteractMenuMoulin/Control/plus" to="InteractMenuMoulin" method="_on_plus_pressed"]
+[connection signal="pressed" from="InteractMenuMoulin/Control/moins" to="InteractMenuMoulin" method="_on_moins_pressed"]
+[connection signal="pressed" from="InteractMenuMoulin/Control/sell one1" to="InteractMenuMoulin" method="_on_sell_one_1_pressed"]
 [connection signal="pressed" from="RepairMenuMoulin/Control/close" to="RepairMenuMoulin" method="_on_close_pressed"]
 [connection signal="pressed" from="RepairMenuMoulin/Control/repair" to="RepairMenuMoulin" method="_on_repair_pressed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

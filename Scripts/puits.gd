@@ -5,7 +5,7 @@ func _ready():
 	interactable = true
 	corresponding_item_name = "bucket"
 	reparable = true
-	repair_label = get_node("RepairLabel")
+	repair_label = $RepairLabel
 	interact_label = null
 	super()
 
