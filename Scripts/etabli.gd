@@ -31,7 +31,7 @@ func interact():
 
 func repair():
 	get_tree().paused = true
-	$RepairMenuEtabli/Anim.play("TransIN")
+	$RepairMenu/Anim.play("TransIN")
 
 func _on_world_timer_timeout():
 	timer_timeout()

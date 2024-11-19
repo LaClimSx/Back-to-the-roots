@@ -43,4 +43,4 @@ func timer_timeout() -> void:
 	if state == STATE.broken: return
 	durability -= loss_dura_by_tic #Here the loss is negative so durability increases
 	durability = clamp(durability, 0, max_durability)
-	s_durability.emit(durability)
+	s_state.emit(durability)

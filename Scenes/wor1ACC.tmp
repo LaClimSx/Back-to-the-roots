@@ -95,7 +95,7 @@ grow_horizontal = 0
 theme = ExtResource("10_oukug")
 text = "Argent : 0$"
 
-[node name="Puits" parent="." instance=ExtResource("9_tkrlr")]
+[node name="Puit" parent="." instance=ExtResource("9_tkrlr")]
 position = Vector2(268.188, 432.362)
 
 [node name="Etabli" parent="." instance=ExtResource("10_ip7p4")]
@@ -118,7 +118,7 @@ autostart = true
 
 [connection signal="moneyUpdated" from="CanvasLayer/Inventory" to="CanvasLayer" method="_on_inventory_money_updated"]
 [connection signal="timeout" from="worldTimer" to="LayerGroup/Crops" method="_on_world_timer_timeout"]
-[connection signal="timeout" from="worldTimer" to="Puits" method="timer_timeout"]
+[connection signal="timeout" from="worldTimer" to="Puit" method="timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Etabli" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Moulin" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="House" method="_on_world_timer_timeout"]
