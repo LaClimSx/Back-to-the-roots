@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var ground : TileMapLayer = $LayerGroup/Ground
 @onready var crops : TileMapLayer = $LayerGroup/Crops
-@onready var wheat_item = preload("res://Inventory/Items/wheat.tres")
+@onready var wheat_item : Item = preload("res://Inventory/Items/wheat.tres")
 @onready var inventory_gui : Control = Global.inventory_gui
 
 const TILEMAP_SCALING : float = 0.16

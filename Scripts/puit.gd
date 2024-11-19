@@ -28,4 +28,4 @@ func interact():
 		selected_item.fillBucket(4)
 	elif state == STATE.mid:
 		selected_item.fillBucket(2)
-	Global.inventory_gui.update()
+	inventory_gui.update()
