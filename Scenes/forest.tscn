@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://byvp6vqdlhxph"]
+
+[ext_resource type="Texture2D" uid="uid://br8gn7ro1egxw" path="res://Assets/Bâtiments/forêt/tree.png" id="1_6b7he"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_004b1"]
+radius = 62.0
+height = 124.0
+
+[node name="Forest" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6b7he")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(25, 47, -26, 48, -27, 44, -17, 39, -12, 28, -11, 16, -40, 2, -43, -19, -33, -42, -10, -47, 13, -46, 28, -45, 42, -12, 26, 7, 18, 12, 8, 18, 11, 34, 17, 42, 24, 42)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_004b1")
