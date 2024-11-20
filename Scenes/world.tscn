@@ -131,6 +131,7 @@ position = Vector2(551.386, 458.384)
 autostart = true
 
 [connection signal="moneyUpdated" from="CanvasLayer/Inventory" to="CanvasLayer" method="_on_inventory_money_updated"]
+[connection signal="timeout" from="worldTimer" to="." method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="LayerGroup/Crops" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Puits" method="timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Etabli" method="_on_world_timer_timeout"]
