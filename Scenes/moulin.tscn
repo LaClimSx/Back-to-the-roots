@@ -385,6 +385,7 @@ autowrap_mode = 3
 [connection signal="s_state" from="." to="RepairMenu" method="_on_s_state"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="damage_building" from="InteractMenuMoulin" to="." method="damage_itself"]
 [connection signal="pressed" from="InteractMenuMoulin/Control/close" to="InteractMenuMoulin" method="_on_close_pressed"]
 [connection signal="pressed" from="InteractMenuMoulin/Control/plus" to="InteractMenuMoulin" method="_on_plus_pressed"]
 [connection signal="pressed" from="InteractMenuMoulin/Control/moins" to="InteractMenuMoulin" method="_on_moins_pressed"]

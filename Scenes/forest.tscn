@@ -9,7 +9,7 @@ height = 124.0
 
 [node name="Forest" type="StaticBody2D"]
 script = ExtResource("1_7xm8v")
-max_durability = 100
+max_durability = 1000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_6b7he")

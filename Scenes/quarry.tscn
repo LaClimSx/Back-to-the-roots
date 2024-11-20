@@ -9,8 +9,7 @@ height = 126.0
 
 [node name="Quarry" type="StaticBody2D"]
 script = ExtResource("1_3y8u3")
-max_durability = 100
-loss_dura_by_tic = 0
+max_durability = 1200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_rtl5c")

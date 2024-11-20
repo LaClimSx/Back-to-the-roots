@@ -30,16 +30,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:
-	if durability > max_durability/2:
-		state = STATE.good
-		s_state.emit(state)
-	elif durability == 0:
-		state = STATE.broken
-		s_state.emit(state)
-	else:
-		state = STATE.mid
-		s_state.emit(state)
-		
+	checkState()
 	animate()
 
 	selected_item = inventory_gui.get_selected_item()
@@ -63,8 +54,21 @@ func _process(delta) -> void:
 	checkRepair(holds_working_hammer)
 
 
+func checkState() -> void:
+	if durability > max_durability/2:
+		state = STATE.good
+		s_state.emit(state)
+	elif durability == 0:
+		state = STATE.broken
+		s_state.emit(state)
+	else:
+		state = STATE.mid
+		s_state.emit(state)
+	
+
 func checkInteraction() -> void:
 	if interactable && player_inside && Input.is_action_just_released("Interact") && state > 0:
+		print("wtf")
 		if corresponding_item_name :
 			if selected_item && selected_item.name == corresponding_item_name:
 				interact()
@@ -78,8 +82,7 @@ func checkRepair(holds_working_hammer: bool) -> void:
 
 
 func timer_timeout() -> void:
-	durability -= LOSS_DURA_PER_TICK
-	durability = clamp(durability, 0, max_durability)
+	durability = clamp(durability - LOSS_DURA_PER_TICK, 0, max_durability)
 
 func enter_area(body : Node2D) -> void:
 	if body.name == "Player":
@@ -110,4 +113,4 @@ func repair_itself() -> void:
 		
 func damage_itself() -> void: #TODO: Check if call to process works and if substracting an 8th is a good idea
 	durability = clamp(durability - max_durability/8, 0, max_durability)
-	_process(0)
+	checkState()

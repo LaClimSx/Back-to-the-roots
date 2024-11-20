@@ -24,10 +24,12 @@ func animate():
 			repair_label.hide()
 
 func interact():
+	print("interacting")
 	if state == STATE.good:
 		selected_item.fillBucket(4)
 	elif state == STATE.mid:
 		selected_item.fillBucket(2)
+	damage_itself()
 	inventory_gui.update()
 	
 func repair():

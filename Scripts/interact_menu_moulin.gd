@@ -9,6 +9,8 @@ var state: Building.STATE
 var quantity: int = 0
 var max: int
 
+signal damage_building
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	updateLabel()
@@ -45,8 +47,8 @@ func _on_plus_pressed() -> void:
 	quantity = clamp(quantity + 1, 0, max) if max != -1 else 0
 	updateLabel()
 
-#TODO enlever durabilité du batiment
 func _on_sell_pressed() -> void:
 	inventory_gui.remove_item(wheat, quantity)
 	inventory_gui.insert_item(flour, (quantity * exchange))
+	damage_building.emit()
 	update()

@@ -3,8 +3,8 @@ extends CanvasLayer
 @onready var wood = preload("res://Inventory/Items/stick.tres")
 @onready var stones = preload("res://Inventory/Items/stone.tres")
 
-
 var inventory_gui
+signal damage_building
 
 var nb_wood 
 var nb_stone
@@ -18,11 +18,11 @@ var outil_cost_stone = 4
 var outil_cost_wood = 2
 var seau_stone = 0
 
-var hache_cost = Vector2(0,0)
-var pioche_cost
-var fau_cost
-var seau_cost
-var marteau_cost
+var hache_cost: Vector2i = Vector2i(0,0)
+var pioche_cost: Vector2i = Vector2i(0,0)
+var fau_cost: Vector2i = Vector2i(0,0)
+var seau_cost: Vector2i = Vector2i(0,0)
+var marteau_cost: Vector2i = Vector2i(0,0)
 
 var marteau 
 var hache 
@@ -159,28 +159,36 @@ func _on_repare_hammer_pressed() -> void:
 	marteau.repair()
 	inventory_gui.remove_item(wood, marteau_cost.x)
 	inventory_gui.remove_item(stones, marteau_cost.y)
+	damage_building.emit()
 
 
 func _on_repare_hache_pressed() -> void:
-	hache.repair()
-	inventory_gui.remove_item(wood, hache_cost.x)
-	inventory_gui.remove_item(stones, hache_cost.y)
+	if hache_cost != Vector2i(0,0) : 
+		hache.repair()
+		inventory_gui.remove_item(wood, hache_cost.x)
+		inventory_gui.remove_item(stones, hache_cost.y)
+		damage_building.emit()
 
 
 func _on_repare_pioche_pressed() -> void:
-	pioche.repair()
-	inventory_gui.remove_item(wood, pioche_cost.x)
-	inventory_gui.remove_item(stones, pioche_cost.y)
+	if pioche_cost != Vector2i(0, 0):
+		pioche.repair()
+		inventory_gui.remove_item(wood, pioche_cost.x)
+		inventory_gui.remove_item(stones, pioche_cost.y)
+		damage_building.emit()
 
 
 func _on_repare_fau_pressed() -> void:
-	fau.repair()
-	inventory_gui.remove_item(wood, fau_cost.x)
-	inventory_gui.remove_item(stones, fau_cost.y)
-	print("ffffffffff")
+	if fau_cost != Vector2i(0, 0):
+		fau.repair()
+		inventory_gui.remove_item(wood, fau_cost.x)
+		inventory_gui.remove_item(stones, fau_cost.y)
+		damage_building.emit()
 
 
 func _on_repare_seau_pressed() -> void:
-	seau.repair()
-	inventory_gui.remove_item(wood, seau_cost.x)
-	inventory_gui.remove_item(stones, seau_cost.y)
+	if seau_cost != Vector2i(0, 0):
+		seau.repair()
+		inventory_gui.remove_item(wood, seau_cost.x)
+		inventory_gui.remove_item(stones, seau_cost.y)
+		damage_building.emit()
