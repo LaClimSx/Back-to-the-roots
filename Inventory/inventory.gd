@@ -57,7 +57,7 @@ func removeN(item: Item, n: int) -> int:
 	var item_slots = slots.filter(func(slot): return slot.item == item)
 	for slot in item_slots:
 		if left > 0:
-			if slot.amount >= left:
+			if slot.amount > left:
 				slot.amount -= left
 				updated.emit()
 				return n
