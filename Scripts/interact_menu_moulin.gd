@@ -17,7 +17,10 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if(inventory_gui.find_item(wheat)==-1):
+		$Control/sell.disabled = true
+	else:
+		$Control/sell.disabled = false
 
 func update() -> void:
 	max = inventory_gui.find_item(wheat)
