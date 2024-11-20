@@ -3,6 +3,8 @@ extends Node2D
 @onready var ground : TileMapLayer = $LayerGroup/Ground
 @onready var crops : TileMapLayer = $LayerGroup/Crops
 @onready var wheat_item : Item = preload("res://Inventory/Items/wheat.tres")
+@onready var stick_item: Item = preload("res://Inventory/Items/stick.tres")
+@onready var stone_item: Item = preload("res://Inventory/Items/stone.tres")
 @onready var inventory_gui : Control = Global.inventory_gui
 
 const TILEMAP_SCALING : float = 0.25
@@ -86,3 +88,21 @@ func checkActions():
 			crops.set_cell(viewing_tile,1,Vector2i(0,0))
 			inventory_gui.use_item()
 			print("Planted")
+
+#This function does not check every softlock possibilty but only 2
+func checkSoftLock() -> void:
+	var hammer : Tool = inventory_gui.get_tool("hammer")
+	if hammer:
+		#House, workbench and hammer broken -> can't finish the game
+		if $House.state == Building.STATE.broken && $Etabli.state == Building.STATE.broken && hammer.state == Tool.STATE.broken:
+			print("SOFTLOCK")
+	
+	#If the house is broken and you'll never have enough resources to repair it -> softlock
+	var cost_to_repair_house : Vector2i = Vector2i(4,2)
+	if $House.state == Building.STATE.broken && (($Forest.state == Building.STATE.broken && inventory_gui.find_item(stick_item) < cost_to_repair_house[0]) || ($Quarry.state == Building.STATE.broken && inventory_gui.find_item(stone_item) < cost_to_repair_house[1])):
+		print("SOFTLOCK")
+	
+
+
+func _on_world_timer_timeout():
+	checkSoftLock()
