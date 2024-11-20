@@ -95,12 +95,12 @@ func checkSoftLock() -> void:
 	if hammer:
 		#House, workbench and hammer broken -> can't finish the game
 		if $House.state == Building.STATE.broken && $Etabli.state == Building.STATE.broken && hammer.state == Tool.STATE.broken:
-			print("SOFTLOCK")
+			print("SOFTLOCK1")
 	
 	#If the house is broken and you'll never have enough resources to repair it -> softlock
 	var cost_to_repair_house : Vector2i = Vector2i(4,2)
 	if $House.state == Building.STATE.broken && (($Forest.state == Building.STATE.broken && inventory_gui.find_item(stick_item) < cost_to_repair_house[0]) || ($Quarry.state == Building.STATE.broken && inventory_gui.find_item(stone_item) < cost_to_repair_house[1])):
-		print("SOFTLOCK")
+		print("SOFTLOCK2") #TODO: Check that this actually works
 	
 
 
