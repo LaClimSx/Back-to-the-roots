@@ -2,8 +2,8 @@ class_name Building extends StaticBody2D
 
 signal s_state(s: STATE)
 
-@export var max_durability : int = 5000
-@export var loss_dura_by_tic : int = 100
+@export var max_durability : int = 1800
+const LOSS_DURA_PER_TICK: int = 10
 var durability = max_durability
 var player_inside : bool = false
 
@@ -30,16 +30,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:
-	if durability > max_durability/2:
-		state = STATE.good
-		s_state.emit(state)
-	elif durability == 0:
-		state = STATE.broken
-		s_state.emit(state)
-	else:
-		state = STATE.mid
-		s_state.emit(state)
-		
+	checkState()
 	animate()
 
 	selected_item = inventory_gui.get_selected_item()
@@ -63,6 +54,18 @@ func _process(delta) -> void:
 	checkRepair(holds_working_hammer)
 
 
+func checkState() -> void:
+	if durability > max_durability/2:
+		state = STATE.good
+		s_state.emit(state)
+	elif durability == 0:
+		state = STATE.broken
+		s_state.emit(state)
+	else:
+		state = STATE.mid
+		s_state.emit(state)
+	
+
 func checkInteraction() -> void:
 	if interactable && player_inside && Input.is_action_just_released("Interact") && state > 0:
 		if corresponding_item_name :
@@ -78,8 +81,7 @@ func checkRepair(holds_working_hammer: bool) -> void:
 
 
 func timer_timeout() -> void:
-	durability -= loss_dura_by_tic
-	durability = clamp(durability, 0, max_durability)
+	durability = clamp(durability - LOSS_DURA_PER_TICK, 0, max_durability)
 
 func enter_area(body : Node2D) -> void:
 	if body.name == "Player":
@@ -107,3 +109,8 @@ func repair_itself() -> void:
 		durability = max_durability
 		state = STATE.good
 		s_state.emit(state)
+		
+func damage_itself() -> void: #TODO: Check if call to process works and if substracting an 8th is a good idea
+	durability = clamp(durability - max_durability/8, 0, max_durability)
+	checkState()
+	animate()

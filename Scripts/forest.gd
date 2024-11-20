@@ -36,11 +36,9 @@ func interact():
 			1: inventory_gui.insert_item(stick, 1)
 			#If good axe
 			2: inventory_gui.insert_item(stick, 3)
-	durability = clamp(durability - 10, 0, max_durability)
+	damage_itself()
 	inventory_gui.use_item()
 
 func timer_timeout() -> void:
 	if state == STATE.broken: return
-	durability -= loss_dura_by_tic #Here the loss is negative so durability increases
-	durability = clamp(durability, 0, max_durability)
-	s_state.emit(durability)
+	durability = clamp(durability + max_durability/100, 0, max_durability)

@@ -96,6 +96,18 @@ grow_horizontal = 0
 theme = ExtResource("10_oukug")
 text = "Argent : 0$"
 
+[node name="MoneyObjective" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_top = 44.0
+offset_right = -15.0
+offset_bottom = 76.0
+grow_horizontal = 0
+theme = ExtResource("10_oukug")
+text = "Objectif : 500$"
+
 [node name="Puits" parent="." instance=ExtResource("9_tkrlr")]
 position = Vector2(268.188, 432.362)
 

@@ -3,6 +3,7 @@ var gameVariation : int
 var inventory_gui
 
 @export var money : int = 0
+const MONEY_TO_WIN : int = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
