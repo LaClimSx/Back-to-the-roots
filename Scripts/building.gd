@@ -110,7 +110,7 @@ func repair_itself() -> void:
 		state = STATE.good
 		s_state.emit(state)
 		
-func damage_itself() -> void: #TODO: Check if call to process works and if substracting an 8th is a good idea
-	durability = clamp(durability - max_durability/8, 0, max_durability)
+func damage_itself() -> void:
+	durability = clamp(durability - max_durability/12, 0, max_durability)
 	checkState()
 	animate()
