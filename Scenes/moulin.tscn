@@ -31,7 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://ljyyhfin2fwg" path="res://Scenes/interact_label.tscn" id="29_0cem7"]
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="29_3n3i5"]
 [ext_resource type="PackedScene" uid="uid://duq7v03be7qs2" path="res://Scenes/repair_label.tscn" id="31_iky3b"]
-[ext_resource type="Script" path="res://Scenes/interact_menu_moulin.gd" id="32_yqon2"]
+[ext_resource type="Script" path="res://Scripts/interact_menu_moulin.gd" id="32_yqon2"]
 [ext_resource type="Texture2D" uid="uid://dxi0rmohf44ub" path="res://Assets/Items/wheat_item.png" id="33_lo44j"]
 [ext_resource type="PackedScene" uid="uid://dhpl8urm0uvxa" path="res://Scenes/repair_menu.tscn" id="34_s55y8"]
 
@@ -194,7 +194,6 @@ y_sort_enabled = true
 scale = Vector2(0.1, 0.1)
 script = ExtResource("1_lnxlr")
 max_durability = 2000
-loss_dura_by_tic = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
@@ -381,7 +380,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="RepairMenu" parent="." instance=ExtResource("34_s55y8")]
-visible = false
 
 [connection signal="s_state" from="." to="InteractMenuMoulin" method="_on_moulin_s_state"]
 [connection signal="s_state" from="." to="RepairMenu" method="_on_s_state"]

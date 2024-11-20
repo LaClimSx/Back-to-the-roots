@@ -41,6 +41,5 @@ func interact():
 
 func timer_timeout() -> void:
 	if state == STATE.broken: return
-	durability -= loss_dura_by_tic #Here the loss is negative so durability increases
+	durability += LOSS_DURA_PER_TICK #Here there is a plus so durability increases
 	durability = clamp(durability, 0, max_durability)
-	s_state.emit(durability)

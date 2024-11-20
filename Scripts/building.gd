@@ -2,8 +2,8 @@ class_name Building extends StaticBody2D
 
 signal s_state(s: STATE)
 
-@export var max_durability : int = 5000
-@export var loss_dura_by_tic : int = 100
+@export var max_durability : int = 1800
+const LOSS_DURA_PER_TICK: int = 10
 var durability = max_durability
 var player_inside : bool = false
 
@@ -78,7 +78,7 @@ func checkRepair(holds_working_hammer: bool) -> void:
 
 
 func timer_timeout() -> void:
-	durability -= loss_dura_by_tic
+	durability -= LOSS_DURA_PER_TICK
 	durability = clamp(durability, 0, max_durability)
 
 func enter_area(body : Node2D) -> void:
@@ -107,3 +107,7 @@ func repair_itself() -> void:
 		durability = max_durability
 		state = STATE.good
 		s_state.emit(state)
+		
+func damage_itself() -> void: #TODO: Check if call to process works and if substracting an 8th is a good idea
+	durability = clamp(durability - max_durability/8, 0, max_durability)
+	_process(0)

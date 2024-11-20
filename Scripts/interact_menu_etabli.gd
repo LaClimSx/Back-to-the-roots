@@ -156,31 +156,31 @@ func _on_etabli_s_state(s: Building.STATE):
 		multi = 2
 
 func _on_repare_hammer_pressed() -> void:
-	#marteau.repair()
+	marteau.repair()
 	inventory_gui.remove_item(wood, marteau_cost.x)
 	inventory_gui.remove_item(stones, marteau_cost.y)
 
 
 func _on_repare_hache_pressed() -> void:
-	#hache.repair()
+	hache.repair()
 	inventory_gui.remove_item(wood, hache_cost.x)
 	inventory_gui.remove_item(stones, hache_cost.y)
 
 
 func _on_repare_pioche_pressed() -> void:
-	#pioche.repair()
+	pioche.repair()
 	inventory_gui.remove_item(wood, pioche_cost.x)
 	inventory_gui.remove_item(stones, pioche_cost.y)
 
 
 func _on_repare_fau_pressed() -> void:
-	#fau.repair()
+	fau.repair()
 	inventory_gui.remove_item(wood, fau_cost.x)
 	inventory_gui.remove_item(stones, fau_cost.y)
 	print("ffffffffff")
 
 
 func _on_repare_seau_pressed() -> void:
-	#seau.repair()
+	seau.repair()
 	inventory_gui.remove_item(wood, seau_cost.x)
 	inventory_gui.remove_item(stones, seau_cost.y)

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c2u4jovp287i2" path="res://Assets/Bâtiments/établi/Sans titre 42_20241017122024.png" id="1_wxxdy"]
 [ext_resource type="Texture2D" uid="uid://cb4drru5dt4uv" path="res://Assets/Bâtiments/établi/Sans titre 42_20241017122018.png" id="2_jbned"]
 [ext_resource type="Texture2D" uid="uid://b0ri8wyd678g1" path="res://Assets/Bâtiments/établi/Sans titre 42_20241017122725.png" id="3_cn853"]
-[ext_resource type="Script" path="res://Scenes/interact_menu_etabli.gd" id="5_nklhl"]
+[ext_resource type="Script" path="res://Scripts/interact_menu_etabli.gd" id="5_nklhl"]
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="6_dhmi0"]
 [ext_resource type="Texture2D" uid="uid://dppis3ileju38" path="res://Assets/Outils/Marteau/hamme_good.png" id="7_3yv4n"]
 [ext_resource type="Texture2D" uid="uid://bn8ovujtg4yxm" path="res://Assets/Outils/Haches/Sans titre 46_20241017144828.png" id="8_h727v"]
