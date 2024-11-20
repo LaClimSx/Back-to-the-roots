@@ -5,12 +5,12 @@ extends Node2D
 @onready var wheat_item : Item = preload("res://Inventory/Items/wheat.tres")
 @onready var inventory_gui : Control = Global.inventory_gui
 
-const TILEMAP_SCALING : float = 0.16
+const TILEMAP_SCALING : float = 0.25
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Player.start(Vector2(556, 324))
-	print("used rect : ", (ground.get_used_rect().size * 100 * TILEMAP_SCALING))
+	$Player.start(Vector2(380, 185))
+	Global.world_size = ground.get_used_rect().size * 100 * TILEMAP_SCALING
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
