@@ -7,6 +7,13 @@ extends CanvasLayer
 var price
 signal damage_building
 
+func _process(delta: float) -> void:
+	if(inventory_gui.find_item(flour)==-1):
+		$"Control/sell all1".disabled = true
+		$"Control/sell one1".disabled = true
+	else:
+		$"Control/sell all1".disabled = false
+		$"Control/sell one1".disabled = false
 
 func _on_close_pressed() -> void:
 	$Anim.play("TransOUT")

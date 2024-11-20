@@ -8,6 +8,7 @@ signal repair
 
 @onready var stick: Item = preload("res://Inventory/Items/stick.tres")
 @onready var stone: Item = preload("res://Inventory/Items/stone.tres")
+@onready var inventory_gui = Global.inventory_gui
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,8 +32,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Control/stone.text = "x" + str(stone_cost) + " stone(s)"
-	$Control/wood.text = "x" + str(wood_cost) + " woods(s)"
+	$Control/stone.text = "x" + str(stone_cost) + " pierre(s)"
+	$Control/wood.text = "x" + str(wood_cost) + " bois"
+	
+	if (inventory_gui.find_item(stick) >= wood_cost && inventory_gui.find_item(stone) >= stone_cost):
+		$Control/repair.disabled = false
+	else: #TODO: What to do when not enough ? For now nothing
+		$Control/repair.disabled = true
 
 
 func _on_close_pressed() -> void:
@@ -41,17 +47,17 @@ func _on_close_pressed() -> void:
 
 
 func _on_repair_pressed() -> void:
-	var inv_gui = Global.inventory_gui
-	if (inv_gui.find_item(stick) >= wood_cost && inv_gui.find_item(stone) >= stone_cost):
-		print("Enough to repair")
-		inv_gui.remove_item(stick, wood_cost)
-		inv_gui.remove_item(stone, stone_cost)
-		emit_signal("repair")
-		inv_gui.use_item()
-		$Anim.play("TransOUT")
-		get_tree().paused = false
-	else: #TODO: What to do when not enough ? For now nothing
-		print("Fonds insuffisants")
+	#var inv_gui = Global.inventory_gui
+	#if (inv_gui.find_item(stick) >= wood_cost && inv_gui.find_item(stone) >= stone_cost):
+	#	print("Enough to repair")
+	inventory_gui.remove_item(stick, wood_cost)
+	inventory_gui.remove_item(stone, stone_cost)
+	emit_signal("repair")
+	inventory_gui.use_item()
+	$Anim.play("TransOUT")
+	get_tree().paused = false
+	#else: #TODO: What to do when not enough ? For now nothing
+	#	print("Fonds insuffisants")
 
 func _on_s_state(s: Building.STATE) -> void:
 	if s == Building.STATE.good:
