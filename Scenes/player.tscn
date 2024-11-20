@@ -161,9 +161,6 @@ limit_bottom = 648
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_e7l31")
 animation = &"idle_right"
 frame_progress = 0.222268
-centered = false
-offset = Vector2(-8, -10)

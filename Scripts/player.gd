@@ -1,7 +1,6 @@
 class_name Player extends CharacterBody2D
 
 @export var speed = 100
-var screen_size
 var last_dir = Vector2(0,0)
 
 enum Directions {LEFT, RIGHT, UP, DOWN}
@@ -12,8 +11,6 @@ var direction = Directions.LEFT
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	inventory.use_item.connect(use_item)
-	screen_size = get_viewport_rect().size
-	print("screen size : ", screen_size)
 	hide()
 
 
@@ -35,7 +32,7 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play()
 		
 	move_and_collide(velocity * delta)
-	position = position.clamp(Vector2.ZERO, screen_size)
+	position = position.clamp(Vector2.ZERO, Global.world_size)
 		
 	var animation = $AnimatedSprite2D.animation
 	
