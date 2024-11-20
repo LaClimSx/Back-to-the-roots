@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var wood = preload("res://Inventory/Items/stick.tres")
 @onready var stones = preload("res://Inventory/Items/stone.tres")
 
-var inventory_gui
+@onready var inventory_gui = Global.inventory_gui
 signal damage_building
 
 var nb_wood 
@@ -32,8 +32,6 @@ var seau
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if Global.inventory_gui:
-		inventory_gui = Global.inventory_gui
 	$Control/repare_hache.disabled = true
 	$Control/repare_pioche.disabled = true
 	$Control/repare_fau.disabled = true
@@ -44,7 +42,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	nb_wood = inventory_gui.find_item(wood)
-	nb_stone = inventory_gui.find_item(stones)		
+	nb_stone = inventory_gui.find_item(stones)
+	
+	#TODO: This is a bad fix, change it with the refactoring
+	if !marteau	|| !hache || !pioche || !fau || !seau: 
+		return
 	
 	if(marteau.state == 2):
 		$"Control/wood hammer".text = "x" + str(outil_cost_wood*max*multi) +" bois"

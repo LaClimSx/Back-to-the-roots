@@ -113,3 +113,4 @@ func repair_itself() -> void:
 func damage_itself() -> void: #TODO: Check if call to process works and if substracting an 8th is a good idea
 	durability = clamp(durability - max_durability/8, 0, max_durability)
 	checkState()
+	animate()
