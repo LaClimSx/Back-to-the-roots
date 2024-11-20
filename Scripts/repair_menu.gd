@@ -12,7 +12,6 @@ signal repair
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var parent_name: String = get_parent().name
-	print(parent_name)
 	match parent_name:
 		"House": 
 			default_cost = Vector2i(2, 1) #(stick, stone)

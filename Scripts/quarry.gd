@@ -37,7 +37,7 @@ func interact():
 			1: inventory_gui.insert_item(stone, 1)
 			#If good pickaxe
 			2: inventory_gui.insert_item(stone, 3)
-	durability = clamp(durability - 10, 0, max_durability)
+	damage_itself()
 	inventory_gui.use_item()
 	
 func timer_timeout() -> void:

@@ -1,18 +1,12 @@
 extends Building
 
-var price: int = 0
-signal actual_price(p: int)
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	price = 5
 	reparable = true
 	interactable = true
 	corresponding_item_name = ""
 	repair_label = $RepairLabel
 	interact_label = $InteractLabel
-	actual_price.emit(price)
 	super()
 	
 
@@ -26,8 +20,6 @@ func animate():
 			$AnimatedSprite2D.play("maison_bon")
 		STATE.mid:
 			$AnimatedSprite2D.play("maison_abimé")
-			price = 3
-			actual_price.emit(price)
 		STATE.broken:
 			$AnimatedSprite2D.play("maison_cassé")
 			interact_label.hide()

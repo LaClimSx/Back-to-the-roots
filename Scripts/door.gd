@@ -1,19 +1,12 @@
 extends StaticBody2D
 
 var state: Building.STATE
+var player_inside : bool = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-			
 
 func _on_player_detected_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		player_inside = true
 		if(state == Building.STATE.good):
 			$porte.play("opening_bon")
 			await $porte.animation_finished
@@ -26,6 +19,7 @@ func _on_player_detected_body_entered(body: Node2D) -> void:
 
 func _on_player_detected_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
+		player_inside = false
 		if state == Building.STATE.good:
 			$porte.play("closing_bon")
 			await $porte.animation_finished
@@ -39,6 +33,7 @@ func _on_player_detected_body_exited(body: Node2D) -> void:
 
 func _on_s_state(s: Building.STATE) -> void:
 	state = s
+	if player_inside: return
 	match state:
 		Building.STATE.good: $porte.play("fermé_bon")
 		Building.STATE.mid: $porte.play("fermé_abimé")

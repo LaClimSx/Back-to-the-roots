@@ -6,7 +6,6 @@ extends Node2D
 @onready var inventory_gui : Control = Global.inventory_gui
 
 const TILEMAP_SCALING : float = 0.16
-const MONEY_TO_WIN : int = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +16,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	checkActions()
-	if Global.money >= MONEY_TO_WIN:
+	if Global.money >= Global.MONEY_TO_WIN:
 		print("Won the game gg")
 
 func checkActions():
