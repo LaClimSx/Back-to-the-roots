@@ -7,8 +7,8 @@
 
 [resource]
 script = ExtResource("1_kpyv8")
-maxDurability = 6
-durability = 6
+maxDurability = 9
+durability = 9
 good_texture = ExtResource("2_a6six")
 mid_texture = ExtResource("3_afq6i")
 broken_texture = ExtResource("1_ayi1m")

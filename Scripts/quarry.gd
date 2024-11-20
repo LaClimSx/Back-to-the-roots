@@ -40,5 +40,10 @@ func interact():
 	damage_itself()
 	inventory_gui.use_item()
 	
+func damage_itself() -> void:
+	durability = clamp(durability - max_durability/20, 0, max_durability)
+	checkState()
+	animate()
+	
 func timer_timeout() -> void:
 	pass

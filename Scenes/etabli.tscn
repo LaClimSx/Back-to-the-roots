@@ -101,7 +101,7 @@ _data = {
 [node name="Etabli" type="StaticBody2D"]
 scale = Vector2(0.03, 0.03)
 script = ExtResource("1_pw14u")
-max_durability = 1500
+max_durability = 2400
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dqlkc")

@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play()
 		
 	move_and_collide(velocity * delta)
-	position = position.clamp(Vector2.ZERO, Global.world_size)
+	position = position.clamp(Vector2(0,10), Global.world_size - Vector2i(0,10))
 		
 	var animation = $AnimatedSprite2D.animation
 	
