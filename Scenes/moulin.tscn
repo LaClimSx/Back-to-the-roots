@@ -355,15 +355,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -107.5
+offset_left = -132.5
 offset_top = -78.0
-offset_right = 119.5
+offset_right = 136.5
 offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 40
-text = "Vendre"
+text = "Transformation"
 
 [node name="number" type="Label" parent="InteractMenuMoulin/Control"]
 layout_mode = 1
