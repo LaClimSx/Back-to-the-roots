@@ -68,7 +68,6 @@ func checkState() -> void:
 
 func checkInteraction() -> void:
 	if interactable && player_inside && Input.is_action_just_released("Interact") && state > 0:
-		print("wtf")
 		if corresponding_item_name :
 			if selected_item && selected_item.name == corresponding_item_name:
 				interact()
