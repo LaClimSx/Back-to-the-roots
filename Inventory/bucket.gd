@@ -68,7 +68,13 @@ func fillBucket(amount: int) -> void:
 			0: texture = mid0
 			1: texture = mid1
 			2: texture = mid2
-	Global.display_indicator(quantity - old_quantity, Global.player_looking_position, Color.DODGER_BLUE)
+			
+	#Change the color of the indicator : 
+	match quantity - old_quantity:
+		1: Global.display_indicator(quantity - old_quantity, Global.player_looking_position, Color.DIM_GRAY)
+		2: Global.display_indicator(quantity - old_quantity, Global.player_looking_position, Color.GRAY)
+		3: Global.display_indicator(quantity - old_quantity, Global.player_looking_position, Color.MEDIUM_BLUE)
+		4: Global.display_indicator(quantity - old_quantity, Global.player_looking_position, Color.MIDNIGHT_BLUE)
 	
 func repair() -> void:
 	super()

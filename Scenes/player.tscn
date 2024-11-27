@@ -152,13 +152,6 @@ metadata/_edit_group_ = true
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_ges2k")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-limit_left = 0
-limit_top = 0
-limit_right = 1152
-limit_bottom = 648
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_e7l31")

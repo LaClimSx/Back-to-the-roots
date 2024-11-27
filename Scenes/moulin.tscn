@@ -199,7 +199,7 @@ max_durability = 2000
 y_sort_enabled = true
 position = Vector2(0, 550)
 sprite_frames = SubResource("SpriteFrames_5ifjn")
-animation = &"moulin_cassé"
+animation = &"moulin_bon"
 autoplay = "moulin_bon"
 offset = Vector2(0, -550)
 
