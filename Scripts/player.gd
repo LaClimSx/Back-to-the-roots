@@ -40,40 +40,49 @@ func _process(delta: float) -> void:
 		if velocity.x > 0:
 			animation = "walk_right"
 			direction = Directions.RIGHT
+			Global.player_looking_position = position + Vector2(10,0)
 			#$AnimatedSprite2D.flip_v = false
 		else:
 			animation = "walk_left"
 			direction = Directions.LEFT
+			Global.player_looking_position = position + Vector2(-30,0)
 	
 	elif velocity.y != 0:
 		if velocity.y > 0:
 			animation = "walk_face"
 			direction = Directions.DOWN
+			Global.player_looking_position = position + Vector2(-10,20)
 			#$AnimatedSprite2D.flip_v = false
 		else:
 			animation = "walk_dos"
 			direction = Directions.UP
+			Global.player_looking_position = position + Vector2(-10,-30)
 	
 	else:
 		if abs(last_dir.x) >= abs(last_dir.y):
 			if last_dir.x > 0:
 				animation = "idle_right"
 				direction = Directions.RIGHT
+				Global.player_looking_position = position + Vector2(10,0)
 			else:
 				animation = "idle_left"
 				direction = Directions.LEFT
+				Global.player_looking_position = position + Vector2(-30,0)
 		else:
 			if last_dir.y > 0:
 				animation = "idle_face"
 				direction = Directions.DOWN
+				Global.player_looking_position = position + Vector2(-10,20)
 			else:
 				animation = "idle_dos"
 				direction = Directions.UP
+				Global.player_looking_position = position + Vector2(-10,-30)
 		
 	$AnimatedSprite2D.animation = animation
 
 func start(pos):
 	position = pos
+	Global.player_looking_position = position
 	show()
 	
 func use_item(item: Item) -> void:

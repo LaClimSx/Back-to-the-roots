@@ -121,6 +121,8 @@ func sellN(item: Item, all: bool, unit_price: int) -> int :
 				removeSlot(slot)
 			break
 	Global.money += unit_price * total
+	#TODO: This is a temporary solution to display the gained money
+	Global.display_indicator(str(unit_price * total) + "$", Global.player_looking_position + Vector2(150,randi_range(-60,40)), Color.WEB_GREEN)
 	updated.emit()
 	return total
 

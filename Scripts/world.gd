@@ -27,15 +27,17 @@ func checkActions():
 		var selected_item : Item = inventory_gui.get_selected_item()
 		var player_tile_pos : Vector2i = ground.local_to_map(player.position / TILEMAP_SCALING)
 		var viewing_tile : Vector2i
+		
 		match player.direction:
-			0:
+			Player.Directions.LEFT:
 				viewing_tile = player_tile_pos + Vector2i(-1,0)
-			1:
+			Player.Directions.RIGHT:
 				viewing_tile = player_tile_pos + Vector2i(1,0)
-			2:
+			Player.Directions.UP:
 				viewing_tile = player_tile_pos + Vector2i(0,-1)
-			3:
+			Player.Directions.DOWN:
 				viewing_tile = player_tile_pos + Vector2i(0,1)
+
 		viewing_tile.clamp(Vector2i.ZERO, ground.get_used_rect().size)
 		print(viewing_tile)
 		var ground_atlas : Vector2i = ground.get_cell_atlas_coords(viewing_tile)
@@ -43,7 +45,8 @@ func checkActions():
 		#If clicked tile has grown wheat, add 1 to 3 wheat to inventory and remove the wheat from the tile
 		#Also set the tile to dirt
 		if crops.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) :
-			inventory_gui.insert_item(wheat_item,randi_range(1,3))
+			inventory_gui.insert_item(wheat_item,2)
+			Global.display_indicator(2, Global.player_looking_position, Color.WHITE)
 			crops.set_cell(viewing_tile)
 			ground.set_cell(viewing_tile, 0, Vector2i(1,0))
 			print("Harvested")
