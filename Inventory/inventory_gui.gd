@@ -26,9 +26,10 @@ func connectSlots():
 		var slot = slots[i]
 		slot.index = i
 		
-		var callable = Callable(onSlotClicked)
-		callable = callable.bind(slot)
-		slot.pressed.connect(callable)
+		#Uncomment these lines to manage the inventory with the mouse
+		#var callable = Callable(onSlotClicked)
+		#callable = callable.bind(slot)
+		#slot.pressed.connect(callable)
 
 func update():
 	for i in range(min(inventory.slots.size(),slots.size())):

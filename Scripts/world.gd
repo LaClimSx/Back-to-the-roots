@@ -43,7 +43,7 @@ func checkActions():
 		#If clicked tile has grown wheat, add 1 to 3 wheat to inventory and remove the wheat from the tile
 		#Also set the tile to dirt
 		if crops.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) :
-			inventory_gui.insert_item(wheat_item,randi_range(1,3))
+			inventory_gui.insert_item(wheat_item,2)
 			crops.set_cell(viewing_tile)
 			ground.set_cell(viewing_tile, 0, Vector2i(1,0))
 			print("Harvested")

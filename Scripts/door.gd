@@ -15,6 +15,7 @@ func _on_player_detected_body_entered(body: Node2D) -> void:
 			$porte.play("opening_abimé")
 			await $porte.animation_finished
 			$porte.play("ouvert_abimé")
+		else : return
 
 
 func _on_player_detected_body_exited(body: Node2D) -> void:
@@ -28,11 +29,15 @@ func _on_player_detected_body_exited(body: Node2D) -> void:
 			$porte.play("closing_abimé")
 			await $porte.animation_finished
 			$porte.play("fermé_abimé")
+		else : return
 
 	
-
+#Note: This function is weird and could probably be written better. Tech debt
 func _on_s_state(s: Building.STATE) -> void:
 	state = s
+	if state == Building.STATE.broken: 
+		$porte.play("fermé_cassé")
+		return
 	if player_inside: return
 	match state:
 		Building.STATE.good: $porte.play("fermé_bon")
