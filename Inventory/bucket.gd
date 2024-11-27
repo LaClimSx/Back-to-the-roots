@@ -48,6 +48,7 @@ func useBucket(water_amount: int) -> int:
 	
 #Fill the bucket with amount of water (mod size of the bucket)
 func fillBucket(amount: int) -> void:
+	var old_quantity : int = quantity
 	if state == STATE.broken : return
 	if state == STATE.good:
 		quantity = clamp(quantity + amount, 0, 4)
@@ -67,6 +68,7 @@ func fillBucket(amount: int) -> void:
 			0: texture = mid0
 			1: texture = mid1
 			2: texture = mid2
+	Global.display_indicator(quantity - old_quantity, Global.player_looking_position, Color.DODGER_BLUE)
 	
 func repair() -> void:
 	super()
