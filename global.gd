@@ -9,11 +9,13 @@ var world_size: Vector2i
 
 var chewy_regular : Font = preload("res://Assets/Fonts/Chewy-Regular.ttf")
 
-func display_indicator(value, position: Vector2, color: Color = Color.WHITE) -> void:
+var player_looking_position : Vector2
+
+func display_indicator(value, position: Vector2 = player_looking_position, color: Color = Color.WHITE) -> void:
 	var indicator = Label.new()
 	indicator.global_position = position
 	indicator.text = "+" + str(value)
-	indicator.z_index = 5
+	indicator.z_index = 10
 	indicator.label_settings = LabelSettings.new()
 	indicator.label_settings.font_color = color
 	indicator.label_settings.font_size = 18

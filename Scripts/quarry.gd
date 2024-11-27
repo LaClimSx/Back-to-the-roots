@@ -32,24 +32,24 @@ func interact():
 			1: 
 				inventory_gui.insert_item(stone, 2)
 				damage_itself_N(2 * BASE_DIVIDER)
-				Global.display_indicator(2, position, Color.GRAY)
+				Global.display_indicator(2, Global.player_looking_position, Color.GRAY)
 			#If good pickaxe
 			2: 
 				inventory_gui.insert_item(stone, 4)
 				damage_itself_N(4 * BASE_DIVIDER)
-				Global.display_indicator(4, position, Color.GREEN)
+				Global.display_indicator(4, Global.player_looking_position, Color.GREEN)
 	elif state == STATE.mid:
 		match selected_item.state:
 			#If mid pickaxe
 			1: 
 				inventory_gui.insert_item(stone, 1)
 				damage_itself_N(1 * BASE_DIVIDER)
-				Global.display_indicator(1, position, Color.GRAY)
+				Global.display_indicator(1, Global.player_looking_position, Color.GRAY)
 			#If good pickaxe
 			2: 
 				inventory_gui.insert_item(stone, 3)
 				damage_itself_N(3 * BASE_DIVIDER)
-				Global.display_indicator(3, position, Color.GREEN)
+				Global.display_indicator(3, Global.player_looking_position, Color.GREEN)
 	inventory_gui.use_item()
 	
 	
