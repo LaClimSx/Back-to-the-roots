@@ -1,9 +1,12 @@
 class_name RepairMenu extends CanvasLayer
 
+const BUILDING_REPAIR_COSTS : Dictionary = {"House": {"wood": 2, "stone": 1}, "Moulin": {"wood": 1, "stone": 2}, "Etabli": {"wood": 2, "stone": 1}, "Puits": {"wood": 0, "stone": 3}}
+
+
 var wood_cost: int
 var stone_cost: int
 var state: Building.STATE
-var default_cost: Vector2i
+var default_cost: Dictionary
 signal repair
 
 @onready var stick: Item = preload("res://Inventory/Items/stick.tres")
@@ -13,21 +16,17 @@ signal repair
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var parent_name: String = get_parent().name
+	default_cost = BUILDING_REPAIR_COSTS[parent_name]
 	match parent_name:
 		"House": 
-			default_cost = Vector2i(2, 1) #(stick, stone)
 			$Control/repairLabel.text = "Répare ta maison"
 		"Moulin": 
-			default_cost = Vector2i(1, 2)
 			$Control/repairLabel.text = "Répare ton moulin"
 		"Etabli": 
-			default_cost = Vector2i(2, 1)
 			$Control/repairLabel.text = "Répare ton établi"
 		"Puits": 
-			default_cost = Vector2i(0, 3)
 			$Control/repairLabel.text = "Répare ton puits"
 		_: #This should not happen
-			default_cost = Vector2i(-1, -1) 
 			$Control/repairLabel.text = "Rien à réparer"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,8 +63,8 @@ func _on_s_state(s: Building.STATE) -> void:
 		wood_cost = 0
 		stone_cost = 0
 	elif s == Building.STATE.mid:
-		wood_cost = default_cost[0]
-		stone_cost = default_cost[1]
+		wood_cost = default_cost["wood"]
+		stone_cost = default_cost["stone"]
 	elif s == Building.STATE.broken:
-		wood_cost = 2 * default_cost[0]
-		stone_cost = 2 * default_cost[1]
+		wood_cost = 2 * default_cost["wood"]
+		stone_cost = 2 * default_cost["stone"]
