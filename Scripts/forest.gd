@@ -3,6 +3,9 @@ extends Building
 @onready var stick = preload("res://Inventory/Items/stick.tres")
 const BASE_DIVIDER = 12
 
+@onready var good_texture : Texture2D = preload("res://Assets/Bâtiments/forêt/tree.png")
+@onready var mid_texture : Texture2D = preload("res://Assets/Bâtiments/forêt/tree_mid.png")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	reparable = false
@@ -17,12 +20,14 @@ func _process(delta):
 	super(delta)
 
 func animate():
-	if state == STATE.broken:
-		$Sprite2D.visible = false
-		$CollisionPolygon2D.disabled = true
-	else:
-		$Sprite2D.visible = true
-		$CollisionPolygon2D.disabled = false
+	match state:
+		STATE.good:
+			$Sprite2D.texture = good_texture
+		STATE.mid:
+			$Sprite2D.texture = mid_texture
+		STATE.broken:
+			$Sprite2D.visible = false
+			$CollisionPolygon2D.disabled = true
 
 func interact():
 	if state == STATE.good:
