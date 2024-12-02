@@ -35,30 +35,30 @@ func interact():
 			#If mid axe
 			1: 
 				inventory_gui.insert_item(stick, 2)
-				damage_itself_N(2 * BASE_DIVIDER)
+				damage_itself_N(BASE_DIVIDER / 2)
 				Global.display_indicator(2, Global.player_looking_position, Color.GRAY)
 			#If good axe
 			2: 
 				inventory_gui.insert_item(stick, 4)
-				damage_itself_N(4 * BASE_DIVIDER)
+				damage_itself_N(BASE_DIVIDER)
 				Global.display_indicator(4, Global.player_looking_position, Color.GREEN)
 	elif state == STATE.mid:
 		match selected_item.state:
 			#If mid axe
 			1: 
 				inventory_gui.insert_item(stick, 1)
-				damage_itself_N(1 * BASE_DIVIDER)
+				damage_itself_N(BASE_DIVIDER / 4)
 				Global.display_indicator(1, Global.player_looking_position, Color.GRAY)
 			#If good axe
 			2: 
 				inventory_gui.insert_item(stick, 3)
-				damage_itself_N(3 * BASE_DIVIDER)
+				damage_itself_N(BASE_DIVIDER / 3)
 				Global.display_indicator(3, Global.player_looking_position, Color.GREEN)
 
 	inventory_gui.use_item()
 	
 func damage_itself_N(divider : int) -> void:
-	durability = clamp(durability - max_durability/divider, 0, max_durability)
+	durability = clamp(durability - (max_durability/divider), 0, max_durability)
 	checkState()
 	animate()
 
