@@ -54,16 +54,7 @@ func _process(delta) -> void:
 	checkRepair(holds_working_hammer)
 
 
-func checkState() -> void:
-	if !Global.efficiency_decline:
-		if durability == 0:
-			state = STATE.broken
-			s_state.emit(state)
-		else:
-			state = STATE.good
-			s_state.emit(state)
-		return
-		
+func checkState() -> void:	
 	if durability > max_durability/2:
 		state = STATE.good
 		s_state.emit(state)
