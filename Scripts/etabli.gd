@@ -26,6 +26,7 @@ func animate():
 			interact_label.hide()
 
 func interact():
+	s_state.emit(state)
 	get_tree().paused = true
 	$InteractMenuEtabli/Anim.play("TransIN")
 

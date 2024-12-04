@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b5ybms3dmux2h"]
+
+[ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="1_tt1yf"]
+
+[resource]
+default_font = ExtResource("1_tt1yf")
+default_font_size = 35
