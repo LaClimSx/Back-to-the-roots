@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dd6eibaeqjan1"]
+[gd_scene load_steps=42 format=3 uid="uid://dd6eibaeqjan1"]
 
 [ext_resource type="Texture2D" uid="uid://cc36u4526veca" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134057.png" id="1_k6ggn"]
 [ext_resource type="Script" path="res://Scripts/moulin.gd" id="1_lnxlr"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://duq7v03be7qs2" path="res://Scenes/repair_label.tscn" id="31_iky3b"]
 [ext_resource type="Script" path="res://Scripts/interact_menu_moulin.gd" id="32_yqon2"]
 [ext_resource type="Texture2D" uid="uid://dxi0rmohf44ub" path="res://Assets/Items/wheat_item.png" id="33_lo44j"]
+[ext_resource type="AudioStream" uid="uid://d0548sfy1jatg" path="res://Assets/Sounds/moudre.mp3" id="34_87cyi"]
 [ext_resource type="PackedScene" uid="uid://dhpl8urm0uvxa" path="res://Scenes/repair_menu.tscn" id="34_s55y8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5ifjn"]
@@ -380,6 +381,10 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="grind" type="AudioStreamPlayer" parent="InteractMenuMoulin"]
+stream = ExtResource("34_87cyi")
+volume_db = -15.0
 
 [node name="RepairMenu" parent="." instance=ExtResource("34_s55y8")]
 

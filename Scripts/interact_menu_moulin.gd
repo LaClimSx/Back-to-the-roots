@@ -61,6 +61,7 @@ func _on_plus_pressed() -> void:
 	updateLabel()
 
 func _on_sell_pressed() -> void:
+	$grind.play(0.5)
 	inventory_gui.remove_item(wheat, quantity)
 	inventory_gui.insert_item(flour, (quantity * exchange))
 	damage_building.emit()
