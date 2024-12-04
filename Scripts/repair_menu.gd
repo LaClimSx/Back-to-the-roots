@@ -59,6 +59,7 @@ func _on_repair_pressed() -> void:
 	emit_signal("repair")
 	inventory_gui.use_item()
 	$Anim.play("TransOUT")
+	$repair.play()
 	get_tree().paused = false
 	#else: #TODO: What to do when not enough ? For now nothing
 	#	print("Fonds insuffisants")

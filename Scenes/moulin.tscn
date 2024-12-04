@@ -382,7 +382,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="RepairMenu" parent="." instance=ExtResource("34_s55y8")]
-visible = false
 
 [connection signal="s_state" from="." to="InteractMenuMoulin" method="_on_moulin_s_state"]
 [connection signal="s_state" from="." to="RepairMenu" method="_on_s_state"]
