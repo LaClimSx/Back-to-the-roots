@@ -13,6 +13,7 @@ const TILEMAP_SCALING : float = 0.25
 func _ready():
 	$Player.start(Vector2(380, 185))
 	Global.world_size = ground.get_used_rect().size * 100 * TILEMAP_SCALING
+	GlobalScene.get_node("ambiance").play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
