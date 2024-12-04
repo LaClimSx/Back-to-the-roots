@@ -29,7 +29,9 @@ func useBucket(water_amount: int) -> int:
 		if durability == 0:
 			texture = broken
 			state = STATE.broken
-			
+			if !Global.reparability:
+				Global.inventory_gui.use_item()
+						
 	if state == STATE.good || (!Global.efficiency_decline && state != STATE.broken):
 		if water_amount >= quantity : texture = good0
 		match (quantity - water_amount):
