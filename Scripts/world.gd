@@ -57,7 +57,10 @@ func checkActions():
 			if ground_atlas == Vector2i(1,0) :
 				$creuser.play()
 				#If full durability plow entirely else only half plow
-				await animateTile(viewing_tile, false) if selected_item.state > 1 else ground.set_cell(viewing_tile,0,Vector2i(2,0))
+				if !Global.efficiency_decline || selected_item.state == Tool.STATE.good:
+					await animateTile(viewing_tile, false)
+				else:
+					ground.set_cell(viewing_tile,0,Vector2i(2,0))
 				inventory_gui.use_item()
 				print("Plowed")
 			#If half_tilted_dirt
@@ -68,7 +71,7 @@ func checkActions():
 				print("Plowed")
 			
 		#If player has bucket (not broken) and tile is tilled soil, water the soil
-		elif selected_item && selected_item.name == "bucket" && selected_item.state > 0 :
+		elif selected_item && selected_item.name == "bucket" && selected_item.state > Tool.STATE.broken :
 			var current_water_level: int = 0
 			match (ground_atlas):
 				Vector2i(0,1): current_water_level = 0
