@@ -9,6 +9,8 @@ signal damage_building
 var nb_wood 
 var nb_stone
 
+var state : Building.STATE
+
 var max = 0
 var mid = 0.5
 var low = 1
@@ -18,25 +20,21 @@ var outil_cost_stone = 4
 var outil_cost_wood = 2
 var seau_stone = 0
 
-var hache_cost: Vector2i = Vector2i(0,0)
-var pioche_cost: Vector2i = Vector2i(0,0)
-var fau_cost: Vector2i = Vector2i(0,0)
-var seau_cost: Vector2i = Vector2i(0,0)
-var marteau_cost: Vector2i = Vector2i(0,0)
+var tools_repair_cost : Dictionary = {"hammer": {"wood": 0, "stone": 0}, "axe": {"wood": 0, "stone": 0}, "pickaxe": {"wood": 0, "stone": 0}, "hoe": {"wood": 0, "stone": 0}, "bucket": {"wood": 0, "stone": 0}}
 
-var marteau 
-var hache 
-var pioche 
-var fau 
-var seau
+var hammer : Tool
+var axe : Tool
+var pickaxe : Tool
+var hoe : Tool
+var bucket : Tool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Control/repare_hache.disabled = true
-	$Control/repare_pioche.disabled = true
-	$Control/repare_fau.disabled = true
-	$Control/repare_seau.disabled = true
-	$Control/repare_hammer.disabled = true
+	$Control/repair_axe.disabled = true
+	$Control/repair_pickaxe.disabled = true
+	$Control/repair_hoe.disabled = true
+	$Control/repair_bucket.disabled = true
+	$Control/repair_hammer.disabled = true
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -45,100 +43,45 @@ func _process(delta: float) -> void:
 	nb_stone = inventory_gui.find_item(stones)
 	
 	#TODO: This is a bad fix, change it with the refactoring
-	if !marteau	|| !hache || !pioche || !fau || !seau: 
+	if !hammer	|| !axe || !pickaxe || !hoe || !bucket: 
 		return
-	
-	if(marteau.state == 2):
-		$"Control/wood hammer".text = "x" + str(outil_cost_wood*max*multi) +" bois"
-		$"Control/stones hammer".text = "x" + str(outil_cost_stone*max*multi) + " pierres"
-		marteau_cost = Vector2(outil_cost_wood*max*multi,outil_cost_stone*max*multi)
-	elif(marteau.state == 1):
-		$"Control/wood hammer".text = "x" + str(outil_cost_wood*mid*multi) +" bois"
-		$"Control/stones hammer".text = "x" + str(outil_cost_stone*mid*multi) + " pierres"
-		marteau_cost = Vector2(outil_cost_wood*mid*multi,outil_cost_stone*mid*multi)
-	else:
-		$"Control/wood hammer".text = "x" + str(outil_cost_wood*low*multi) +" bois"
-		$"Control/stones hammer".text = "x" + str(outil_cost_stone*low*multi) + " pierres"
-		marteau_cost = Vector2(outil_cost_wood*low*multi,outil_cost_stone*low*multi)
 		
-	if(hache.state == 2):
-		$"Control/wood hache".text = "x" + str(outil_cost_wood*max*multi) +" bois"
-		$"Control/stones hache".text = "x" + str(outil_cost_stone*max*multi) + " pierres"
-		hache_cost = Vector2(outil_cost_wood*max*multi,outil_cost_stone*max*multi)
-	elif(hache.state == 1):
-		$"Control/wood hache".text = "x" + str(outil_cost_wood*mid*multi) +" bois"
-		$"Control/stones hache".text = "x" + str(outil_cost_stone*mid*multi) + " pierres"
-		hache_cost = Vector2(outil_cost_wood*mid*multi,outil_cost_stone*mid*multi)
-	else:
-		$"Control/wood hache".text = "x" + str(outil_cost_wood*low*multi) +" bois"
-		$"Control/stones hache".text = "x" + str(outil_cost_stone*low*multi) + " pierres"
-		hache_cost = Vector2(outil_cost_wood*low*multi,outil_cost_stone*low*multi)
-	
-	if(pioche.state == 2):
-		$"Control/wood pioche".text = "x" + str(outil_cost_wood*max*multi) +" bois"
-		$"Control/stones pioche".text = "x" + str(outil_cost_stone*max*multi) + " pierres"
-		pioche_cost = Vector2(outil_cost_wood*max*multi,outil_cost_stone*max*multi)
-	elif(pioche.state == 1):
-		$"Control/wood pioche".text = "x" + str(outil_cost_wood*mid*multi) +" bois"
-		$"Control/stones pioche".text = "x" + str(outil_cost_stone*mid*multi) + " pierres"
-		pioche_cost = Vector2(outil_cost_wood*mid*multi,outil_cost_stone*mid*multi)
-	else:
-		$"Control/wood pioche".text = "x" + str(outil_cost_wood*low*multi) +" bois"
-		$"Control/stones pioche".text = "x" + str(outil_cost_stone*low*multi) + " pierres"
-		pioche_cost = Vector2(outil_cost_wood*low*multi,outil_cost_stone*low*multi)
-	
-	if(fau.state == 2):
-		$"Control/wood fau".text = "x" + str(outil_cost_wood*max*multi) +" bois"
-		$"Control/stones fau".text = "x" + str(outil_cost_stone*max*multi) + " pierres"
-		fau_cost = Vector2(outil_cost_wood*max*multi,outil_cost_stone*max*multi)
-	elif(fau.state == 1):
-		$"Control/wood fau".text = "x" + str(outil_cost_wood*mid*multi) +" bois"
-		$"Control/stones fau".text = "x" + str(outil_cost_stone*mid*multi) + " pierres"
-		fau_cost = Vector2(outil_cost_wood*mid*multi,outil_cost_stone*mid*multi)
-	else:
-		$"Control/wood fau".text = "x" + str(outil_cost_wood*low*multi) +" bois"
-		$"Control/stones fau".text = "x" + str(outil_cost_stone*low*multi) + " pierres"
-		fau_cost = Vector2(outil_cost_wood*low*multi,outil_cost_stone*low*multi)
-	
-	if(seau.state == 2):
-		$"Control/wood seau".text = "x" + str(outil_cost_wood*max*multi) +" bois"
-		$"Control/stones seau".text = "x" + str(seau_stone) + " pierres"
-		seau_cost = Vector2(outil_cost_wood*max*multi,outil_cost_stone*max*multi)
-	elif(seau.state == 1):
-		$"Control/wood seau".text = "x" + str(outil_cost_wood*mid*multi) +" bois"
-		$"Control/stones seau".text = "x" + str(seau_stone) + " pierres"
-		seau_cost = Vector2(outil_cost_wood*mid*multi,outil_cost_stone*mid*multi)
-	else:
-		$"Control/wood seau".text = "x" + str(outil_cost_wood*low*multi) + " bois"
-		$"Control/stones seau".text = "x" + str(seau_stone) + " pierres"
-		seau_cost = Vector2(outil_cost_wood*low*multi,outil_cost_stone*low*multi)
-	
-	if(hache_cost.x <= nb_wood && hache_cost.y <= nb_stone):
-		$Control/repare_hache.disabled = false
-	else:
-		$Control/repare_hache.disabled = true
-	
-	if(pioche_cost.x <= nb_wood && pioche_cost.y <= nb_stone):
-		$Control/repare_pioche.disabled = false
-	else:
-		$Control/repare_pioche.disabled = true
-	
-	if(fau_cost.x <= nb_wood && fau_cost.y <= nb_stone):
-		$Control/repare_fau.disabled = false
-	else:
-		$Control/repare_fau.disabled = true
-	
-	if(seau_cost.x <= nb_wood && seau_cost.y <= nb_stone):
-		$Control/repare_seau.disabled = false
-	else:
-		$Control/repare_seau.disabled = true
-	
-	if(marteau_cost.x <= nb_wood && marteau_cost.y <= nb_stone):
-		$Control/repare_hammer.disabled = false
-	else:
-		$Control/repare_hammer.disabled = true
-	
-	
+	var tools : Array = [hammer, axe, pickaxe, hoe, bucket]
+
+	for tool in tools:
+		var name : String = tool.name
+		var wood_label : RichTextLabel = $Control.get_node("wood_" + name)
+		var stone_label : RichTextLabel = $Control.get_node("stone_" + name)
+		var button : Button = $Control.get_node("repair_" + name)
+		match state:
+			Building.STATE.good:
+				var mult: int = 2 - tool.state
+				if name == "bucket":
+					tools_repair_cost[name] = {"wood": 3 * mult, "stone": 0}
+				else:
+					tools_repair_cost[name] = {"wood": 1 * mult, "stone": 2 * mult}
+				wood_label.text = "x" + str(tools_repair_cost[name]["wood"]) + " bois"
+				stone_label.text = "x" + str(tools_repair_cost[name]["stone"]) + " pierres"
+				if (mult == 0) || (nb_wood < tools_repair_cost[name]["wood"]) || (nb_stone < tools_repair_cost[name]["stone"]):
+					button.disabled = true
+				else:
+					button.disabled = false
+						
+			Building.STATE.mid:
+				var mult: int = 2 - tool.state
+				if name == "bucket":
+					tools_repair_cost[name] = {"wood": 6 * mult, "stone": 0}
+				else:
+					tools_repair_cost[name] = {"wood": 2 * mult, "stone": 4 * mult}
+				wood_label.bbcode_enabled = true
+				stone_label.bbcode_enabled = true
+				wood_label.bbcode_text = "[s][color=gray]x" + str(tools_repair_cost[name]["wood"]/2) + "[/color][/s]" + " x" + str(tools_repair_cost[name]["wood"]) + " bois"
+				stone_label.bbcode_text = "[s][color=gray]x" + str(tools_repair_cost[name]["stone"]/2) + "[/color][/s]" + " x" + str(tools_repair_cost[name]["stone"]) + " pierres"
+				if (mult == 0) || (nb_wood < tools_repair_cost[name]["wood"]) || (nb_stone < tools_repair_cost[name]["stone"]):
+					button.disabled = true
+				else:
+					button.disabled = false
+
 
 func _on_close_pressed() -> void:
 	$Anim.play("TransOUT")
@@ -146,51 +89,43 @@ func _on_close_pressed() -> void:
 
 
 func _on_etabli_s_state(s: Building.STATE):
-	
-	marteau = inventory_gui.get_tool("hammer")
-	hache = inventory_gui.get_tool("axe")
-	pioche = inventory_gui.get_tool("pickaxe")
-	fau = inventory_gui.get_tool("hoe")
-	seau = inventory_gui.get_tool("bucket")
-	if s == Building.STATE.good:
-		multi = 1
-	elif s == Building.STATE.mid:
-		multi = 2
+	state = s
+	hammer = inventory_gui.get_tool("hammer")
+	axe = inventory_gui.get_tool("axe")
+	pickaxe = inventory_gui.get_tool("pickaxe")
+	hoe = inventory_gui.get_tool("hoe")
+	bucket = inventory_gui.get_tool("bucket")
 
-func _on_repare_hammer_pressed() -> void:
-	marteau.repair()
-	inventory_gui.remove_item(wood, marteau_cost.x)
-	inventory_gui.remove_item(stones, marteau_cost.y)
+func _on_repair_hammer_pressed() -> void:
+	hammer.repair()
+	inventory_gui.remove_item(wood, tools_repair_cost["hammer"]["wood"])
+	inventory_gui.remove_item(stones, tools_repair_cost["hammer"]["stone"])
 	damage_building.emit()
 
 
-func _on_repare_hache_pressed() -> void:
-	if hache_cost != Vector2i(0,0) : 
-		hache.repair()
-		inventory_gui.remove_item(wood, hache_cost.x)
-		inventory_gui.remove_item(stones, hache_cost.y)
-		damage_building.emit()
+func _on_repair_axe_pressed() -> void:
+	axe.repair()
+	inventory_gui.remove_item(wood, tools_repair_cost["axe"]["wood"])
+	inventory_gui.remove_item(stones, tools_repair_cost["axe"]["stone"])
+	damage_building.emit()
 
 
-func _on_repare_pioche_pressed() -> void:
-	if pioche_cost != Vector2i(0, 0):
-		pioche.repair()
-		inventory_gui.remove_item(wood, pioche_cost.x)
-		inventory_gui.remove_item(stones, pioche_cost.y)
-		damage_building.emit()
+func _on_repair_pickaxe_pressed() -> void:
+	pickaxe.repair()
+	inventory_gui.remove_item(wood, tools_repair_cost["pickaxe"]["wood"])
+	inventory_gui.remove_item(stones, tools_repair_cost["pickaxe"]["stone"])
+	damage_building.emit()
 
 
-func _on_repare_fau_pressed() -> void:
-	if fau_cost != Vector2i(0, 0):
-		fau.repair()
-		inventory_gui.remove_item(wood, fau_cost.x)
-		inventory_gui.remove_item(stones, fau_cost.y)
-		damage_building.emit()
+func _on_repair_hoe_pressed() -> void:
+	hoe.repair()
+	inventory_gui.remove_item(wood, tools_repair_cost["hoe"]["wood"])
+	inventory_gui.remove_item(stones, tools_repair_cost["hoe"]["stone"])
+	damage_building.emit()
 
 
-func _on_repare_seau_pressed() -> void:
-	if seau_cost != Vector2i(0, 0):
-		seau.repair()
-		inventory_gui.remove_item(wood, seau_cost.x)
-		inventory_gui.remove_item(stones, seau_cost.y)
+func _on_repair_bucket_pressed() -> void:
+		bucket.repair()
+		inventory_gui.remove_item(wood, tools_repair_cost["bucket"]["wood"])
+		inventory_gui.remove_item(stones, tools_repair_cost["bucket"]["stone"])
 		damage_building.emit()
