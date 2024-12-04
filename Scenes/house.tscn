@@ -269,7 +269,7 @@ text = "Vendre 1"
 
 [node name="sell" type="AudioStreamPlayer" parent="InteractMenu"]
 stream = ExtResource("11_4uxir")
-volume_db = -20.0
+volume_db = -30.0
 
 [node name="RepairMenu" parent="." instance=ExtResource("11_s1o4m")]
 

@@ -171,14 +171,15 @@ zoom = Vector2(2, 2)
 
 [node name="water" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_7dtll")
-volume_db = -10.0
+volume_db = -30.0
 
 [node name="creuser" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_trdff")
-volume_db = -15.0
+volume_db = -30.0
 
 [node name="planter" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_lbdy7")
+volume_db = -15.0
 
 [connection signal="moneyUpdated" from="CanvasLayer/Inventory" to="CanvasLayer" method="_on_inventory_money_updated"]
 [connection signal="timeout" from="worldTimer" to="." method="_on_world_timer_timeout"]

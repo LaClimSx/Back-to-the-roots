@@ -384,7 +384,7 @@ autowrap_mode = 3
 
 [node name="grind" type="AudioStreamPlayer" parent="InteractMenuMoulin"]
 stream = ExtResource("34_87cyi")
-volume_db = -15.0
+volume_db = -25.0
 
 [node name="RepairMenu" parent="." instance=ExtResource("34_s55y8")]
 

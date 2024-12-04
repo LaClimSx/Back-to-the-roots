@@ -1,9 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkuy662n4u61u"]
+[gd_scene load_steps=5 format=3 uid="uid://dkuy662n4u61u"]
 
+[ext_resource type="AudioStream" uid="uid://ctqtcbtnyncw0" path="res://Assets/Sounds/mine.mp3" id="1_q2a40"]
 [ext_resource type="AudioStream" uid="uid://b4dxmwoxdipdu" path="res://Assets/Sounds/breaks.mp3" id="1_reamb"]
+[ext_resource type="AudioStream" uid="uid://cqdrxugbdcm7c" path="res://Assets/Sounds/chop.mp3" id="3_g073e"]
+[ext_resource type="AudioStream" uid="uid://cikmoboxo2xfc" path="res://Assets/Sounds/repair.mp3" id="4_nhdfa"]
 
 [node name="GlobalScene" type="Node2D"]
 
+[node name="mine" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_q2a40")
+volume_db = -40.0
+
 [node name="breaks" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_reamb")
-volume_db = -20.0
+volume_db = -40.0
+
+[node name="chop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g073e")
+volume_db = -40.0
+
+[node name="repair" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nhdfa")
+volume_db = -40.0
+
+[node name="middura" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_reamb")
+volume_db = -50.0

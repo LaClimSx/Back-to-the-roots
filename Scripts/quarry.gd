@@ -32,6 +32,7 @@ func animate():
 		
 
 func interact():
+	GlobalScene.get_node("mine").play()
 	if !Global.efficiency_decline:
 		inventory_gui.insert_item(stone, 4)
 		damage_itself_N(BASE_DIVIDER)
