@@ -110,6 +110,7 @@ _data = {
 [node name="House" type="StaticBody2D"]
 scale = Vector2(0.15, 0.15)
 script = ExtResource("1_gxx45")
+max_durability = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_17epx")

@@ -35,11 +35,17 @@ func _on_close_pressed() -> void:
 	get_tree().paused = false
 
 func _on_moulin_s_state(s: Building.STATE) -> void:
+	$Control/exchangeRate.bbcode_enabled = true
 	match s: 
-		Building.STATE.good: exchange = 3
-		Building.STATE.mid: exchange = 1
+		Building.STATE.good: 
+			exchange = 3
+			$Control/exchangeRate.bbcode_text = "Taux d'échange 1:" + str(exchange)
+		Building.STATE.mid: 
+			exchange = 1
+			$Control/exchangeRate.bbcode_text = "Taux d'échange [s][color=gray]" + "1:3" + "[/color][/s] " + "1:" + str(exchange)
+			
 		_: exchange = 0
-	$Control/exchangeRate.text = "Taux d'échange 1:" + str(exchange)
+	
 		
 
 func _on_moins_pressed() -> void:

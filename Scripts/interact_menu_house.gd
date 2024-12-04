@@ -38,14 +38,14 @@ func _on_sell_all_1_pressed() -> void:
 
 
 func _on_house_s_state(s):
+	$Control/price.bbcode_enabled = true
 	match s:
 		Building.STATE.good: 
 			price = 5
-			$Control/price.text = "Prix : " + str(price) + "$"
+			$Control/price.bbcode_text = "Prix : " + str(price) + "$"
 
 		Building.STATE.mid: 
 			price = 3
-			$Control/price.bbcode_enabled = true
-			$Control/price.bbcode_text = "Prix : [s][color=gray]" + "5" + "[/color][/s] " + str(price) + "$"
+			$Control/price.bbcode_text = "Prix : [s][color=gray]" + "5$" + "[/color][/s] " + str(price) + "$"
 			
 		_: price = 0
