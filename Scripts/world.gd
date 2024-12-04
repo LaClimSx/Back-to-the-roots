@@ -56,7 +56,7 @@ func checkActions():
 			#If dirt
 			if ground_atlas == Vector2i(1,0) :
 				#If full durability plow entirely else only half plow
-				ground.set_cell(viewing_tile,0,Vector2i(0,1)) if selected_item.state > 1 else ground.set_cell(viewing_tile,0,Vector2i(2,0))
+				await animateTile(viewing_tile, false) if selected_item.state > 1 else ground.set_cell(viewing_tile,0,Vector2i(2,0))
 				inventory_gui.use_item()
 				print("Plowed")
 			#If half_tilted_dirt
@@ -83,7 +83,7 @@ func checkActions():
 				1: ground.set_cell(viewing_tile,0,Vector2i(1,1))
 				2: ground.set_cell(viewing_tile,0,Vector2i(2,1))
 				3: ground.set_cell(viewing_tile,0,Vector2i(3,1))
-				4: ground.set_cell(viewing_tile,0,Vector2i(4,1))
+				4: await animateTile(viewing_tile, true)
 			print("Watered")
 
 		#If player has wheat and tile is empty field, plant the wheat
@@ -91,6 +91,18 @@ func checkActions():
 			crops.set_cell(viewing_tile,1,Vector2i(0,0))
 			inventory_gui.use_item()
 			print("Planted")
+
+func animateTile(position: Vector2i, water: bool):
+	if water:
+		for i in range(14):
+			ground.set_cell(position,1,Vector2i(i,0))
+			await get_tree().create_timer(0.05).timeout
+		ground.set_cell(position,0,Vector2i(4,1))
+	else:
+		for i in range(10):
+			ground.set_cell(position,1,Vector2i(i,1))
+			await get_tree().create_timer(0.05).timeout
+		ground.set_cell(position,0,Vector2i(0,1))
 
 #This function does not check every softlock possibilty but only 2
 func checkSoftLock() -> void:
