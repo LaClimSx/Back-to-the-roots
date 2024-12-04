@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuyn51noupuaf"]
+
+[ext_resource type="Script" path="res://Scripts/scène_de_fin.gd" id="1_ty4cp"]
+[ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="2_2dqy3"]
+
+[node name="Scène de fin" type="Node2D"]
+script = ExtResource("1_ty4cp")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1152.0
+offset_bottom = 649.0
+
+[node name="text fin" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 1147.0
+offset_bottom = 535.0
+theme_override_fonts/font = ExtResource("2_2dqy3")
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LinkButton" type="LinkButton" parent="Panel"]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 490.0
+offset_right = 663.0
+offset_bottom = 543.0
+theme_override_fonts/font = ExtResource("2_2dqy3")
+theme_override_font_sizes/font_size = 40
+text = "Formulaire"
+uri = "https://docs.google.com/forms/d/e/1FAIpQLScZFicrxvPb0sCQBfN8kK4m9aLRZvkUkR04hDhDEAgnlUazig/viewform?usp=sf_link"
