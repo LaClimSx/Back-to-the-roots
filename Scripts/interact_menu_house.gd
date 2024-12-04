@@ -23,6 +23,7 @@ func _on_sell_one_1_pressed() -> void:
 	#faire des bails avec les ressources
 	inventory_gui.sell_item(flour, false, price)
 	damage_building.emit() #TODO: check if makes sense to damage at each sale
+	$sell.play()
 	if price == 0 : 
 		$Anim.play("TransOUT")
 		get_tree().paused = false
@@ -30,6 +31,7 @@ func _on_sell_one_1_pressed() -> void:
 
 func _on_sell_all_1_pressed() -> void:
 	#faire des bails avec les ressources
+	$sell.play()
 	inventory_gui.sell_item(flour, true, price)
 	$Anim.play("TransOUT")
 	damage_building.emit()

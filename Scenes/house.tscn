@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dcouvu2n0fdiq"]
+[gd_scene load_steps=22 format=3 uid="uid://dcouvu2n0fdiq"]
 
 [ext_resource type="Texture2D" uid="uid://b6bqlyip7nsd8" path="res://Assets/Bâtiments/maison/Sans titre 41_20241016202109.png" id="1_e0h1k"]
 [ext_resource type="Script" path="res://Scripts/house.gd" id="1_gxx45"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/interact_menu_house.gd" id="8_jwp42"]
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="9_1gnbb"]
 [ext_resource type="Texture2D" uid="uid://c13aycu3v6uv5" path="res://Assets/Items/flour.png" id="10_afsmt"]
+[ext_resource type="AudioStream" uid="uid://cp6q45difufe2" path="res://Assets/Sounds/vente.mp3" id="11_4uxir"]
 [ext_resource type="PackedScene" uid="uid://dhpl8urm0uvxa" path="res://Scenes/repair_menu.tscn" id="11_s1o4m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iu676"]
@@ -265,6 +266,10 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 40
 text = "Vendre 1"
+
+[node name="sell" type="AudioStreamPlayer" parent="InteractMenu"]
+stream = ExtResource("11_4uxir")
+volume_db = -20.0
 
 [node name="RepairMenu" parent="." instance=ExtResource("11_s1o4m")]
 
