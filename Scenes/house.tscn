@@ -110,6 +110,7 @@ _data = {
 [node name="House" type="StaticBody2D"]
 scale = Vector2(0.15, 0.15)
 script = ExtResource("1_gxx45")
+max_durability = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_17epx")
@@ -214,18 +215,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="price" type="Label" parent="InteractMenu/Control"]
+[node name="price" type="RichTextLabel" parent="InteractMenu/Control"]
 layout_mode = 0
-offset_left = 223.0
-offset_top = 245.5
-offset_right = 673.0
-offset_bottom = 300.5
-theme_override_fonts/font = ExtResource("9_1gnbb")
-theme_override_font_sizes/font_size = 45
+offset_left = 374.0
+offset_top = 240.0
+offset_right = 563.0
+offset_bottom = 299.0
+theme_override_fonts/normal_font = ExtResource("9_1gnbb")
+theme_override_font_sizes/normal_font_size = 40
 text = "Prix : x$"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="transformation1" type="Sprite2D" parent="InteractMenu/Control"]
 position = Vector2(451, 177.5)
