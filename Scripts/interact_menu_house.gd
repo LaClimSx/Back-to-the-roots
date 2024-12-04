@@ -39,6 +39,10 @@ func _on_sell_all_1_pressed() -> void:
 
 func _on_house_s_state(s):
 	$Control/price.bbcode_enabled = true
+	if !Global.efficiency_decline:
+		price = 5
+		$Control/price.bbcode_text = "Prix : " + str(price) + "$"
+		return
 	match s:
 		Building.STATE.good: 
 			price = 5

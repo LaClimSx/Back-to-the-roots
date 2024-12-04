@@ -32,30 +32,24 @@ func animate():
 		
 
 func interact():
-	if state == STATE.good:
-		match selected_item.state:
-			#If mid pickaxe
-			1: 
-				inventory_gui.insert_item(stone, 2)
-				damage_itself_N(BASE_DIVIDER / 2) #TODO: verifier que les calculs sont bons
-				Global.display_indicator(2, Global.player_looking_position, Color.GRAY)
-			#If good pickaxe
-			2: 
-				inventory_gui.insert_item(stone, 4)
-				damage_itself_N(BASE_DIVIDER)
-				Global.display_indicator(4, Global.player_looking_position, Color.GREEN)
-	elif state == STATE.mid:
-		match selected_item.state:
-			#If mid pickaxe
-			1: 
-				inventory_gui.insert_item(stone, 1)
-				damage_itself_N(BASE_DIVIDER / 4)
-				Global.display_indicator(1, Global.player_looking_position, Color.GRAY)
-			#If good pickaxe
-			2: 
-				inventory_gui.insert_item(stone, 3)
-				damage_itself_N(BASE_DIVIDER / 3)
-				Global.display_indicator(3, Global.player_looking_position, Color.GREEN)
+	if !Global.efficiency_decline:
+		inventory_gui.insert_item(stone, 4)
+		damage_itself_N(BASE_DIVIDER)
+		Global.display_indicator(4, Global.player_looking_position, Color.GREEN)
+		inventory_gui.use_item()
+		return
+	
+	match selected_item.state:
+		#If mid pickaxe	
+		1: 
+			inventory_gui.insert_item(stone, 2)
+			damage_itself_N(BASE_DIVIDER * 2) #TODO: verifier que les calculs sont bons
+			Global.display_indicator(2, Global.player_looking_position, Color.GRAY)
+		#If good pickaxe
+		2: 
+			inventory_gui.insert_item(stone, 4)
+			damage_itself_N(BASE_DIVIDER)
+			Global.display_indicator(4, Global.player_looking_position, Color.GREEN)
 	inventory_gui.use_item()
 	
 	

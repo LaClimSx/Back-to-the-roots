@@ -149,9 +149,11 @@ position = Vector2(115.081, 192.161)
 
 [node name="Moulin" parent="." instance=ExtResource("11_d6woa")]
 position = Vector2(107.075, 89.0746)
+max_durability = 2000
 
 [node name="House" parent="." instance=ExtResource("8_66nr8")]
 position = Vector2(280.196, 89.0746)
+max_durability = 1800
 
 [node name="Quarry" parent="." instance=ExtResource("13_av1ix")]
 position = Vector2(71.0497, 265.222)
