@@ -76,7 +76,7 @@ func checkInteraction() -> void:
 
 
 func checkRepair(holds_working_hammer: bool) -> void:
-	if reparable && player_inside && holds_working_hammer && Input.is_action_just_released("Repair") && state != STATE.good:
+	if reparable && player_inside && holds_working_hammer && Input.is_action_just_released("Repair") && ((state != STATE.good && Global.reparability) || (state == STATE.broken && !Global.reparability)):
 		repair()
 
 
