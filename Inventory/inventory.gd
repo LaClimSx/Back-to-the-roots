@@ -49,6 +49,15 @@ func insertN(item: Item, n: int) -> int : #TODO: If this doesn't work just call 
 				left -= slot.amount
 	updated.emit()
 	return n - left
+	
+#Insert in slot i of inventory if it is empty, returns false if not
+func insert_at(item: Item, i: int) -> bool:
+	var slot = slots[i]
+	if slot.item: return false
+	slot.item = item
+	slot.amount = 1
+	updated.emit()
+	return true
 
 #Remove n items from the inventory
 #Returns the number of items that were removed
