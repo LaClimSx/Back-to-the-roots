@@ -53,34 +53,33 @@ func _process(delta: float) -> void:
 		var wood_label : RichTextLabel = $Control.get_node("wood_" + name)
 		var stone_label : RichTextLabel = $Control.get_node("stone_" + name)
 		var button : Button = $Control.get_node("repair_" + name)
-		match state:
-			Building.STATE.good:
-				var mult: int = 2 - tool.state
-				if name == "bucket":
-					tools_repair_cost[name] = {"wood": 3 * mult, "stone": 0}
-				else:
-					tools_repair_cost[name] = {"wood": 1 * mult, "stone": 2 * mult}
-				wood_label.text = "x" + str(tools_repair_cost[name]["wood"]) + " bois"
-				stone_label.text = "x" + str(tools_repair_cost[name]["stone"]) + " pierres"
-				if (mult == 0) || (nb_wood < tools_repair_cost[name]["wood"]) || (nb_stone < tools_repair_cost[name]["stone"]):
-					button.disabled = true
-				else:
-					button.disabled = false
+		if state == Building.STATE.good || !Global.efficiency_decline:
+			var mult: int = 2 - tool.state
+			if name == "bucket":
+				tools_repair_cost[name] = {"wood": 3 * mult, "stone": 0}
+			else:
+				tools_repair_cost[name] = {"wood": 1 * mult, "stone": 2 * mult}
+			wood_label.text = "x" + str(tools_repair_cost[name]["wood"]) + " bois"
+			stone_label.text = "x" + str(tools_repair_cost[name]["stone"]) + " pierres"
+			if (mult == 0) || (nb_wood < tools_repair_cost[name]["wood"]) || (nb_stone < tools_repair_cost[name]["stone"]):
+				button.disabled = true
+			else:
+				button.disabled = false
 						
-			Building.STATE.mid:
-				var mult: int = 2 - tool.state
-				if name == "bucket":
-					tools_repair_cost[name] = {"wood": 6 * mult, "stone": 0}
-				else:
-					tools_repair_cost[name] = {"wood": 2 * mult, "stone": 4 * mult}
-				wood_label.bbcode_enabled = true
-				stone_label.bbcode_enabled = true
-				wood_label.bbcode_text = "[s][color=gray]x" + str(tools_repair_cost[name]["wood"]/2) + "[/color][/s]" + " x" + str(tools_repair_cost[name]["wood"]) + " bois"
-				stone_label.bbcode_text = "[s][color=gray]x" + str(tools_repair_cost[name]["stone"]/2) + "[/color][/s]" + " x" + str(tools_repair_cost[name]["stone"]) + " pierres"
-				if (mult == 0) || (nb_wood < tools_repair_cost[name]["wood"]) || (nb_stone < tools_repair_cost[name]["stone"]):
-					button.disabled = true
-				else:
-					button.disabled = false
+		elif state == Building.STATE.mid:
+			var mult: int = 2 - tool.state
+			if name == "bucket":
+				tools_repair_cost[name] = {"wood": 6 * mult, "stone": 0}
+			else:
+				tools_repair_cost[name] = {"wood": 2 * mult, "stone": 4 * mult}
+			wood_label.bbcode_enabled = true
+			stone_label.bbcode_enabled = true
+			wood_label.bbcode_text = "[s][color=gray]x" + str(tools_repair_cost[name]["wood"]/2) + "[/color][/s]" + " x" + str(tools_repair_cost[name]["wood"]) + " bois"
+			stone_label.bbcode_text = "[s][color=gray]x" + str(tools_repair_cost[name]["stone"]/2) + "[/color][/s]" + " x" + str(tools_repair_cost[name]["stone"]) + " pierres"
+			if (mult == 0) || (nb_wood < tools_repair_cost[name]["wood"]) || (nb_stone < tools_repair_cost[name]["stone"]):
+				button.disabled = true
+			else:
+				button.disabled = false
 
 
 func _on_close_pressed() -> void:
