@@ -40,7 +40,6 @@ func _process(delta) -> void:
 	if reparable:
 		if player_inside && holds_working_hammer && state != STATE.good:
 			if repair_label : repair_label.show()
-			print("wtf is this")
 		else:
 			if repair_label : repair_label.hide()
 
@@ -56,6 +55,15 @@ func _process(delta) -> void:
 
 
 func checkState() -> void:
+	if Global.efficiency_decline:
+		if durability == 0:
+			state = STATE.broken
+			s_state.emit(state)
+		else:
+			state = STATE.good
+			s_state.emit(state)
+		return
+		
 	if durability > max_durability/2:
 		state = STATE.good
 		s_state.emit(state)
