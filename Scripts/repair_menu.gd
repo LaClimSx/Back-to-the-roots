@@ -31,14 +31,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Control/stone.text = "x" + str(stone_cost) + " pierre(s)"
-	$Control/wood.text = "x" + str(wood_cost) + " bois"
+	if (state != Building.STATE.broken):
+		$Control/stone.text = "x" + str(stone_cost) + " pierre(s)"
+		$Control/wood.text = "x" + str(wood_cost) + " bois"
+	else :
+		$Control/stone.bbcode_enabled = true
+		$Control/wood.bbcode_enabled = true
+		$Control/stone.bbcode_text = "[s][color=gray]x" + str(default_cost["stone"]) + "[/color][/s] x" + str(stone_cost) + " pierre(s)"
+		$Control/wood.bbcode_text = "[s][color=gray]x" + str(default_cost["wood"]) + "[/color][/s] x" + str(wood_cost) + " bois"
 	
 	if (inventory_gui.find_item(stick) >= wood_cost && inventory_gui.find_item(stone) >= stone_cost):
 		$Control/repair.disabled = false
 	else: #TODO: What to do when not enough ? For now nothing
 		$Control/repair.disabled = true
-
 
 func _on_close_pressed() -> void:
 	$Anim.play("TransOUT")
@@ -59,6 +64,7 @@ func _on_repair_pressed() -> void:
 	#	print("Fonds insuffisants")
 
 func _on_s_state(s: Building.STATE) -> void:
+	state = s
 	if s == Building.STATE.good:
 		wood_cost = 0
 		stone_cost = 0
