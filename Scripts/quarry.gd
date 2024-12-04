@@ -32,6 +32,13 @@ func animate():
 		
 
 func interact():
+	if !Global.efficiency_decline:
+		inventory_gui.insert_item(stone, 4)
+		damage_itself_N(BASE_DIVIDER)
+		Global.display_indicator(4, Global.player_looking_position, Color.GREEN)
+		inventory_gui.use_item()
+		return
+	
 	match selected_item.state:
 		#If mid pickaxe	
 		1: 

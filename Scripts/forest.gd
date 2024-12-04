@@ -30,6 +30,13 @@ func animate():
 			$CollisionPolygon2D.disabled = true
 
 func interact():
+	if !Global.efficiency_decline:
+		inventory_gui.insert_item(stick, 4)
+		damage_itself_N(BASE_DIVIDER)
+		Global.display_indicator(4, Global.player_looking_position, Color.GREEN)
+		inventory_gui.use_item()
+		return
+		
 	match selected_item.state:
 		#If mid axe
 		1: 

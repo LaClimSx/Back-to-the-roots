@@ -29,8 +29,16 @@ func useBucket(water_amount: int) -> int:
 		if durability == 0:
 			texture = broken
 			state = STATE.broken
+	
+	if !Global.efficiency_decline:
+		if state != STATE.broken:
+			if water_amount >= quantity : texture = good0
+			match (quantity - water_amount):
+				1: texture = good1
+				2: texture = good2
+				3: texture = good3
 			
-	if state == STATE.good:
+	elif state == STATE.good:
 		if water_amount >= quantity : texture = good0
 		match (quantity - water_amount):
 			1: texture = good1
@@ -50,7 +58,17 @@ func useBucket(water_amount: int) -> int:
 func fillBucket(amount: int) -> void:
 	var old_quantity : int = quantity
 	if state == STATE.broken : return
-	if state == STATE.good:
+	
+	if !Global.efficiency_decline:
+		quantity = clamp(quantity + amount, 0, 4)
+		match (quantity):
+			0: texture = good0
+			1: texture = good1
+			2: texture = good2
+			3: texture = good3
+			4: texture = good4
+	
+	elif state == STATE.good:
 		quantity = clamp(quantity + amount, 0, 4)
 		match (quantity):
 			0: texture = good0

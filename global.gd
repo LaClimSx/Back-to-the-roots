@@ -53,7 +53,7 @@ func display_indicator(value, position: Vector2 = player_looking_position, color
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#gameVariation = randi_range(1,3) #TODO: uncomment this line and remove the next one
-	gameVariation = 1
+	gameVariation = 2
 	match gameVariation:
 		1:
 			reparability = true
