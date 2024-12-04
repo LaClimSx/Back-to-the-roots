@@ -97,6 +97,10 @@ func use_item_at_index(index: int) -> void:
 		else:
 			remove_at_index(index)
 			
+	if !Global.reparability && slot.item is Tool:
+		if slot.item.state == Tool.STATE.broken:
+			remove_at_index(index)
+			
 #Returns the amount of said item in the inventory, -1 if none
 func find_item(item: Item) -> int:
 	var total : int = 0
