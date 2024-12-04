@@ -193,7 +193,7 @@ offset_top = 34.0
 offset_right = 1047.0
 offset_bottom = 587.0
 
-[node name="repare title" type="Label" parent="InteractMenuEtabli/Control"]
+[node name="etabli_title" type="Label" parent="InteractMenuEtabli/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -432,6 +432,7 @@ theme_override_font_sizes/font_size = 35
 text = "Réparer"
 
 [node name="RepairMenu" parent="." instance=ExtResource("14_vjsiu")]
+visible = false
 
 [connection signal="s_state" from="." to="InteractMenuEtabli" method="_on_etabli_s_state"]
 [connection signal="s_state" from="." to="RepairMenu" method="_on_s_state"]
