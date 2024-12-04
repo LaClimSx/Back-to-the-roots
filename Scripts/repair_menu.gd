@@ -31,6 +31,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if !Global.efficiency_decline:
+		$Control/stone.text = "x" + str(stone_cost) + " pierre(s)"
+		$Control/wood.text = "x" + str(wood_cost) + " bois"
+		if (inventory_gui.find_item(stick) >= wood_cost && inventory_gui.find_item(stone) >= stone_cost):
+			$Control/repair.disabled = false
+		else: #TODO: What to do when not enough ? For now nothing
+			$Control/repair.disabled = true
+		return
+		
+		
 	if (state != Building.STATE.broken):
 		$Control/stone.text = "x" + str(stone_cost) + " pierre(s)"
 		$Control/wood.text = "x" + str(wood_cost) + " bois"

@@ -24,11 +24,14 @@ func useBucket(water_amount: int) -> int:
 	if quantity <= 0 || state == STATE.broken: return 0
 	if durability > 0:
 		durability -= 1
+		
+	if Global.efficiency_decline:
 		if durability <= maxDurability/3:
 			state = STATE.mid
-		if durability == 0:
-			texture = broken
-			state = STATE.broken
+	
+	if durability == 0:
+		texture = broken
+		state = STATE.broken
 			
 	if state == STATE.good:
 		if water_amount >= quantity : texture = good0

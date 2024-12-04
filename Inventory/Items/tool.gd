@@ -13,6 +13,15 @@ var state: STATE = STATE.good
 func use(player: Player) -> void:
 	if durability > 0:
 		durability -= 1
+		
+		if !Global.efficiency_decline:
+			if durability == 0:
+				texture = broken_texture
+				state = STATE.broken
+			else:
+				texture = good_texture
+				state = STATE.good
+			return
 	
 		if durability <= maxDurability/3:
 			texture = mid_texture

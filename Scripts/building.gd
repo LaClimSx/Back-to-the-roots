@@ -55,7 +55,7 @@ func _process(delta) -> void:
 
 
 func checkState() -> void:
-	if Global.efficiency_decline:
+	if !Global.efficiency_decline:
 		if durability == 0:
 			state = STATE.broken
 			s_state.emit(state)
