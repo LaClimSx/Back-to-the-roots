@@ -29,7 +29,7 @@ func interact():
 		print("already full")
 		return
 	print("filling up")
-	if state == STATE.good:
+	if state == STATE.good || !Global.efficiency_decline:
 		selected_item.fillBucket(4)
 	elif state == STATE.mid:
 		selected_item.fillBucket(2)

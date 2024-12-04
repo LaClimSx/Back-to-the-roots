@@ -36,6 +36,10 @@ func _on_close_pressed() -> void:
 
 func _on_moulin_s_state(s: Building.STATE) -> void:
 	$Control/exchangeRate.bbcode_enabled = true
+	if !Global.efficiency_decline:
+		exchange = 3
+		$Control/exchangeRate.bbcode_text = "Taux d'échange 1:" + str(exchange)
+		return
 	match s: 
 		Building.STATE.good: 
 			exchange = 3
