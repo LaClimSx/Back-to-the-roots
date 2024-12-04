@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://rlhk8qhsj3ua"]
+[gd_scene load_steps=24 format=4 uid="uid://rlhk8qhsj3ua"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_rjk8m"]
 [ext_resource type="PackedScene" uid="uid://7yman1hb02ho" path="res://Scenes/player.tscn" id="2_pts0t"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://byvp6vqdlhxph" path="res://Scenes/forest.tscn" id="14_fk78e"]
 [ext_resource type="AudioStream" uid="uid://cy23ji07kompb" path="res://Assets/Sounds/water.mp3" id="16_7dtll"]
 [ext_resource type="AudioStream" uid="uid://btriyu12tfqqk" path="res://Assets/Sounds/digging.mp3" id="16_trdff"]
+[ext_resource type="AudioStream" uid="uid://dyiyrljswhkm3" path="res://Assets/Sounds/plant.mp3" id="18_lbdy7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dy6s2"]
 texture = ExtResource("3_v4820")
@@ -170,9 +171,15 @@ zoom = Vector2(2, 2)
 
 [node name="water" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_7dtll")
+volume_db = -30.0
 
 [node name="creuser" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_trdff")
+volume_db = -30.0
+
+[node name="planter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_lbdy7")
+volume_db = -15.0
 
 [connection signal="moneyUpdated" from="CanvasLayer/Inventory" to="CanvasLayer" method="_on_inventory_money_updated"]
 [connection signal="timeout" from="worldTimer" to="." method="_on_world_timer_timeout"]

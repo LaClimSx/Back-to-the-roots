@@ -30,8 +30,10 @@ func interact():
 		return
 	print("filling up")
 	if state == STATE.good || !Global.efficiency_decline:
+		$water.play()
 		selected_item.fillBucket(4)
 	elif state == STATE.mid:
+		$water.play()
 		selected_item.fillBucket(2)
 	damage_itself()
 	inventory_gui.update()

@@ -30,6 +30,7 @@ func animate():
 			$CollisionPolygon2D.disabled = true
 
 func interact():
+	GlobalScene.get_node("chop").play()
 	if !Global.efficiency_decline:
 		inventory_gui.insert_item(stick, 4)
 		damage_itself_N(BASE_DIVIDER)

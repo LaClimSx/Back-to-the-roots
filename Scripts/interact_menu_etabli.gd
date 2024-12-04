@@ -114,6 +114,7 @@ func _on_etabli_s_state(s: Building.STATE):
 	bucket = inventory_gui.get_tool("bucket")
 
 func _on_repair_hammer_pressed() -> void:
+	GlobalScene.get_node("repair").play()
 	if !Global.reparability:
 		if !inventory_gui.insert_at(hammer_item, 2): inventory_gui.insert_item(hammer_item,1)
 		hammer_item.repair()
@@ -126,6 +127,7 @@ func _on_repair_hammer_pressed() -> void:
 
 
 func _on_repair_axe_pressed() -> void:
+	GlobalScene.get_node("repair").play()
 	if !Global.reparability:
 		if !inventory_gui.insert_at(axe_item, 3): inventory_gui.insert_item(axe_item,1)
 		axe_item.repair()
@@ -138,6 +140,7 @@ func _on_repair_axe_pressed() -> void:
 
 
 func _on_repair_pickaxe_pressed() -> void:
+	GlobalScene.get_node("repair").play()
 	if !Global.reparability:
 		if !inventory_gui.insert_at(pickaxe_item, 4): inventory_gui.insert_item(pickaxe_item,1)
 		pickaxe_item.repair()
@@ -150,6 +153,7 @@ func _on_repair_pickaxe_pressed() -> void:
 
 
 func _on_repair_hoe_pressed() -> void:
+	GlobalScene.get_node("repair").play()
 	if !Global.reparability:
 		if !inventory_gui.insert_at(hoe_item, 0): inventory_gui.insert_item(hoe_item,1)
 		hoe_item.repair()
@@ -162,6 +166,7 @@ func _on_repair_hoe_pressed() -> void:
 
 
 func _on_repair_bucket_pressed() -> void:
+	GlobalScene.get_node("repair").play()
 	if !Global.reparability:
 		if !inventory_gui.insert_at(bucket_item, 1): inventory_gui.insert_item(bucket_item,1)
 		bucket_item.repair()

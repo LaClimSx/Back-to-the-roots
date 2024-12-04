@@ -13,6 +13,7 @@ const TILEMAP_SCALING : float = 0.25
 func _ready():
 	$Player.start(Vector2(380, 185))
 	Global.world_size = ground.get_used_rect().size * 100 * TILEMAP_SCALING
+	GlobalScene.get_node("ambiance").play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,6 +50,7 @@ func checkActions():
 			Global.display_indicator(2, Global.player_looking_position, Color.WHITE)
 			crops.set_cell(viewing_tile)
 			ground.set_cell(viewing_tile, 0, Vector2i(1,0))
+			$planter.play(0.5)
 			print("Harvested")
 
 		#If player has hoe (not broken) and tile is dirt, plow the tile
@@ -96,6 +98,7 @@ func checkActions():
 		elif selected_item && selected_item.name == "wheat" && ground_atlas == Vector2i(4,1) && crops.get_cell_atlas_coords(viewing_tile) == Vector2i(-1,-1) :
 			crops.set_cell(viewing_tile,1,Vector2i(0,0))
 			inventory_gui.use_item()
+			$planter.play(0.5)
 			print("Planted")
 
 func animateTile(position: Vector2i, water: bool):
