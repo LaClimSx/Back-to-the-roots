@@ -35,6 +35,8 @@ func _ready() -> void:
 	$Control/repair_hoe.disabled = true
 	$Control/repair_bucket.disabled = true
 	$Control/repair_hammer.disabled = true
+	$Control/etabli_title.text = "Répare tes outils" if Global.reparability else "Fabrique des outils"
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -42,8 +44,12 @@ func _process(delta: float) -> void:
 	nb_wood = inventory_gui.find_item(wood)
 	nb_stone = inventory_gui.find_item(stones)
 	
+	if !Global.reparability:
+		var tools : Dictionary = {"hammer": hammer, "axe": axe, "pickaxe": pickaxe, "hoe": hoe, "bucket": bucket} #TODO: feur
+		return
+	
 	#TODO: This is a bad fix, change it with the refactoring
-	if !hammer	|| !axe || !pickaxe || !hoe || !bucket: 
+	if !hammer || !axe || !pickaxe || !hoe || !bucket: 
 		return
 		
 	var tools : Array = [hammer, axe, pickaxe, hoe, bucket]
@@ -53,6 +59,8 @@ func _process(delta: float) -> void:
 		var wood_label : RichTextLabel = $Control.get_node("wood_" + name)
 		var stone_label : RichTextLabel = $Control.get_node("stone_" + name)
 		var button : Button = $Control.get_node("repair_" + name)
+		button.text = "Réparer" if Global.reparability else "Fabriquer"
+		
 		if state == Building.STATE.good || !Global.efficiency_decline:
 			var mult: int = 2 - tool.state
 			if name == "bucket":
