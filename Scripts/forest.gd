@@ -51,9 +51,13 @@ func interact():
 	inventory_gui.use_item()
 	
 func damage_itself_N(divider : int) -> void:
+	var old_state = state
 	durability = clamp(durability - (max_durability/divider), 0, max_durability)
 	checkState()
 	animate()
+	if old_state != state:
+		#TODO: JOUER UN SON
+		pass
 
 func timer_timeout() -> void:
 	if state == STATE.broken: return
