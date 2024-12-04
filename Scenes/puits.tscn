@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d0ob0p02raj3k"]
+[gd_scene load_steps=25 format=3 uid="uid://d0ob0p02raj3k"]
 
 [ext_resource type="Script" path="res://Scripts/puits.gd" id="1_6cmja"]
 [ext_resource type="Texture2D" uid="uid://bo6k16lv8jpub" path="res://Assets/Bâtiments/Puits/Sans titre 43_20241017124148.png" id="1_a1vh7"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://duq7v03be7qs2" path="res://Scenes/repair_label.tscn" id="19_ve3d1"]
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="20_v3xk7"]
 [ext_resource type="PackedScene" uid="uid://dhpl8urm0uvxa" path="res://Scenes/repair_menu.tscn" id="21_0qiuq"]
+[ext_resource type="AudioStream" uid="uid://cy23ji07kompb" path="res://Assets/Sounds/water.mp3" id="22_758ri"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ngp2"]
 animations = [{
@@ -130,6 +131,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RepairMenu" parent="." instance=ExtResource("21_0qiuq")]
+
+[node name="water" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_758ri")
+volume_db = -10.0
 
 [connection signal="s_state" from="." to="RepairMenu" method="_on_s_state"]
 [connection signal="body_entered" from="Area2D" to="." method="enter_area"]
