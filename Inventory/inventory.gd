@@ -118,7 +118,7 @@ func find_item(item: Item) -> int:
 			total += slot.amount
 	return total if total > 0 else -1
 
-#Sells one or all of the required item and adds the money to the player's wallet. Returns the amount of items sold
+#Sells one or all of the required item and adds the score to the player's scoreboard. Returns the amount of items sold
 func sellN(item: Item, all: bool, unit_price: int) -> int :
 	var item_slots = slots.filter(func(slot): return slot.item == item)
 	if item_slots.is_empty(): return 0
@@ -133,9 +133,9 @@ func sellN(item: Item, all: bool, unit_price: int) -> int :
 			if slot.amount == 0:
 				removeSlot(slot)
 			break
-	Global.money += unit_price * total
-	#TODO: This is a temporary solution to display the gained money
-	Global.display_indicator(str(unit_price * total) + "$", Global.player_looking_position + Vector2(150,randi_range(-60,40)), Color.WEB_GREEN)
+	Global.score += unit_price * total
+	#TODO: This is a temporary solution to display the gained score
+	Global.display_indicator(str(unit_price * total), Global.player_looking_position + Vector2(150,randi_range(-60,40)), Color.WEB_GREEN)
 	updated.emit()
 	return total
 

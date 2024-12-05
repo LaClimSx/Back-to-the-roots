@@ -19,8 +19,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	checkActions()
-	if Global.money >= Global.MONEY_TO_WIN:
-		print("Won the game gg")
 
 func checkActions():
 	if Input.is_action_just_pressed("Interact"):

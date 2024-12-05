@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://chms1y1u3l4ak"]
+[gd_scene load_steps=5 format=3 uid="uid://dmuk5j1vwpoqf"]
 
 [ext_resource type="Script" path="res://Scripts/starting_texte.gd" id="1_bv0ho"]
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="1_wgx14"]

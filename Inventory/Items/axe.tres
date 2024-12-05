@@ -7,8 +7,8 @@
 
 [resource]
 script = ExtResource("4_lotrf")
-maxDurability = 9
-durability = 9
+maxDurability = 10
+durability = 10
 good_texture = ExtResource("2_cykiw")
 mid_texture = ExtResource("3_cqj26")
 broken_texture = ExtResource("1_kbimu")

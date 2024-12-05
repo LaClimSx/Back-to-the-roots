@@ -13,7 +13,7 @@ var itemInHand: ItemStackGUI
 var oldIndex: int = -1
 var locked: bool = false
 
-signal moneyUpdated
+signal scoreUpdated
 
 func _ready():
 	connectSlots()
@@ -213,8 +213,11 @@ func remove_item(item: Item, amount: int = 1) -> int:
 
 func sell_item(item: Item, all: bool, unit_price: int) -> int:
 	var amount = inventory.sellN(item, all, unit_price)
-	moneyUpdated.emit()
+	scoreUpdated.emit()
 	return amount
 	
 func get_tool(name: String) -> Tool:
 	return inventory.get_tool(name)
+	
+func get_item_at(index: int) -> Item:
+	return inventory.slots[index].item
