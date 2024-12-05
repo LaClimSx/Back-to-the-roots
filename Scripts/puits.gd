@@ -25,7 +25,7 @@ func animate():
 
 func interact():
 	#Check that the bucket isn't already full:
-	if selected_item.quantity == selected_item.state * 2:
+	if (Global.efficiency_decline && selected_item.quantity == selected_item.state * 2) || (!Global.efficiency_decline && selected_item.quantity == 4):
 		print("already full")
 		return
 	print("filling up")
