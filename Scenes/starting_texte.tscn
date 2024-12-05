@@ -33,9 +33,9 @@ anchor_top = 0.5
 anchor_right = 0.496
 anchor_bottom = 0.5
 offset_left = -103.408
-offset_top = 202.0
+offset_top = 220.0
 offset_right = 104.592
-offset_bottom = 255.0
+offset_bottom = 298.0
 theme_override_fonts/font = ExtResource("1_wgx14")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_vkqvp")
@@ -46,11 +46,27 @@ layout_mode = 0
 offset_left = 41.0
 offset_top = 23.0
 offset_right = 1104.0
-offset_bottom = 502.0
+offset_bottom = 276.0
 theme_override_fonts/font = ExtResource("1_wgx14")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 35
 text = "Attention tout se détruit ! 
 Vous jouerez 3 parties de 5 minutes : gérez vos ressources et essayez d'obtenir le plus de points possible !"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="controls" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 286.0
+offset_right = 1131.0
+offset_bottom = 537.0
+theme_override_fonts/font = ExtResource("1_wgx14")
+theme_override_font_sizes/font_size = 30
+text = "Cultivez du blé, transformez le et vender la farine pour avoir le plus de point possible !
+Déplacement : WASD ou flèches
+Utilisation des objets : Espace une fois en main (appuyez sur 1, 2, 3, 4, 5, 6, 7, 8, 9 pour changer d'objet)
+Réparer un bâtiment : Prendre le marteau en main et appyez sur R"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
