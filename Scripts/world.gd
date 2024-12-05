@@ -38,7 +38,6 @@ func checkActions():
 				viewing_tile = player_tile_pos + Vector2i(0,1)
 
 		viewing_tile.clamp(Vector2i.ZERO, ground.get_used_rect().size)
-		print(viewing_tile)
 		var ground_atlas : Vector2i = ground.get_cell_atlas_coords(viewing_tile)
 		
 		#If clicked tile has grown wheat, add 1 to 3 wheat to inventory and remove the wheat from the tile

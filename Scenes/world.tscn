@@ -142,6 +142,21 @@ grow_horizontal = 0
 theme = ExtResource("10_oukug")
 text = "Score des devs : 480"
 
+[node name="TimeLeft" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 341.0
+offset_top = -34.0
+offset_right = 567.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("10_oukug")
+text = "Temps restant : 4 min 32"
+
 [node name="Puits" parent="." instance=ExtResource("9_tkrlr")]
 position = Vector2(401.281, 116.097)
 
