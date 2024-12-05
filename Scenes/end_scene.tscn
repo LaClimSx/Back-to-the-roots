@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cuyn51noupuaf"]
 
-[ext_resource type="Script" path="res://Scripts/scène_de_fin.gd" id="1_ty4cp"]
+[ext_resource type="Script" path="res://Scripts/end.gd" id="1_ty4cp"]
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="2_2dqy3"]
 
 [node name="Scène de fin" type="Node2D"]
