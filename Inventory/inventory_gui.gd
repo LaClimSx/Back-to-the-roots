@@ -13,7 +13,7 @@ var itemInHand: ItemStackGUI
 var oldIndex: int = -1
 var locked: bool = false
 
-signal moneyUpdated
+signal scoreUpdated
 
 func _ready():
 	connectSlots()
@@ -193,8 +193,6 @@ func _input(event):
 			move_selector(1)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			move_selector(-1)
-	#elif Input.is_action_just_pressed("Interact"):
-	#	inventory.use_item_at_index(currently_selected) #TODO : change this later
 		
 	updateItemInHand()
 	
@@ -213,8 +211,11 @@ func remove_item(item: Item, amount: int = 1) -> int:
 
 func sell_item(item: Item, all: bool, unit_price: int) -> int:
 	var amount = inventory.sellN(item, all, unit_price)
-	moneyUpdated.emit()
+	scoreUpdated.emit()
 	return amount
 	
 func get_tool(name: String) -> Tool:
 	return inventory.get_tool(name)
+	
+func get_item_at(index: int) -> Item:
+	return inventory.slots[index].item

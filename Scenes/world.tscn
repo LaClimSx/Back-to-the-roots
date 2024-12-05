@@ -118,7 +118,7 @@ offset_bottom = -57.0
 grow_vertical = 0
 size_flags_vertical = 0
 
-[node name="MoneyCounter" type="Label" parent="CanvasLayer"]
+[node name="ScoreCounter" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -128,9 +128,9 @@ offset_right = -15.0
 offset_bottom = 42.0
 grow_horizontal = 0
 theme = ExtResource("10_oukug")
-text = "Argent : 0$"
+text = "Score : 0"
 
-[node name="MoneyObjective" type="Label" parent="CanvasLayer"]
+[node name="ScoreObjective" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -140,7 +140,7 @@ offset_right = -15.0
 offset_bottom = 76.0
 grow_horizontal = 0
 theme = ExtResource("10_oukug")
-text = "Objectif : 500$"
+text = "Score des devs : 480"
 
 [node name="Puits" parent="." instance=ExtResource("9_tkrlr")]
 position = Vector2(401.281, 116.097)
@@ -153,7 +153,7 @@ position = Vector2(107.075, 89.0746)
 max_durability = 2000
 
 [node name="House" parent="." instance=ExtResource("8_66nr8")]
-position = Vector2(280.196, 89.0746)
+position = Vector2(280.196, 78.0654)
 max_durability = 1800
 
 [node name="Quarry" parent="." instance=ExtResource("13_av1ix")]
@@ -181,7 +181,7 @@ volume_db = -30.0
 stream = ExtResource("18_lbdy7")
 volume_db = -15.0
 
-[connection signal="moneyUpdated" from="CanvasLayer/Inventory" to="CanvasLayer" method="_on_inventory_money_updated"]
+[connection signal="scoreUpdated" from="CanvasLayer/Inventory" to="CanvasLayer" method="_on_inventory_score_updated"]
 [connection signal="timeout" from="worldTimer" to="." method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="LayerGroup/Crops" method="_on_world_timer_timeout"]
 [connection signal="timeout" from="worldTimer" to="Puits" method="timer_timeout"]

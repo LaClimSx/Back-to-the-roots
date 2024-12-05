@@ -176,6 +176,7 @@ func _on_repair_bucket_pressed() -> void:
 	if !Global.reparability:
 		if !inventory_gui.insert_at(bucket_item, 1): inventory_gui.insert_item(bucket_item,1)
 		bucket_item.repair()
+		bucket_item.empty()
 		inventory_gui.update()
 	else:
 		bucket.repair()

@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 	
 	if (inventory_gui.find_item(stick) >= wood_cost && inventory_gui.find_item(stone) >= stone_cost):
 		$Control/repair.disabled = false
-	else: #TODO: What to do when not enough ? For now nothing
+	else:
 		$Control/repair.disabled = true
 
 func _on_close_pressed() -> void:

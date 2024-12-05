@@ -1,12 +1,13 @@
 extends Node
-var gameVariation : int
+var game_variation : int
 var reparability : bool
 var efficiency_decline : bool
 
 var inventory_gui
 
-@export var money : int = 0
-const MONEY_TO_WIN : int = 500
+@export var score : int = 0
+const DEV_SCORE : int = 480
+var scores : Array[int] = []
 
 var world_size: Vector2i
 
@@ -14,6 +15,46 @@ var chewy_regular : Font = preload("res://Assets/Fonts/Chewy-Regular.ttf")
 
 var player_looking_position : Vector2
 
+var timer : Timer
+var game_number = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	game_variation = randi_range(1,3)
+	match game_variation:
+		1:
+			reparability = true
+			efficiency_decline = true
+		2:
+			reparability = true
+			efficiency_decline = false
+		3:
+			reparability = false
+			efficiency_decline = false
+			
+	timer = Timer.new()
+	add_child(timer)
+	timer.one_shot = false
+	timer.wait_time = 5.0 * 60
+	timer.timeout.connect(_on_timer_timeout)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+func _on_timer_timeout() -> void:
+	scores.append(score)
+	score = 0
+	game_number += 1
+	match game_number:
+		1:
+			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+		2:
+			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+		3:
+			get_tree().change_scene_to_file("res://Scenes/end_scene.tscn")
+	
 func display_indicator(value, position: Vector2 = player_looking_position, color: Color = Color.WHITE) -> void:
 	var indicator = Label.new()
 	indicator.global_position = position
@@ -46,26 +87,3 @@ func display_indicator(value, position: Vector2 = player_looking_position, color
 	await tween.finished
 	indicator.queue_free()
 	
-	
-	
-	
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	#gameVariation = randi_range(1,3) #TODO: uncomment this line and remove the next one
-	gameVariation = 3
-	match gameVariation:
-		1:
-			reparability = true
-			efficiency_decline = true
-		2:
-			reparability = true
-			efficiency_decline = false
-		3:
-			reparability = false
-			efficiency_decline = false
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

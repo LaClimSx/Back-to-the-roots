@@ -38,7 +38,7 @@ func _process(delta) -> void:
 
 	#Check if the player can repair the building
 	if reparable:
-		if player_inside && holds_working_hammer && ((state != STATE.good && Global.gameVariation!=3) || (state==STATE.broken && Global.gameVariation==3)):
+		if player_inside && holds_working_hammer && ((state != STATE.good && Global.reparability) || (state==STATE.broken && !Global.reparability)):
 			if repair_label : repair_label.show()
 		else:
 			if repair_label : repair_label.hide()

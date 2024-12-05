@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkuy662n4u61u"]
+[gd_scene load_steps=6 format=3 uid="uid://w7q6wpe87jpp"]
 
 [ext_resource type="AudioStream" uid="uid://ctqtcbtnyncw0" path="res://Assets/Sounds/mine.mp3" id="1_q2a40"]
 [ext_resource type="AudioStream" uid="uid://b4dxmwoxdipdu" path="res://Assets/Sounds/breaks.mp3" id="1_reamb"]

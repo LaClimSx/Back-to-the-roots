@@ -7,6 +7,24 @@ signal use_item
 
 @export var slots: Array[InventorySlot]
 
+
+func reset() -> void:
+	slots = []
+	for i in range(9):
+		slots.append(InventorySlot.new())
+	slots[0].item = load("res://Inventory/Items/hoe.tres")
+	slots[1].item = load("res://Inventory/Items/bucket.tres")
+	slots[2].item = load("res://Inventory/Items/hammer.tres")
+	slots[3].item = load("res://Inventory/Items/axe.tres")
+	slots[4].item = load("res://Inventory/Items/pickaxe.tres")
+	slots[5].item = load("res://Inventory/Items/wheat.tres")
+	slots[5].amount = 1
+	for i in range(5):
+		slots[i].amount = 1
+		slots[i].item.repair()
+	slots[1].item.empty()
+	updated.emit()
+
 #Insert one item into the inventory
 #Returns true if the item was inserted, false if not
 func insert(item : Item) -> bool :
@@ -27,7 +45,7 @@ func insert(item : Item) -> bool :
 
 #Insert n items into the inventory
 #Returns the number of items that were inserted
-func insertN(item: Item, n: int) -> int : #TODO: If this doesn't work just call insert n times until we get false
+func insertN(item: Item, n: int) -> int :
 	var left = n
 	#Find all slots that have the item and have space
 	var item_slots = slots.filter(func(slot): return slot.item == item && slot.amount < slot.item.maxAmount)
@@ -72,7 +90,7 @@ func removeN(item: Item, n: int) -> int:
 				return n
 			else:
 				left -= slot.amount
-				removeSlot(slot) #TODO: Might not work because we are iterating over the array
+				removeSlot(slot)
 	if left > 0:
 		updated.emit()
 	return n - left
@@ -118,7 +136,7 @@ func find_item(item: Item) -> int:
 			total += slot.amount
 	return total if total > 0 else -1
 
-#Sells one or all of the required item and adds the money to the player's wallet. Returns the amount of items sold
+#Sells one or all of the required item and adds the score to the player's scoreboard. Returns the amount of items sold
 func sellN(item: Item, all: bool, unit_price: int) -> int :
 	var item_slots = slots.filter(func(slot): return slot.item == item)
 	if item_slots.is_empty(): return 0
@@ -133,9 +151,9 @@ func sellN(item: Item, all: bool, unit_price: int) -> int :
 			if slot.amount == 0:
 				removeSlot(slot)
 			break
-	Global.money += unit_price * total
-	#TODO: This is a temporary solution to display the gained money
-	Global.display_indicator(str(unit_price * total) + "$", Global.player_looking_position + Vector2(150,randi_range(-60,40)), Color.WEB_GREEN)
+	Global.score += unit_price * total
+	#TODO: This is a temporary solution to display the gained score
+	Global.display_indicator(str(unit_price * total), Global.player_looking_position + Vector2(150,randi_range(-60,40)), Color.WEB_GREEN)
 	updated.emit()
 	return total
 
