@@ -87,3 +87,7 @@ func repair() -> void:
 		2: texture = good2
 		3: texture = good3
 		4: texture = good4
+
+func empty() -> void:
+	quantity = 0
+	texture = good0

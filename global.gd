@@ -20,8 +20,7 @@ var game_number = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#game_variation = randi_range(1,3) #TODO: uncomment this line and remove the next one
-	game_variation = 1
+	game_variation = randi_range(1,3)
 	match game_variation:
 		1:
 			reparability = true
@@ -36,7 +35,7 @@ func _ready():
 	timer = Timer.new()
 	add_child(timer)
 	timer.one_shot = false
-	timer.wait_time = 1.0 * 10 #TODO: change to 5 * 60
+	timer.wait_time = 5.0 * 60
 	timer.timeout.connect(_on_timer_timeout)
 
 

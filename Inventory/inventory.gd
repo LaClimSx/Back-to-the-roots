@@ -7,6 +7,24 @@ signal use_item
 
 @export var slots: Array[InventorySlot]
 
+
+func reset() -> void:
+	slots = []
+	for i in range(9):
+		slots.append(InventorySlot.new())
+	slots[0].item = load("res://Inventory/Items/hoe.tres")
+	slots[1].item = load("res://Inventory/Items/bucket.tres")
+	slots[2].item = load("res://Inventory/Items/hammer.tres")
+	slots[3].item = load("res://Inventory/Items/axe.tres")
+	slots[4].item = load("res://Inventory/Items/pickaxe.tres")
+	slots[5].item = load("res://Inventory/Items/wheat.tres")
+	slots[5].amount = 1
+	for i in range(5):
+		slots[i].amount = 1
+		slots[i].item.repair()
+	slots[1].item.empty()
+	updated.emit()
+
 #Insert one item into the inventory
 #Returns true if the item was inserted, false if not
 func insert(item : Item) -> bool :
