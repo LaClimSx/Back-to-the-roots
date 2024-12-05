@@ -7,6 +7,7 @@ var inventory_gui
 
 @export var score : int = 0
 const DEV_SCORE : int = 480
+var scores : Array[int] = []
 
 var world_size: Vector2i
 
@@ -15,6 +16,8 @@ var chewy_regular : Font = preload("res://Assets/Fonts/Chewy-Regular.ttf")
 var player_looking_position : Vector2
 
 var timer : Timer
+var game_number
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#gameVariation = randi_range(1,3) #TODO: uncomment this line and remove the next one
@@ -41,7 +44,7 @@ func _process(delta):
 	pass
 	
 func _on_timer_timeout() -> void:
-	pass
+	scores.append(score)
 	
 func display_indicator(value, position: Vector2 = player_looking_position, color: Color = Color.WHITE) -> void:
 	var indicator = Label.new()
