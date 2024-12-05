@@ -9,6 +9,8 @@ var state: Building.STATE
 var default_cost: Dictionary
 signal repair
 
+var is_open: bool = false
+
 @onready var stick: Item = preload("res://Inventory/Items/stick.tres")
 @onready var stone: Item = preload("res://Inventory/Items/stone.tres")
 @onready var inventory_gui = Global.inventory_gui
@@ -31,6 +33,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_action_pressed("Esc") && is_open:
+		_on_close_pressed()
+	
 	if (state != Building.STATE.broken):
 		$Control/stone.text = "x" + str(stone_cost) + " pierre(s)"
 		$Control/wood.text = "x" + str(wood_cost) + " bois"
@@ -46,6 +51,7 @@ func _process(delta: float) -> void:
 		$Control/repair.disabled = true
 
 func _on_close_pressed() -> void:
+	is_open = false
 	$Anim.play("TransOUT")
 	get_tree().paused = false
 
@@ -58,11 +64,10 @@ func _on_repair_pressed() -> void:
 	inventory_gui.remove_item(stone, stone_cost)
 	emit_signal("repair")
 	inventory_gui.use_item()
+	is_open = false
 	$Anim.play("TransOUT")
 	GlobalScene.get_node("repair").play()
 	get_tree().paused = false
-	#else: #TODO: What to do when not enough ? For now nothing
-	#	print("Fonds insuffisants")
 
 func _on_s_state(s: Building.STATE) -> void:
 	state = s

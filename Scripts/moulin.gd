@@ -27,10 +27,12 @@ func animate():
 
 func interact():
 	get_tree().paused = true
+	$InteractMenuMoulin.is_open = true
 	$InteractMenuMoulin/Anim.play("TransIN")
 	$InteractMenuMoulin.update()
 
 func repair():
+	$RepairMenu.is_open = true
 	get_tree().paused = true
 	$RepairMenu/Anim.play("TransIN")
 

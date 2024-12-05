@@ -11,6 +11,9 @@ var max: int
 
 signal damage_building
 
+var is_open: bool = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	updateLabel()
@@ -21,8 +24,8 @@ func _process(delta: float) -> void:
 		$Control/sell.disabled = true
 	else:
 		$Control/sell.disabled = false
-	if Input.is_action_pressed("Esc"):
-		$"close".emit_signal("pressed")
+	if Input.is_action_pressed("Esc") && is_open:
+		_on_close_pressed()
 
 func update() -> void:
 	max = inventory_gui.find_item(wheat)
@@ -34,6 +37,7 @@ func updateLabel() -> void:
 
 func _on_close_pressed() -> void:
 	$Anim.play("TransOUT")
+	is_open = false
 	get_tree().paused = false
 
 func _on_moulin_s_state(s: Building.STATE) -> void:

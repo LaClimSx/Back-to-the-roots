@@ -39,5 +39,6 @@ func interact():
 	inventory_gui.update()
 	
 func repair():
+	$RepairMenu.is_open = true
 	get_tree().paused = true
 	$RepairMenu/Anim.play("TransIN")
