@@ -21,6 +21,8 @@ func _process(delta: float) -> void:
 		$Control/sell.disabled = true
 	else:
 		$Control/sell.disabled = false
+	if Input.is_action_pressed("Esc"):
+		$"close".emit_signal("pressed")
 
 func update() -> void:
 	max = inventory_gui.find_item(wheat)
