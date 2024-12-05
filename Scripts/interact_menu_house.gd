@@ -7,6 +7,8 @@ extends CanvasLayer
 var price
 signal damage_building
 
+var is_open: bool = false
+
 func _process(delta: float) -> void:
 	if(inventory_gui.find_item(flour)==-1):
 		$"Control/sell all1".disabled = true
@@ -14,12 +16,12 @@ func _process(delta: float) -> void:
 	else:
 		$"Control/sell all1".disabled = false
 		$"Control/sell one1".disabled = false
-		$Control/sell.disabled = false
-	if Input.is_action_pressed("Esc"):
-		$"Control/close".emit_signal("pressed")
+	if Input.is_action_pressed("Esc") && is_open:
+		_on_close_pressed()
 
 func _on_close_pressed() -> void:
 	$Anim.play("TransOUT")
+	is_open = false
 	get_tree().paused = false
 
 func _on_sell_one_1_pressed() -> void:
@@ -38,6 +40,7 @@ func _on_sell_all_1_pressed() -> void:
 	inventory_gui.sell_item(flour, true, price)
 	$Anim.play("TransOUT")
 	damage_building.emit()
+	is_open = false
 	get_tree().paused = false
 
 

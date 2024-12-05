@@ -25,10 +25,12 @@ func animate():
 			interact_label.hide()
 
 func interact():
+	$InteractMenu.is_open = true
 	get_tree().paused = true
 	$InteractMenu/Anim.play("TransIN")
 
 func repair():
+	$RepairMenu.is_open = true
 	get_tree().paused = true
 	$RepairMenu/Anim.play("TransIN")
 

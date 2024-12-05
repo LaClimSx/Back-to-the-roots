@@ -11,6 +11,8 @@ var nb_stone
 
 var state : Building.STATE
 
+var is_open: bool = false
+
 var tools_repair_cost : Dictionary = {"hammer": {"wood": 0, "stone": 0}, "axe": {"wood": 0, "stone": 0}, "pickaxe": {"wood": 0, "stone": 0}, "hoe": {"wood": 0, "stone": 0}, "bucket": {"wood": 0, "stone": 0}}
 
 var hammer : Tool
@@ -37,6 +39,9 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if Input.is_action_pressed("Esc") && is_open:
+		_on_close_pressed()
 	
 	nb_wood = inventory_gui.find_item(wood)
 	nb_stone = inventory_gui.find_item(stones)
@@ -102,6 +107,7 @@ func _process(delta: float) -> void:
 
 func _on_close_pressed() -> void:
 	$Anim.play("TransOUT")
+	is_open = false
 	get_tree().paused = false
 
 
