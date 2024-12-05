@@ -432,7 +432,6 @@ theme_override_font_sizes/font_size = 35
 text = "Réparer"
 
 [node name="RepairMenu" parent="." instance=ExtResource("14_vjsiu")]
-visible = false
 
 [connection signal="s_state" from="." to="InteractMenuEtabli" method="_on_etabli_s_state"]
 [connection signal="s_state" from="." to="RepairMenu" method="_on_s_state"]
