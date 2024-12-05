@@ -193,8 +193,6 @@ func _input(event):
 			move_selector(1)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			move_selector(-1)
-	#elif Input.is_action_just_pressed("Interact"):
-	#	inventory.use_item_at_index(currently_selected) #TODO : change this later
 		
 	updateItemInHand()
 	

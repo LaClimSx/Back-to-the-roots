@@ -45,7 +45,7 @@ func insert(item : Item) -> bool :
 
 #Insert n items into the inventory
 #Returns the number of items that were inserted
-func insertN(item: Item, n: int) -> int : #TODO: If this doesn't work just call insert n times until we get false
+func insertN(item: Item, n: int) -> int :
 	var left = n
 	#Find all slots that have the item and have space
 	var item_slots = slots.filter(func(slot): return slot.item == item && slot.amount < slot.item.maxAmount)
@@ -90,7 +90,7 @@ func removeN(item: Item, n: int) -> int:
 				return n
 			else:
 				left -= slot.amount
-				removeSlot(slot) #TODO: Might not work because we are iterating over the array
+				removeSlot(slot)
 	if left > 0:
 		updated.emit()
 	return n - left
