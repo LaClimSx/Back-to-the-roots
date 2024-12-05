@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("Esc") && is_open:
 		_on_close_pressed()
 	
-	if (state != Building.STATE.broken):
+	if (state != Building.STATE.broken || !Global.reparability):
 		$Control/stone.text = "x" + str(stone_cost) + " pierre(s)"
 		$Control/wood.text = "x" + str(wood_cost) + " bois"
 	else :
