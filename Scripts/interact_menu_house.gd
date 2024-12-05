@@ -14,6 +14,9 @@ func _process(delta: float) -> void:
 	else:
 		$"Control/sell all1".disabled = false
 		$"Control/sell one1".disabled = false
+		$Control/sell.disabled = false
+	if Input.is_action_pressed("Esc"):
+		$"Control/close".emit_signal("pressed")
 
 func _on_close_pressed() -> void:
 	$Anim.play("TransOUT")
