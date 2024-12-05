@@ -63,7 +63,7 @@ offset_right = 1131.0
 offset_bottom = 537.0
 theme_override_fonts/font = ExtResource("1_wgx14")
 theme_override_font_sizes/font_size = 30
-text = "Cultivez du blé, transformez le et vender la farine pour avoir le plus de point possible !
+text = "Cultivez du blé, transformez le et vendez la farine pour avoir le plus de points possible !
 Déplacement : WASD ou flèches
 Utilisation des objets : Espace une fois en main (appuyez sur 1, 2, 3, 4, 5, 6, 7, 8, 9 pour changer d'objet)
 Réparer un bâtiment : Prendre le marteau en main et appyez sur R"
