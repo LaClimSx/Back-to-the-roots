@@ -66,7 +66,7 @@ theme_override_font_sizes/font_size = 30
 text = "Cultivez du blé, transformez le et vendez la farine pour avoir le plus de points possible !
 Déplacement : WASD ou flèches
 Utilisation des objets : Espace une fois en main (appuyez sur 1, 2, 3, 4, 5, 6, 7, 8, 9 pour changer d'objet)
-Réparer un bâtiment : Prendre le marteau en main et appyez sur R"
+Réparer un bâtiment : Prendre le marteau en main et appuyer sur R"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
