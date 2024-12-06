@@ -69,11 +69,11 @@ func insertN(item: Item, n: int) -> int :
 	return n - left
 	
 #Insert in slot i of inventory if it is empty, returns false if not
-func insert_at(item: Item, i: int) -> bool:
+func insert_at(item: Item, i: int, amount: int = 1) -> bool:
 	var slot = slots[i]
 	if slot.item: return false
 	slot.item = item
-	slot.amount = 1
+	slot.amount = min(item.maxAmount, amount)
 	updated.emit()
 	return true
 

@@ -43,7 +43,7 @@ func checkActions():
 		#If clicked tile has grown wheat, add 2 wheat to inventory and remove the wheat from the tile
 		#Also set the tile to dirt or second stage of watered soil
 		if crops.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) :
-			inventory_gui.insert_item(wheat_item,2)
+			inventory_gui.insert_at(wheat_item, 5, 2)
 			Global.display_indicator(2, Global.player_looking_position, Color.WHITE)
 			crops.set_cell(viewing_tile)
 			#Set ground if second stage of watered soil else set to second stage
