@@ -32,7 +32,7 @@ func animate():
 func interact():
 	GlobalScene.get_node("chop").play()
 	if !Global.efficiency_decline:
-		inventory_gui.insert_item(stick, 4)
+		inventory_gui.insert_at(stick, 6, 4)
 		damage_itself_N(BASE_DIVIDER)
 		Global.display_indicator(4, Global.player_looking_position, Color.GREEN)
 		inventory_gui.use_item()
@@ -41,12 +41,12 @@ func interact():
 	match selected_item.state:
 		#If mid axe
 		1: 
-			inventory_gui.insert_item(stick, 2)
+			inventory_gui.insert_at(stick, 6, 2)
 			damage_itself_N(BASE_DIVIDER * 2)
 			Global.display_indicator(2, Global.player_looking_position, Color.GRAY)
 		#If good axe
 		2: 
-			inventory_gui.insert_item(stick, 4)
+			inventory_gui.insert_at(stick, 6, 4)
 			damage_itself_N(BASE_DIVIDER)
 			Global.display_indicator(4, Global.player_looking_position, Color.GREEN)
 	inventory_gui.use_item()

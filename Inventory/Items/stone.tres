@@ -7,4 +7,4 @@
 script = ExtResource("1_44ywu")
 name = "stone"
 texture = ExtResource("2_8fbec")
-maxAmount = 99
+maxAmount = 999

@@ -203,8 +203,8 @@ func find_item(item: Item) -> int:
 func insert_item(item: Item, amount: int = 1) -> int:
 	return inventory.insertN(item, amount)
 	
-func insert_at(item: Item, i: int) -> bool:
-	return inventory.insert_at(item, i)
+func insert_at(item: Item, i: int, amount: int = 1) -> void:
+	if !inventory.insert_at(item, i, amount): insert_item(item, amount)
 	
 func remove_item(item: Item, amount: int = 1) -> int:
 	return inventory.removeN(item, amount)

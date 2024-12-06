@@ -34,7 +34,7 @@ func animate():
 func interact():
 	GlobalScene.get_node("mine").play()
 	if !Global.efficiency_decline:
-		inventory_gui.insert_item(stone, 4)
+		inventory_gui.insert_at(stone, 7, 4)
 		damage_itself_N(BASE_DIVIDER)
 		Global.display_indicator(4, Global.player_looking_position, Color.GREEN)
 		inventory_gui.use_item()
@@ -43,12 +43,12 @@ func interact():
 	match selected_item.state:
 		#If mid pickaxe	
 		1: 
-			inventory_gui.insert_item(stone, 2)
+			inventory_gui.insert_at(stone, 7, 2)
 			damage_itself_N(BASE_DIVIDER * 2) #TODO: verifier que les calculs sont bons
 			Global.display_indicator(2, Global.player_looking_position, Color.GRAY)
 		#If good pickaxe
 		2: 
-			inventory_gui.insert_item(stone, 4)
+			inventory_gui.insert_at(stone, 7, 4)
 			damage_itself_N(BASE_DIVIDER)
 			Global.display_indicator(4, Global.player_looking_position, Color.GREEN)
 	inventory_gui.use_item()

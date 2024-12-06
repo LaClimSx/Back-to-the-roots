@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var inventory = $Inventory
 
 func _ready() -> void:
-	$ScoreObjective.text = "Score des devs : " + str(Global.DEV_SCORE)
+	$ScoreObjective.text = "Score des devs : " + str(Global.dev_score)
 
 func _input(event):
 	if event.is_action_pressed("toggle_inventory"):

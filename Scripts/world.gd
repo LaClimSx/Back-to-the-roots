@@ -40,13 +40,14 @@ func checkActions():
 		viewing_tile.clamp(Vector2i.ZERO, ground.get_used_rect().size)
 		var ground_atlas : Vector2i = ground.get_cell_atlas_coords(viewing_tile)
 		
-		#If clicked tile has grown wheat, add 1 to 3 wheat to inventory and remove the wheat from the tile
-		#Also set the tile to dirt
+		#If clicked tile has grown wheat, add 2 wheat to inventory and remove the wheat from the tile
+		#Also set the tile to dirt or second stage of watered soil
 		if crops.get_cell_atlas_coords(viewing_tile) == Vector2i(2,0) :
-			inventory_gui.insert_item(wheat_item,2)
+			inventory_gui.insert_at(wheat_item, 5, 2)
 			Global.display_indicator(2, Global.player_looking_position, Color.WHITE)
 			crops.set_cell(viewing_tile)
-			ground.set_cell(viewing_tile, 0, Vector2i(1,0))
+			#Set ground if second stage of watered soil else set to second stage
+			ground.set_cell(viewing_tile, 0, Vector2i(1,0)) if ground_atlas == Vector2i(4,0) else ground.set_cell(viewing_tile, 0, Vector2i(4,0))
 			$planter.play(0.5)
 			print("Harvested")
 
@@ -92,7 +93,7 @@ func checkActions():
 			print("Watered")
 
 		#If player has wheat and tile is empty field, plant the wheat
-		elif selected_item && selected_item.name == "wheat" && ground_atlas == Vector2i(4,1) && crops.get_cell_atlas_coords(viewing_tile) == Vector2i(-1,-1) :
+		elif selected_item && selected_item.name == "wheat" && (ground_atlas == Vector2i(4,1) || ground_atlas == Vector2i(4,0)) && crops.get_cell_atlas_coords(viewing_tile) == Vector2i(-1,-1) :
 			crops.set_cell(viewing_tile,1,Vector2i(0,0))
 			inventory_gui.use_item()
 			$planter.play(0.5)

@@ -6,7 +6,7 @@ var efficiency_decline : bool
 var inventory_gui
 
 @export var score : int = 0
-const DEV_SCORE : int = 480
+var dev_score : int = 480
 var scores : Array[int] = []
 
 var world_size: Vector2i
@@ -25,12 +25,15 @@ func _ready():
 		1:
 			reparability = true
 			efficiency_decline = true
+			dev_score = 800
 		2:
 			reparability = true
 			efficiency_decline = false
+			dev_score = 900
 		3:
 			reparability = false
 			efficiency_decline = false
+			dev_score = 900
 			
 	timer = Timer.new()
 	add_child(timer)

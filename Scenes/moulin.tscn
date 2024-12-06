@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dd6eibaeqjan1"]
+[gd_scene load_steps=43 format=3 uid="uid://dd6eibaeqjan1"]
 
 [ext_resource type="Texture2D" uid="uid://cc36u4526veca" path="res://Assets/Bâtiments/moulin/Sans titre 45_20241017134057.png" id="1_k6ggn"]
 [ext_resource type="Script" path="res://Scripts/moulin.gd" id="1_lnxlr"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://duq7v03be7qs2" path="res://Scenes/repair_label.tscn" id="31_iky3b"]
 [ext_resource type="Script" path="res://Scripts/interact_menu_moulin.gd" id="32_yqon2"]
 [ext_resource type="Texture2D" uid="uid://dxi0rmohf44ub" path="res://Assets/Items/wheat_item.png" id="33_lo44j"]
+[ext_resource type="Theme" uid="uid://c4vl7jpvynye1" path="res://Assets/theme.tres" id="34_2neru"]
 [ext_resource type="AudioStream" uid="uid://d0548sfy1jatg" path="res://Assets/Sounds/moudre.mp3" id="34_87cyi"]
 [ext_resource type="PackedScene" uid="uid://dhpl8urm0uvxa" path="res://Scenes/repair_menu.tscn" id="34_s55y8"]
 
@@ -268,18 +269,22 @@ autoplay = "RESET"
 [node name="Control" type="Control" parent="InteractMenuMoulin"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 129.0
+offset_left = 342.0
 offset_top = 78.0
-offset_right = 1014.0
+offset_right = 819.0
 offset_bottom = 567.0
 
 [node name="close" type="Button" parent="InteractMenuMoulin/Control"]
 self_modulate = Color(1, 0, 0, 1)
-layout_mode = 0
-offset_left = 644.0
-offset_top = 5.0
-offset_right = 682.0
-offset_bottom = 43.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_top = 7.0
+offset_right = -8.0
+offset_bottom = 45.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 21
 text = "X"
 
@@ -288,31 +293,37 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -227.5
-offset_top = 16.0
-offset_right = 248.5
-offset_bottom = 127.0
+offset_left = -238.5
+offset_right = 238.5
+offset_bottom = 111.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("29_3n3i5")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Transforme ton blé"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="exchangeRate" type="RichTextLabel" parent="InteractMenuMoulin/Control"]
-layout_mode = 0
-offset_left = 299.0
-offset_top = 246.0
-offset_right = 749.0
-offset_bottom = 305.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.5
+offset_top = 7.5
+offset_right = 284.5
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("29_3n3i5")
 theme_override_font_sizes/normal_font_size = 40
 text = "Taux d'échange 1:3"
 autowrap_mode = 2
 
 [node name="transformation1" type="Sprite2D" parent="InteractMenuMoulin/Control"]
-position = Vector2(455, 167)
+position = Vector2(245, 187)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("33_lo44j")
 
@@ -323,10 +334,10 @@ anchor_left = 4.941
 anchor_top = -0.056
 anchor_right = 4.941
 anchor_bottom = -0.056
-offset_left = -3883.79
-offset_top = 355.384
-offset_right = -3812.41
-offset_bottom = 427.384
+offset_left = -2052.86
+offset_top = 353.384
+offset_right = -1981.48
+offset_bottom = 425.384
 theme_override_font_sizes/font_size = 45
 text = "+"
 autowrap_mode = 3
@@ -338,9 +349,9 @@ anchor_left = 0.42
 anchor_top = 0.667
 anchor_right = 0.42
 anchor_bottom = 0.667
-offset_left = -36.7
-offset_top = -0.163025
-offset_right = 36.3
+offset_left = -94.34
+offset_top = -0.162994
+offset_right = -21.34
 offset_bottom = 71.837
 theme_override_font_sizes/font_size = 45
 text = "-"
@@ -371,10 +382,10 @@ anchor_left = 0.507
 anchor_top = 0.673
 anchor_right = 0.507
 anchor_bottom = 0.673
-offset_left = -110.695
-offset_top = -4.09702
-offset_right = 110.305
-offset_bottom = 71.903
+offset_left = -109.839
+offset_top = -3.09698
+offset_right = 111.161
+offset_bottom = 72.903
 theme_override_fonts/font = ExtResource("29_3n3i5")
 theme_override_font_sizes/font_size = 50
 text = "X"
@@ -382,11 +393,28 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="Advice" type="Label" parent="InteractMenuMoulin/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = -160.0
+offset_right = 137.5
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("34_2neru")
+text = "(Ne vends pas tout d'un coup)"
+
 [node name="grind" type="AudioStreamPlayer" parent="InteractMenuMoulin"]
 stream = ExtResource("34_87cyi")
 volume_db = -25.0
 
 [node name="RepairMenu" parent="." instance=ExtResource("34_s55y8")]
+visible = false
 
 [connection signal="s_state" from="." to="InteractMenuMoulin" method="_on_moulin_s_state"]
 [connection signal="s_state" from="." to="RepairMenu" method="_on_s_state"]
