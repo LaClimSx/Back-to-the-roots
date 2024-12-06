@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("Esc") && is_open:
 		_on_close_pressed()
 		
-	if Input.is_action_pressed("Interact") :
+	if Input.is_action_pressed("Interact") && player_inside:
 		is_open = true
 		$"panneau interraction".get_parent().get_tree().paused = true
 		$"panneau interraction/Anim".play("TransIN")
