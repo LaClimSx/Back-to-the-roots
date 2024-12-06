@@ -12,9 +12,11 @@ Vous jouerez 3 parties de 5 minutes : gérez vos ressources et essayez d'obtenir
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Panel/Interactions.visible = false
+	$Panel/Start.visible = false
 	if Global.game_number == 0:
 		$Panel/controls.visible = true
-		$Panel/Button.text = "Jouer"
+		$Panel/Button.text = "Continuer"
 		match Global.game_variation :
 			1 :
 				$Panel/text.text = variante1
@@ -34,7 +36,13 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_button_pressed() -> void:
+	if Global.game_number == 0:
+		$Panel/Interactions.visible = true
+		$Panel/Start.visible = true
+	else:
+		_on_start_pressed()
+
+
+func _on_start_pressed():
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 	Global.timer.start()
-	print("Timer is stopped ? " + str(Global.timer.is_stopped()))
-	print("time left : ", Global.timer.time_left)
