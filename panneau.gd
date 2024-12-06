@@ -15,7 +15,6 @@ Vous jouerez 3 parties de 5 minutes : gérez vos ressources et essayez d'obtenir
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$"panneau interraction/regles".text = variante1
 	$InteractLabel.hide()
 	match Global.game_variation :
 		1 :
