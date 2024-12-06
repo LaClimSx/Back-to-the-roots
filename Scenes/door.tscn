@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://v4ai3tyrasyh"]
+[gd_scene load_steps=9 format=3 uid="uid://bihr186bxo820"]
 
 [ext_resource type="Script" path="res://Scripts/door.gd" id="1_w5qtv"]
 [ext_resource type="Texture2D" uid="uid://dc44rbaa1otv6" path="res://Assets/Bâtiments/maison/porte_abimé_ouverte.png" id="2_mvo5e"]
