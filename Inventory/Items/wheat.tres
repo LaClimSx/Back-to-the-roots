@@ -7,4 +7,4 @@
 script = ExtResource("1_5hv37")
 name = "wheat"
 texture = ExtResource("2_hq7kt")
-maxAmount = 99
+maxAmount = 999
