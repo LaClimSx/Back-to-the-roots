@@ -14,21 +14,28 @@ Vous jouerez 3 parties de 5 minutes : gérez vos ressources et essayez d'obtenir
 func _ready() -> void:
 	$Panel/Interactions.visible = false
 	$Panel/Start.visible = false
-	if Global.game_number == 0:
-		$Panel/controls.visible = true
-		$Panel/Button.text = "Continuer"
-		match Global.game_variation :
-			1 :
-				$Panel/text.text = variante1
-			2 :
-				$Panel/text.text = variante2
-			3 :
-				$Panel/text.text = variante3
-	else:
-		$Panel/controls.visible = false
-		var number : String = "première" if Global.game_number == 1 else "deuxième"
-		$Panel/text.text = "Félicitations, vous avez fini votre " + number + " partie avec un score de " + str(Global.scores[Global.game_number - 1])
-		$Panel/Button.text = "Rejouer"
+	$Panel/ToEnd.visible = false
+	match Global.game_number:
+		0:
+			$Panel/controls.visible = true
+			$Panel/Button.text = "Continuer"
+			match Global.game_variation :
+				1 :
+					$Panel/text.text = variante1
+				2 :
+					$Panel/text.text = variante2
+				3 :
+					$Panel/text.text = variante3
+		1:
+			$Panel/controls.visible = false
+			$Panel/text.text = "Félicitations, vous avez fini votre première partie avec un score de " + str(Global.scores[Global.game_number - 1]) + ".\n Essayez d'améliorer votre score !"
+			$Panel/Button.text = "Rejouer"
+		2:
+			$Panel/controls.visible = false
+			$Panel/text.text = "Félicitations, vous avez fini votre deuxième partie avec un score de " + str(Global.scores[Global.game_number - 1]) + ".\n Si vous pensez pouvoir faire mieux, vous pouvez tenter une troisième partie. Sinon vous pouvez aller directement à la fin."
+			$Panel/Button.text = "Rejouer"
+			$Panel/ToEnd.visible = true
+		
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,3 +53,7 @@ func _on_button_pressed() -> void:
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 	Global.timer.start()
+
+
+func _on_to_end_pressed():
+	get_tree().change_scene_to_file("res://Scenes/end_scene.tscn")
