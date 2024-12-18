@@ -34,7 +34,7 @@ func _ready() -> void:
 	$Control/repair_hoe.disabled = true
 	$Control/repair_bucket.disabled = true
 	$Control/repair_hammer.disabled = true
-	$Control/etabli_title.text = "Répare tes outils" if Global.reparability else "Fabrique des outils"
+	$Control/etabli_title.text = tr("REPAIR_TOOLS") if Global.reparability else tr("CRAFT_TOOLS")
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 			var wood_label : RichTextLabel = $Control.get_node("wood_" + key)
 			var stone_label : RichTextLabel = $Control.get_node("stone_" + key)
 			var button : Button = $Control.get_node("repair_" + key)
-			button.text = "Fabriquer"
+			button.text = tr("CRAFT")
 			if tools[key]:
 				button.disabled = true
 				tools_repair_cost[key] = {"wood": 0, "stone": 0}
@@ -62,8 +62,8 @@ func _process(delta: float) -> void:
 					tools_repair_cost[key] = {"wood": 6, "stone": 0}
 				else:
 					tools_repair_cost[key] = {"wood": 2, "stone": 4}
-			wood_label.text = "x" + str(tools_repair_cost[key]["wood"]) + " bois"
-			stone_label.text = "x" + str(tools_repair_cost[key]["stone"]) + " pierres"
+			wood_label.text = tr("WOOD_COST").format({"wood_cost": tools_repair_cost[key]["wood"]})
+			stone_label.text = tr_n("STONE_COST", "STONE_COST_N", tools_repair_cost[key]["stone"]).format({"stone_cost": tools_repair_cost[key]["stone"]})
 		return
 		
 	#If reparability
@@ -74,7 +74,7 @@ func _process(delta: float) -> void:
 		var wood_label : RichTextLabel = $Control.get_node("wood_" + name)
 		var stone_label : RichTextLabel = $Control.get_node("stone_" + name)
 		var button : Button = $Control.get_node("repair_" + name)
-		button.text = "Réparer"
+		button.text = tr("REPAIR")
 		
 		if state == Building.STATE.good || !Global.efficiency_decline:
 			var mult: int = 2 - tool.state
@@ -82,8 +82,8 @@ func _process(delta: float) -> void:
 				tools_repair_cost[name] = {"wood": 3 * mult, "stone": 0}
 			else:
 				tools_repair_cost[name] = {"wood": 1 * mult, "stone": 2 * mult}
-			wood_label.text = "x" + str(tools_repair_cost[name]["wood"]) + " bois"
-			stone_label.text = "x" + str(tools_repair_cost[name]["stone"]) + " pierres"
+			wood_label.text = tr("WOOD_COST").format({"wood_cost": tools_repair_cost[name]["wood"]})
+			stone_label.text = tr_n("STONE_COST", "STONE_COST_N", tools_repair_cost[name]["stone"]).format({"stone_cost": tools_repair_cost[name]["stone"]})
 			if (mult == 0) || (nb_wood < tools_repair_cost[name]["wood"]) || (nb_stone < tools_repair_cost[name]["stone"]):
 				button.disabled = true
 			else:
@@ -97,8 +97,8 @@ func _process(delta: float) -> void:
 				tools_repair_cost[name] = {"wood": 2 * mult, "stone": 4 * mult}
 			wood_label.bbcode_enabled = true
 			stone_label.bbcode_enabled = true
-			wood_label.bbcode_text = "[s][color=gray]x" + str(tools_repair_cost[name]["wood"]/2) + "[/color][/s]" + " x" + str(tools_repair_cost[name]["wood"]) + " bois"
-			stone_label.bbcode_text = "[s][color=gray]x" + str(tools_repair_cost[name]["stone"]/2) + "[/color][/s]" + " x" + str(tools_repair_cost[name]["stone"]) + " pierres"
+			wood_label.bbcode_text = "[s][color=gray]x" + str(tools_repair_cost[name]["wood"]/2) + "[/color][/s]" + " x" + str(tools_repair_cost[name]["wood"]) + " " + tr("WOOD")
+			stone_label.bbcode_text = "[s][color=gray]x" + str(tools_repair_cost[name]["stone"]/2) + "[/color][/s]" + " x" + str(tools_repair_cost[name]["stone"]) + " " + tr("STONE")
 			if (mult == 0) || (nb_wood < tools_repair_cost[name]["wood"]) || (nb_stone < tools_repair_cost[name]["stone"]):
 				button.disabled = true
 			else:

@@ -10,11 +10,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	score = Global.scores.max()
-	$"Panel/text fin".text = "Merci d'avoir joué !
-	
-	Note ces quelques informations pour le formulaire :
-	Ton meilleur score : " + str(score) + " 
-	Ton numéro : " + str(Global.game_variation) + "
-	
-	Pour nous aider à mener notre projet à bien tu peux prendre 5 minutes pour remplir ce formulaire :
-	"
+	$"Panel/text fin".text = tr("ENDTEXT").format({"score" : score, "game_var": Global.game_variation})

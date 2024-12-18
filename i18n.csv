@@ -1,0 +1,16 @@
+﻿keys;en;fr
+DEV_SCORE;Dev score: {dev_score};Score des devs : {dev_score}
+SCORE;Score: {score};Score : {score}
+TIME_LEFT;Time left: {min} min {sec};Temps restant : {min} min {sec}
+END_TEXT;Thanks for playing! \n\nWrite down this information for the form: \nYour best score: {score} \nYour number: {game_var} \n\nTo help us carry out our project successfully, you can take 5 minutes to fill out this form:;Merci d'avoir joué ! \n\nNote ces quelques informations pour le formulaire : \nTon meilleur score : {score} \nTon numéro : {game_var} \n\nPour nous aider à mener notre projet à bien tu peux prendre 5 minutes pour remplir ce formulaire :
+REPAIR_TOOLS_SPACE;"Press ""Space"" to repair your tools";"Appuyez sur ""Espace"" pour réparer vos outils"
+CRAFT_TOOLS_SPACE;"Press ""Space"" to craft tools";"Appuyez sur """"Espace"""" pour fabriquer des outils"
+REPAIR_TOOLS;Repair your tools;Répare tes outils
+CRAFT_TOOLS;Craft tools;Fabrique des outils
+REPAIR;Repair;Réparer
+CRAFT;Craft;Fabriquer
+WOOD_COST;x{wood_cost} wood;x{wood_cost} bois
+STONE_COST;x{stone_cost} stone;x{stone_cost} pierre
+STONE_COST_N;x{stone_cost} stone;x{stone_cost} pierres
+WOOD;wood;bois
+STONE;stone;pierres
