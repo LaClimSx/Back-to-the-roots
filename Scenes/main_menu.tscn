@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmuk5j1vwpoqf"]
+[gd_scene load_steps=8 format=3 uid="uid://dmuk5j1vwpoqf"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_6tgr3"]
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="2_lhsny"]
@@ -9,6 +9,8 @@
 bg_color = Color(0.362829, 0.362829, 0.362829, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkqvp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3milt"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -98,5 +100,25 @@ theme = ExtResource("4_tv4ip")
 theme_override_font_sizes/font_size = 40
 text = "Commencer"
 
+[node name="ToEnd" type="Button" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -164.5
+offset_top = -245.0
+offset_right = 164.5
+offset_bottom = -154.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_tv4ip")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_3milt")
+text = "Aller à la fin"
+
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/ToEnd" to="." method="_on_to_end_pressed"]

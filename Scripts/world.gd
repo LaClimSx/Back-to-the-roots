@@ -8,35 +8,26 @@ extends Node2D
 @onready var inventory_gui : Control = Global.inventory_gui
 
 const TILEMAP_SCALING : float = 0.25
+const TILE_SIDE_SIZE : int = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.start(Vector2(380, 185))
-	Global.world_size = ground.get_used_rect().size * 100 * TILEMAP_SCALING
+	Global.world_size = ground.get_used_rect().size * TILE_SIDE_SIZE * TILEMAP_SCALING
 	GlobalScene.get_node("ambiance").play()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var player_tile_pos : Vector2i = ground.local_to_map($Player.position / TILEMAP_SCALING)
+	$Cursor.position = player_tile_pos * TILE_SIDE_SIZE * TILEMAP_SCALING + $Cursor.texture.get_size()/2 + Vector2(2, 2)
+	
 	checkActions()
 
 func checkActions():
 	if Input.is_action_just_pressed("Interact"):
 		var player : Player = $Player
 		var selected_item : Item = inventory_gui.get_selected_item()
-		var player_tile_pos : Vector2i = ground.local_to_map(player.position / TILEMAP_SCALING)
-		var viewing_tile : Vector2i
-		
-		match player.direction:
-			Player.Directions.LEFT:
-				viewing_tile = player_tile_pos + Vector2i(-1,0)
-			Player.Directions.RIGHT:
-				viewing_tile = player_tile_pos + Vector2i(1,0)
-			Player.Directions.UP:
-				viewing_tile = player_tile_pos + Vector2i(0,-1)
-			Player.Directions.DOWN:
-				viewing_tile = player_tile_pos + Vector2i(0,1)
-
+		var viewing_tile : Vector2i = ground.local_to_map(player.position / TILEMAP_SCALING)
 		viewing_tile.clamp(Vector2i.ZERO, ground.get_used_rect().size)
 		var ground_atlas : Vector2i = ground.get_cell_atlas_coords(viewing_tile)
 		
