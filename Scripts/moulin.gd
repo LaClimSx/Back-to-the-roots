@@ -8,6 +8,8 @@ func _ready():
 	corresponding_item_name = ""
 	repair_label = $RepairLabel
 	interact_label = $InteractLabel
+	repair_label.text = tr("REPAIR_SPACE")
+	interact_label.text = tr("INTERACT_WINDMILL")
 	super()
 
 

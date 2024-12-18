@@ -9,6 +9,9 @@ var state: Building.STATE
 var quantity: int = 0
 var max: int
 
+const DEFAULT_RATE: int = 3
+const CHEAP_RATE: int = 1
+
 signal damage_building
 
 var is_open: bool = false
@@ -16,14 +19,17 @@ var is_open: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Control/Sell.text = tr("MENU_WINDMILL")
+	$Control/Advice.text = tr("ADVICE_WINDMILL")
+	$Control/transform.text = tr("GRIND")
 	updateLabel()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(inventory_gui.find_item(wheat)==-1):
-		$Control/sell.disabled = true
+		$Control/transform.disabled = true
 	else:
-		$Control/sell.disabled = false
+		$Control/transform.disabled = false
 	if Input.is_action_pressed("Esc") && is_open:
 		_on_close_pressed()
 
@@ -43,16 +49,16 @@ func _on_close_pressed() -> void:
 func _on_moulin_s_state(s: Building.STATE) -> void:
 	$Control/exchangeRate.bbcode_enabled = true
 	if !Global.efficiency_decline:
-		exchange = 3
-		$Control/exchangeRate.bbcode_text = "Taux d'échange 1:" + str(exchange)
+		exchange = DEFAULT_RATE
+		$Control/exchangeRate.bbcode_text = tr("EXCHANGE_RATE").format({"rate": exchange})
 		return
 	match s: 
 		Building.STATE.good: 
-			exchange = 3
-			$Control/exchangeRate.bbcode_text = "Taux d'échange 1:" + str(exchange)
+			exchange = DEFAULT_RATE
+			$Control/exchangeRate.bbcode_text = tr("EXCHANGE_RATE").format({"rate": exchange})
 		Building.STATE.mid: 
-			exchange = 1
-			$Control/exchangeRate.bbcode_text = "Taux d'échange [s][color=gray]" + "1:3" + "[/color][/s] " + "1:" + str(exchange)
+			exchange = CHEAP_RATE
+			$Control/exchangeRate.bbcode_text = tr("EXCHANGE_RATE_CROSSED").format({"default_rate": DEFAULT_RATE, "rate": exchange})
 			
 		_: exchange = 0
 	

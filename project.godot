@@ -135,7 +135,7 @@ Esc={
 [internationalization]
 
 locale/translations=PackedStringArray("res://i18n.en.translation", "res://i18n.fr.translation")
-locale/test="fr"
+locale/test="en"
 
 [rendering]
 

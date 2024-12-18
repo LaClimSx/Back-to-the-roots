@@ -7,6 +7,7 @@ func _ready():
 	reparable = true
 	repair_label = $RepairLabel
 	interact_label = null
+	repair_label.text = tr("REPAIR_SPACE")
 	super()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -37,7 +37,7 @@ func _ready():
 			
 	timer = Timer.new()
 	add_child(timer)
-	timer.one_shot = false
+	timer.one_shot = true
 	timer.wait_time = 5.0 * 60
 	timer.timeout.connect(_on_timer_timeout)
 

@@ -9,6 +9,7 @@ func _ready():
 	repair_label = $RepairLabel
 	interact_label = $InteractLabel
 	interact_label.text = tr("REPAIR_TOOLS_SPACE") if Global.reparability else tr("CRAFT_TOOLS_SPACE")
+	repair_label.text = tr("REPAIR_SPACE")
 	super()
 
 

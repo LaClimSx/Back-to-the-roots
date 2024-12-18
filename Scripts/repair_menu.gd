@@ -17,19 +17,19 @@ var is_open: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Control/repair.text = tr("REPAIR")
+	$Control/cost.text = tr("COST")
 	var parent_name: String = get_parent().name
 	default_cost = BUILDING_REPAIR_COSTS[parent_name]
 	match parent_name:
 		"House": 
-			$Control/repairLabel.text = "Répare ta maison"
+			$Control/repairLabel.text = tr("REPAIR_HOUSE")
 		"Moulin": 
-			$Control/repairLabel.text = "Répare ton moulin"
+			$Control/repairLabel.text = tr("REPAIR_WINDMILL")
 		"Etabli": 
-			$Control/repairLabel.text = "Répare ton établi"
+			$Control/repairLabel.text = tr("REPAIR_BENCH")
 		"Puits": 
-			$Control/repairLabel.text = "Répare ton puits"
-		_: #This should not happen
-			$Control/repairLabel.text = "Rien à réparer"
+			$Control/repairLabel.text = tr("REPAIR_WELL")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -37,13 +37,13 @@ func _process(delta: float) -> void:
 		_on_close_pressed()
 	
 	if (state != Building.STATE.broken || !Global.reparability):
-		$Control/stone.text = "x" + str(stone_cost) + " pierre(s)"
-		$Control/wood.text = "x" + str(wood_cost) + " bois"
+		$Control/stone.text = tr_n("STONE_COST", "STONE_COST_N", stone_cost).format({"stone_cost": stone_cost})
+		$Control/wood.text = tr("WOOD_COST").format({"wood_cost": wood_cost})
 	else :
 		$Control/stone.bbcode_enabled = true
 		$Control/wood.bbcode_enabled = true
-		$Control/stone.bbcode_text = "[s][color=gray]x" + str(default_cost["stone"]) + "[/color][/s] x" + str(stone_cost) + " pierre(s)"
-		$Control/wood.bbcode_text = "[s][color=gray]x" + str(default_cost["wood"]) + "[/color][/s] x" + str(wood_cost) + " bois"
+		$Control/stone.bbcode_text = tr("STONE_COST_CROSSED").format({"default_cost": default_cost["stone"], "cost": stone_cost})
+		$Control/wood.bbcode_text = tr("WOOD_COST_CROSSED").format({"default_cost": default_cost["wood"], "cost": wood_cost})
 	
 	if (inventory_gui.find_item(stick) >= wood_cost && inventory_gui.find_item(stone) >= stone_cost):
 		$Control/repair.disabled = false
@@ -57,9 +57,6 @@ func _on_close_pressed() -> void:
 
 
 func _on_repair_pressed() -> void:
-	#var inv_gui = Global.inventory_gui
-	#if (inv_gui.find_item(stick) >= wood_cost && inv_gui.find_item(stone) >= stone_cost):
-	#	print("Enough to repair")
 	inventory_gui.remove_item(stick, wood_cost)
 	inventory_gui.remove_item(stone, stone_cost)
 	emit_signal("repair")

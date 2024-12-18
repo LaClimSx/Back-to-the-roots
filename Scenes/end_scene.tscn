@@ -24,9 +24,9 @@ autowrap_mode = 3
 [node name="LinkButton" type="LinkButton" parent="Panel"]
 layout_mode = 0
 offset_left = 491.0
-offset_top = 490.0
+offset_top = 501.0
 offset_right = 663.0
-offset_bottom = 543.0
+offset_bottom = 554.0
 theme_override_fonts/font = ExtResource("2_2dqy3")
 theme_override_font_sizes/font_size = 40
 text = "Formulaire"
