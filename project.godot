@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Back to the Roots"
-run/main_scene="res://Scenes/main_menu.tscn"
+run/main_scene="res://Scenes/language_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Assets/Player/icon.svg"
 
@@ -135,7 +135,6 @@ Esc={
 [internationalization]
 
 locale/translations=PackedStringArray("res://i18n.en.translation", "res://i18n.fr.translation")
-locale/test="en"
 
 [rendering]
 
