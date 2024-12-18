@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://dns4jx0vokax"]
+
+[ext_resource type="Script" path="res://Scripts/language_menu.gd" id="1_yy1yt"]
+[ext_resource type="Theme" uid="uid://b5ybms3dmux2h" path="res://Assets/theme_labels_etabli.tres" id="2_eiqfd"]
+[ext_resource type="Theme" uid="uid://c4vl7jpvynye1" path="res://Assets/theme.tres" id="3_mk1p6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70d1t"]
+bg_color = Color(0.364706, 0.364706, 0.364706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwyff"]
+
+[node name="LanguageMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yy1yt")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_70d1t")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -253.0
+offset_top = 61.0
+offset_right = 253.0
+offset_bottom = 152.0
+grow_horizontal = 2
+theme = ExtResource("2_eiqfd")
+theme_override_font_sizes/font_size = 70
+text = "Choose a language"
+
+[node name="French" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = -125.0
+offset_right = 186.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mk1p6")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_kwyff")
+text = "Français"
+
+[node name="English" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = 90.0
+offset_right = 187.0
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_mk1p6")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_kwyff")
+text = "English"
+
+[connection signal="pressed" from="Panel/French" to="." method="_on_french_pressed"]
+[connection signal="pressed" from="Panel/English" to="." method="_on_english_pressed"]

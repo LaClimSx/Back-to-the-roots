@@ -357,7 +357,7 @@ theme_override_font_sizes/font_size = 45
 text = "-"
 autowrap_mode = 3
 
-[node name="sell" type="Button" parent="InteractMenuMoulin/Control"]
+[node name="transform" type="Button" parent="InteractMenuMoulin/Control"]
 self_modulate = Color(1, 0.635294, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -423,5 +423,5 @@ volume_db = -25.0
 [connection signal="pressed" from="InteractMenuMoulin/Control/close" to="InteractMenuMoulin" method="_on_close_pressed"]
 [connection signal="pressed" from="InteractMenuMoulin/Control/plus" to="InteractMenuMoulin" method="_on_plus_pressed"]
 [connection signal="pressed" from="InteractMenuMoulin/Control/moins" to="InteractMenuMoulin" method="_on_moins_pressed"]
-[connection signal="pressed" from="InteractMenuMoulin/Control/sell" to="InteractMenuMoulin" method="_on_sell_pressed"]
+[connection signal="pressed" from="InteractMenuMoulin/Control/transform" to="InteractMenuMoulin" method="_on_sell_pressed"]
 [connection signal="repair" from="RepairMenu" to="." method="repair_itself"]

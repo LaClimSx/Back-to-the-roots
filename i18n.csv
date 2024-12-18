@@ -1,0 +1,48 @@
+﻿keys;en;fr
+DEV_SCORE;Dev score: {dev_score};Score des devs : {dev_score}
+SCORE;Score: {score};Score : {score}
+TIME_LEFT;       Time left: {min} min {sec};Temps restant : {min} min {sec}
+END_TEXT;Thanks for playing! \n\nWrite down this information for the form: \nYour best score: {score} \nYour number: {game_var} \n\nTo help us carry out our project successfully, you can take 5 minutes to fill out this form:;Merci d'avoir joué ! \n\nNote ces quelques informations pour le formulaire : \nTon meilleur score : {score} \nTon numéro : {game_var} \n\nPour nous aider à mener notre projet à bien tu peux prendre 5 minutes pour remplir ce formulaire :
+FORM;Form;Formulaire
+REPAIR_TOOLS_SPACE;"Press ""Space"" to repair your tools";"Appuyez sur ""Espace"" pour réparer vos outils"
+CRAFT_TOOLS_SPACE;"Press ""Space"" to craft tools";"Appuyez sur ""Espace"" pour fabriquer des outils"
+REPAIR_TOOLS;Repair your tools;Répare tes outils
+CRAFT_TOOLS;Craft tools;Fabrique des outils
+REPAIR;Repair;Réparer
+CRAFT;Craft;Fabriquer
+REPAIR_SPACE;"Press ""R"" to repair";"Appuyez sur ""R"" pour réparer"
+REPAIR_HOUSE;Repair your house;Répare ta maison
+REPAIR_WINDMILL;Repair your windmill;Répare ton moulin
+REPAIR_BENCH;Repair your bench;Répare ton établi
+REPAIR_WELL;Repair your well;Répare ton puits
+WOOD_COST;x{wood_cost} wood;x{wood_cost} bois
+STONE_COST;x{stone_cost} stone;x{stone_cost} pierre
+STONE_COST_N;x{stone_cost} stone;x{stone_cost} pierres
+WOOD_COST_CROSSED;[s][color=gray]x{default_cost}[/color][/s] x{cost} wood;[s][color=gray]x{default_cost}[/color][/s] x{cost} bois
+STONE_COST_CROSSED;[s][color=gray]x{default_cost}[/color][/s] x{cost} stone;[s][color=gray]x{default_cost}[/color][/s] x{cost} pierres
+WOOD;wood;bois
+STONE;stone;pierres
+PRICE;Price: {price}$;Prix : {price}$
+PRICE_CROSSED;Price : [s][color=gray]{default_price}[/color][/s] {price}$;Prix : [s][color=gray]{default_price}[/color][/s] {price}$
+EXCHANGE_RATE;Exchange rate 1:{rate};Taux d'échange 1:{rate}
+EXCHANGE_RATE_CROSSED;Exchange rate [s][color=gray]1:{default_rate}[/color][/s] 1:{rate};Taux d'échange [s][color=gray]1:{default_rate}[/color][/s] 1:{rate}
+MENU1;Beware: everything gets destroyed and dull! \nTools and buildings are damaged, exchange rates drop and repair costs rise \nYou'll play 3 games of 5 minutes: manage your resources and try to get as many points as possible!;Attention tout se détruit et s'émousse ! \nLes outils et bâtiments s'abîment, les taux d'échanges baissent et les coûts de réparation augmentent \nVous jouerez 3 parties de 5 minutes : gérez vos ressources et essayez d'obtenir le plus de points possible !
+MENU2;Beware: everything gets destroyed! \nTools and buildings are damaged and repair costs rise \nYou'll play 3 games of 5 minutes: manage your resources and try to get as many points as possible!;Attention tout se détruit ! \nLes outils et bâtiments s'abîment et les coûts de réparation augmentent \nVous jouerez 3 parties de 5 minutes : gérez vos ressources et essayez d'obtenir le plus de points possible !
+MENU3;Beware: everything gets destroyed! \nTools and buildings are damaged \nYou'll play 3 games of 5 minutes: manage your resources and try to get as many points as possible!;Attention tout se détruit ! \nLes outils et les bâtiments s'abîment \nVous jouerez 3 parties de 5 minutes : gérez vos ressources et essayez d'obtenir le plus de points possible !
+TUTO;Grow wheat, grind it and sell the flour to earn as many points as possible! \nMove: WASD or arrows \nUse objects: Space once in hand (press 1, 2, 3, 4, 5, 6, 7, 8, 9 to change object) \nRepair a building: Take hammer in hand and press R;Cultivez du blé, transformez-le et vendez la farine pour avoir le plus de points possible ! \nDéplacement : WASD ou flèches \nUtilisation des objets : Espace une fois en main (appuyez sur 1, 2, 3, 4, 5, 6, 7, 8, 9 pour changer d'objet) \nRéparer un bâtiment : Prendre le marteau en main et appuyer sur R
+NEXT;Next;Continuer
+START;Start;Commencer
+TO_END;To the end;Aller à la fin
+END_GAME_1;Congratulations, you've finished your first game with a score of {score}. \nTry to improve your score!;Félicitations, vous avez fini votre première partie avec un score de {score}.\n Essayez d'améliorer votre score !
+END_GAME_2;Congratulations, you've finished your second game with a score of {score}.\n If you think you can do better, you can try a third game. Otherwise, you can go straight to the end.;Félicitations, vous avez fini votre deuxième partie avec un score de {score}.\n Si vous pensez pouvoir faire mieux, vous pouvez tenter une troisième partie. Sinon vous pouvez aller directement à la fin.
+PLAY_AGAIN;Play again;Rejouer
+INTERACT_HOUSE;"Press ""Space"" to sell your flour";"Appuyez sur ""Espace"" pour vendre votre farine"
+COST;Cost;Coût
+SELL1;Sell 1;Vendre 1
+SELL_ALL;Sell all;Tout vendre
+MENU_HOUSE;Sell your flour;Vends ta farine
+INTERACT_WINDMILL;"Press ""Space"" to grind your wheat";"Appuyez sur ""Espace"" pour transformer votre blé"
+MENU_WINDMILL;Grind your wheat;Transforme ton blé
+ADVICE_WINDMILL;   (Don't sell it all at once);(Ne vends pas tout d'un coup)
+GRIND;Grind;Transformation
+TUTO_SPACE;"Press ""Space"" to open the tutorial";"Appuyez sur ""Espace"" pour ouvrir le tuto"

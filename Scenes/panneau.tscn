@@ -81,12 +81,12 @@ position = Vector2(49, 82)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_1hfrl")
 
-[node name="panneau interraction" type="CanvasLayer" parent="."]
+[node name="InteractPanel" type="CanvasLayer" parent="."]
 process_mode = 3
 offset = Vector2(0, -600)
 transform = Transform2D(1, 0, 0, 1, 0, -600)
 
-[node name="Panel" type="Panel" parent="panneau interraction"]
+[node name="Panel" type="Panel" parent="InteractPanel"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.498
@@ -99,13 +99,13 @@ offset_bottom = 245.296
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Anim" type="AnimationPlayer" parent="panneau interraction"]
+[node name="Anim" type="AnimationPlayer" parent="InteractPanel"]
 libraries = {
 "": SubResource("AnimationLibrary_ril8e")
 }
 autoplay = "RESET"
 
-[node name="Control" type="Control" parent="panneau interraction"]
+[node name="Control" type="Control" parent="InteractPanel"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 78.0
@@ -113,7 +113,7 @@ offset_top = 78.0
 offset_right = 1104.0
 offset_bottom = 567.0
 
-[node name="close" type="Button" parent="panneau interraction/Control"]
+[node name="close" type="Button" parent="InteractPanel/Control"]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -127,29 +127,29 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 21
 text = "X"
 
-[node name="grind" type="AudioStreamPlayer" parent="panneau interraction"]
+[node name="grind" type="AudioStreamPlayer" parent="InteractPanel"]
 stream = ExtResource("3_jfpei")
 volume_db = -25.0
 
-[node name="cercle" type="Sprite2D" parent="panneau interraction"]
+[node name="cercle" type="Sprite2D" parent="InteractPanel"]
 position = Vector2(431, 333)
 scale = Vector2(0.519444, 0.519444)
 texture = ExtResource("4_hxlpo")
 
-[node name="regles" type="Label" parent="panneau interraction"]
+[node name="regles" type="Label" parent="InteractPanel"]
 offset_left = 777.0
-offset_top = 133.0
+offset_top = 131.0
 offset_right = 1096.0
-offset_bottom = 359.0
+offset_bottom = 357.0
 theme_override_fonts/font = ExtResource("5_kpkoc")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 19
 text = "Attention tout se détruit et s'émousse ! 
 Les outils et bâtiments s'abîment, les taux d'échanges baissent et les coûts de réparation augmentent 
 Vous jouerez 3 parties de 5 minutes : gérez vos ressources et essayez d'obtenir le plus de points possible !"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="commande" type="Label" parent="panneau interraction"]
+[node name="commande" type="Label" parent="InteractPanel"]
 offset_left = 772.0
 offset_top = 353.0
 offset_right = 1096.0
@@ -177,4 +177,4 @@ autowrap_mode = 3
 
 [connection signal="body_entered" from="CollisionPolygon2D/interractionzone" to="." method="_on_interractionzone_body_entered"]
 [connection signal="body_exited" from="CollisionPolygon2D/interractionzone" to="." method="_on_interractionzone_body_exited"]
-[connection signal="pressed" from="panneau interraction/Control/close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="InteractPanel/Control/close" to="." method="_on_close_pressed"]

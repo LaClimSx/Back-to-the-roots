@@ -231,7 +231,7 @@ position = Vector2(451, 177.5)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("10_afsmt")
 
-[node name="sell all1" type="Button" parent="InteractMenu/Control"]
+[node name="sellAll" type="Button" parent="InteractMenu/Control"]
 self_modulate = Color(1, 1, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -249,7 +249,7 @@ theme_override_fonts/font = ExtResource("9_1gnbb")
 theme_override_font_sizes/font_size = 40
 text = "Tout vendre"
 
-[node name="sell one1" type="Button" parent="InteractMenu/Control"]
+[node name="sellOne" type="Button" parent="InteractMenu/Control"]
 self_modulate = Color(1, 0.635294, 0, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -280,6 +280,6 @@ volume_db = -30.0
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="damage_building" from="InteractMenu" to="." method="damage_itself"]
 [connection signal="pressed" from="InteractMenu/Control/close" to="InteractMenu" method="_on_close_pressed"]
-[connection signal="pressed" from="InteractMenu/Control/sell all1" to="InteractMenu" method="_on_sell_all_1_pressed"]
-[connection signal="pressed" from="InteractMenu/Control/sell one1" to="InteractMenu" method="_on_sell_one_1_pressed"]
+[connection signal="pressed" from="InteractMenu/Control/sellAll" to="InteractMenu" method="_on_sell_all_1_pressed"]
+[connection signal="pressed" from="InteractMenu/Control/sellOne" to="InteractMenu" method="_on_sell_one_1_pressed"]
 [connection signal="repair" from="RepairMenu" to="." method="repair_itself"]

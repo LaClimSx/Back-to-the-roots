@@ -8,7 +8,8 @@ func _ready():
 	corresponding_item_name = ""
 	repair_label = $RepairLabel
 	interact_label = $InteractLabel
-	interact_label.text = "Appuyez sur \"Espace\" pour réparer vos outils" if Global.reparability else "Appuyez sur \"Espace\" pour fabriquer des outils"
+	interact_label.text = tr("REPAIR_TOOLS_SPACE") if Global.reparability else tr("CRAFT_TOOLS_SPACE")
+	repair_label.text = tr("REPAIR_SPACE")
 	super()
 
 

@@ -1,39 +1,33 @@
 extends Control
 
-var variante1 = "Attention tout se détruit et s'émousse ! 
-Les outils et bâtiments s'abîment, les taux d'échanges baissent et les coûts de réparation augmentent 
-Vous jouerez 3 parties de 5 minutes : gérez vos ressources et essayez d'obtenir le plus de points possible !"
-var variante2 = "Attention tout se détruit ! 
-Les outils et bâtiments s'abîment et les coûts de réparation augmentent
-Vous jouerez 3 parties de 5 minutes : gérez vos ressources et essayez d'obtenir le plus de points possible !"
-var variante3 = "Attention tout se détruit ! 
-Les outils et les bâtiments s'abîment
-Vous jouerez 3 parties de 5 minutes : gérez vos ressources et essayez d'obtenir le plus de points possible !"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Panel/controls.text = tr("TUTO")
+	$Panel/Start.text = tr("START")
+	$Panel/ToEnd.text = tr("TO_END")
 	$Panel/Interactions.visible = false
 	$Panel/Start.visible = false
 	$Panel/ToEnd.visible = false
 	match Global.game_number:
 		0:
 			$Panel/controls.visible = true
-			$Panel/Button.text = "Continuer"
+			$Panel/Button.text = tr("NEXT")
 			match Global.game_variation :
 				1 :
-					$Panel/text.text = variante1
+					$Panel/text.text = tr("MENU1")
 				2 :
-					$Panel/text.text = variante2
+					$Panel/text.text = tr("MENU2")
 				3 :
-					$Panel/text.text = variante3
+					$Panel/text.text = tr("MENU3")
 		1:
-			$Panel/controls.visible = false
-			$Panel/text.text = "Félicitations, vous avez fini votre première partie avec un score de " + str(Global.scores[Global.game_number - 1]) + ".\n Essayez d'améliorer votre score !"
-			$Panel/Button.text = "Rejouer"
+			$Panel/controls.visible = false 
+			$Panel/text.text = tr("END_GAME_1").format({"score": Global.scores[Global.game_number - 1]})
+			$Panel/Button.text = tr("PLAY_AGAIN")
 		2:
 			$Panel/controls.visible = false
-			$Panel/text.text = "Félicitations, vous avez fini votre deuxième partie avec un score de " + str(Global.scores[Global.game_number - 1]) + ".\n Si vous pensez pouvoir faire mieux, vous pouvez tenter une troisième partie. Sinon vous pouvez aller directement à la fin."
-			$Panel/Button.text = "Rejouer"
+			$Panel/text.text = tr("END_GAME_2").format({"score": Global.scores[Global.game_number - 1]})
+			$Panel/Button.text = tr("PLAY_AGAIN")
 			$Panel/ToEnd.visible = true
 		
 		

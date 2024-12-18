@@ -7,15 +7,23 @@ extends CanvasLayer
 var price
 signal damage_building
 
+const DEFAULT_PRICE : int = 5
+const CHEAP_PRICE : int = 3
+
 var is_open: bool = false
+
+func _ready():
+	$Control/Sell.text = tr("MENU_HOUSE")
+	$"Control/sellAll".text = tr("SELL_ALL")
+	$"Control/sellOne".text = tr("SELL1")
 
 func _process(delta: float) -> void:
 	if(inventory_gui.find_item(flour)==-1):
-		$"Control/sell all1".disabled = true
-		$"Control/sell one1".disabled = true
+		$"Control/sellAll".disabled = true
+		$"Control/sellOne".disabled = true
 	else:
-		$"Control/sell all1".disabled = false
-		$"Control/sell one1".disabled = false
+		$"Control/sellAll".disabled = false
+		$"Control/sellOne".disabled = false
 	if Input.is_action_pressed("Esc") && is_open:
 		_on_close_pressed()
 
@@ -48,16 +56,16 @@ func _on_sell_all_1_pressed() -> void:
 func _on_house_s_state(s):
 	$Control/price.bbcode_enabled = true
 	if !Global.efficiency_decline:
-		price = 5
-		$Control/price.bbcode_text = "Prix : " + str(price) + "$"
+		price = DEFAULT_PRICE
+		$Control/price.bbcode_text = tr("PRICE").format({"price": price})
 		return
 	match s:
 		Building.STATE.good: 
-			price = 5
-			$Control/price.bbcode_text = "Prix : " + str(price) + "$"
+			price = DEFAULT_PRICE
+			$Control/price.bbcode_text = tr("PRICE").format({"price": price})
 
 		Building.STATE.mid: 
-			price = 3
-			$Control/price.bbcode_text = "Prix : [s][color=gray]" + "5$" + "[/color][/s] " + str(price) + "$"
+			price = CHEAP_PRICE
+			$Control/price.bbcode_text = tr("PRICE_CROSSED").format({"default_price": DEFAULT_PRICE, "price": price})
 			
 		_: price = 0
