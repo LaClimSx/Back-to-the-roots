@@ -408,6 +408,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("34_2neru")
 text = "(Ne vends pas tout d'un coup)"
+horizontal_alignment = 1
 
 [node name="grind" type="AudioStreamPlayer" parent="InteractMenuMoulin"]
 stream = ExtResource("34_87cyi")

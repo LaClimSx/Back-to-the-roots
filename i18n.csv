@@ -1,9 +1,9 @@
 ﻿keys;en;fr
 DEV_SCORE;Dev score: {dev_score};Score des devs : {dev_score}
 SCORE;Score: {score};Score : {score}
-TIME_LEFT;       Time left: {min} min {sec};Temps restant : {min} min {sec}
+TIME_LEFT;Time left: {min} min {sec};Temps restant : {min} min {sec}
 END_TEXT;Thanks for playing! \n\nWrite down this information for the form: \nYour best score: {score} \nYour number: {game_var} \n\nTo help us carry out our project successfully, you can take 5 minutes to fill out this form:;Merci d'avoir joué ! \n\nNote ces quelques informations pour le formulaire : \nTon meilleur score : {score} \nTon numéro : {game_var} \n\nPour nous aider à mener notre projet à bien tu peux prendre 5 minutes pour remplir ce formulaire :
-FORM;Form;Formulaire
+FORM;Form link;Formulaire
 REPAIR_TOOLS_SPACE;"Press ""Space"" to repair your tools";"Appuyez sur ""Espace"" pour réparer vos outils"
 CRAFT_TOOLS_SPACE;"Press ""Space"" to craft tools";"Appuyez sur ""Espace"" pour fabriquer des outils"
 REPAIR_TOOLS;Repair your tools;Répare tes outils
@@ -43,6 +43,6 @@ SELL_ALL;Sell all;Tout vendre
 MENU_HOUSE;Sell your flour;Vends ta farine
 INTERACT_WINDMILL;"Press ""Space"" to grind your wheat";"Appuyez sur ""Espace"" pour transformer votre blé"
 MENU_WINDMILL;Grind your wheat;Transforme ton blé
-ADVICE_WINDMILL;   (Don't sell it all at once);(Ne vends pas tout d'un coup)
+ADVICE_WINDMILL;(Don't sell it all at once);(Ne vends pas tout d'un coup)
 GRIND;Grind;Transformation
 TUTO_SPACE;"Press ""Space"" to open the tutorial";"Appuyez sur ""Espace"" pour ouvrir le tuto"
