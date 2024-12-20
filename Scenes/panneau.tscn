@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dk14a45apvgyf"]
 
 [ext_resource type="Script" path="res://panneau.gd" id="1_ckt2o"]
-[ext_resource type="Texture2D" uid="uid://bgrlr5m374drk" path="res://Assets/panneau.png" id="2_31anm"]
+[ext_resource type="Texture2D" uid="uid://bgrlr5m374drk" path="res://Assets/Bâtiments/panneau.png" id="2_31anm"]
 [ext_resource type="AudioStream" uid="uid://d0548sfy1jatg" path="res://Assets/Sounds/moudre.mp3" id="3_jfpei"]
 [ext_resource type="Texture2D" uid="uid://ci8djy5v8ei03" path="res://Assets/Cyrielle/interactions_tuto.png" id="4_hxlpo"]
 [ext_resource type="FontFile" uid="uid://ccu6jholutsm4" path="res://Assets/Fonts/Chewy-Regular.ttf" id="5_kpkoc"]
