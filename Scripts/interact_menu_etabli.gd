@@ -64,6 +64,8 @@ func _process(delta: float) -> void:
 					tools_repair_cost[key] = {"wood": 2, "stone": 4}
 			wood_label.text = tr("WOOD_COST").format({"wood_cost": tools_repair_cost[key]["wood"]})
 			stone_label.text = tr_n("STONE_COST", "STONE_COST_N", tools_repair_cost[key]["stone"]).format({"stone_cost": tools_repair_cost[key]["stone"]})
+			if (nb_wood < tools_repair_cost[key]["wood"]) || (nb_stone < tools_repair_cost[key]["stone"]):
+				button.disabled = true
 		return
 		
 	#If reparability
@@ -124,6 +126,8 @@ func _on_repair_hammer_pressed() -> void:
 	if !Global.reparability:
 		inventory_gui.insert_at(hammer_item, 2)
 		hammer_item.repair()
+		inventory_gui.remove_item(wood, tools_repair_cost["hammer"]["wood"])
+		inventory_gui.remove_item(stones, tools_repair_cost["hammer"]["stone"])
 		inventory_gui.update()
 	else:
 		hammer.repair()
@@ -137,6 +141,8 @@ func _on_repair_axe_pressed() -> void:
 	if !Global.reparability:
 		inventory_gui.insert_at(axe_item, 3)
 		axe_item.repair()
+		inventory_gui.remove_item(wood, tools_repair_cost["axe"]["wood"])
+		inventory_gui.remove_item(stones, tools_repair_cost["axe"]["stone"])
 		inventory_gui.update()
 	else:
 		axe.repair()
@@ -150,6 +156,8 @@ func _on_repair_pickaxe_pressed() -> void:
 	if !Global.reparability:
 		inventory_gui.insert_at(pickaxe_item, 4)
 		pickaxe_item.repair()
+		inventory_gui.remove_item(wood, tools_repair_cost["pickaxe"]["wood"])
+		inventory_gui.remove_item(stones, tools_repair_cost["pickaxe"]["stone"])
 		inventory_gui.update()
 	else:
 		pickaxe.repair()
@@ -163,6 +171,8 @@ func _on_repair_hoe_pressed() -> void:
 	if !Global.reparability:
 		inventory_gui.insert_at(hoe_item, 0)
 		hoe_item.repair()
+		inventory_gui.remove_item(wood, tools_repair_cost["hoe"]["wood"])
+		inventory_gui.remove_item(stones, tools_repair_cost["hoe"]["stone"])
 		inventory_gui.update()
 	else:
 		hoe.repair()
@@ -177,6 +187,8 @@ func _on_repair_bucket_pressed() -> void:
 		inventory_gui.insert_at(bucket_item, 1)
 		bucket_item.repair()
 		bucket_item.empty()
+		inventory_gui.remove_item(wood, tools_repair_cost["bucket"]["wood"])
+		inventory_gui.remove_item(stones, tools_repair_cost["bucket"]["stone"])
 		inventory_gui.update()
 	else:
 		bucket.repair()
